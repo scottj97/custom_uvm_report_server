@@ -186,7 +186,6 @@ class custom_report_server extends
          string message_str       = "";
          bit add_newline          = 0;
          int dash_cnt             = 0;
-         bit table_print_detected = 0;
 
          if ( uvm_report_nomsgwrap ) return message;
 
@@ -215,8 +214,7 @@ class custom_report_server extends
             // dashes are detected, do not wrap the message as it could
             // be a pre-formatted string output by the uvm_printer.
             if ( dash_cnt > NUM_CONSEC_DASH_TO_DETECT_TABLE ) begin
-               table_print_detected = 1;
-               break;
+               return message;
             end
 
             // Set the "add_newline" flag so that newline is added as soon
@@ -236,10 +234,6 @@ class custom_report_server extends
                message_str = {message_str, message[i]};
             end
          end // foreach (message[i])
-
-         if ( table_print_detected ) begin
-            message_str = message;
-         end
          return message_str;
       endfunction: wordwrap
 
