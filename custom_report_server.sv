@@ -192,7 +192,6 @@ class custom_report_server extends
             int    dash_cnt                  = 0;
             bit    table_print_detected      = 0;
 
-            string severity_str              = "";
             string time_str                  = "";
             string message_str               = "";
             string filename_str              = "";
@@ -230,20 +229,15 @@ class custom_report_server extends
                   end // if (id[id.len()-1]=="*")
                end
                if (l_severity==UVM_INFO) begin
-                  severity_str      = "   UVM_INFO";
                   severity_str_fmtd = {"   ", colorize("UVM_INFO", c_uvm_info)};
                end else if (l_severity==UVM_WARNING) begin
-                  severity_str      = "UVM_WARNING";
                   severity_str_fmtd = colorize("UVM_WARNING", c_uvm_warning);
                end else if (l_severity==UVM_ERROR) begin
-                  severity_str      = "  UVM_ERROR";
                   severity_str_fmtd = {"  ", colorize("UVM_ERROR", c_uvm_error)};
                end else if (l_severity==UVM_FATAL) begin
-                  severity_str      = "  UVM_FATAL";
                   severity_str_fmtd = {"  ", colorize("UVM_FATAL", c_uvm_fatal)};
                   // The below else condition should never be executed
                end else begin
-                  severity_str      = "";
                   severity_str_fmtd = "";
                end
                // end SEVERITY
