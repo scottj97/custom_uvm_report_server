@@ -244,8 +244,6 @@ class custom_report_server extends
          uvm_report_message_element_container el_container;
          uvm_report_handler l_report_handler;
          string message  = "";
-         string filename = "";
-         int    line     = 0;
          string id       = "";
 
             string context_str;
@@ -257,8 +255,6 @@ class custom_report_server extends
 
 
             string message_str               = "";
-            string filename_str              = "";
-            string tracebackinfo_str         = "";
 
             string severity_str              = "";
             string time_str                  = "";
@@ -349,6 +345,10 @@ class custom_report_server extends
                   end
 
                   if (add_traceback) begin
+                     string filename;
+                     string filename_str;
+                     string tracebackinfo_str;
+                     int line;
                      // --------------------------------------------------------------------
                      // REPORT_OBJECT_NAME + FILENAME + LINE NUMBER
                      // Extract just the file name, remove the preceeding path
