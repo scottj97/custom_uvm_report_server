@@ -419,12 +419,7 @@ class custom_report_server extends
                end // else: !if(emulate_dollardisplay)
                // end FINAL PRINTED MESSAGE
 
-               if ( uvm_report_nocolor ) begin
-                  compose_report_message = my_composed_message;
-               end else begin
-                  compose_report_message = my_composed_message_fmtd;
-               end
-
+               compose_report_message = my_composed_message_fmtd;
             end
          endfunction // compose_report_message
 
