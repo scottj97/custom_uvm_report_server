@@ -182,8 +182,6 @@ class custom_report_server extends
             string prefix;
 
             // Declare function-internal vars
-            string format_str                = "";
-
             string filename_nopath           = "";
             bit    add_newline               = 0;
             bit    emulate_dollardisplay     = 0;
@@ -256,10 +254,8 @@ class custom_report_server extends
                 // Print the simulation time in ns by default
                 $timeformat(-9, 0, "", 11);  // units, precision, suffix, min field width
                 */
-               format_str    = $sformatf(fg_format[c_time[0]],
-                                         bg_format[c_time[1]]);
                time_str      = $sformatf("@%7tns", $time);
-               time_str_fmtd = $sformatf({"@", format_str, "ns"}, $sformatf("%7t", $time));
+               time_str_fmtd = {"@", colorize($sformatf("%7t", $time), c_time), "ns"};
                // end TIME
 
                // --------------------------------------------------------------------
@@ -334,12 +330,8 @@ class custom_report_server extends
 
                if (emulate_dollardisplay==0) begin
                   // Append the id string to message_str
-                  format_str        = $sformatf(fg_format[c_message[0]],
-                                                bg_format[c_message[1]]);
-                  message_str_fmtd  = $sformatf(format_str, message_str);
-                  format_str        = $sformatf(fg_format[c_id[0]],
-                                                bg_format[c_id[1]]);
-                  id_str_fmtd       = $sformatf(format_str, id);
+                  message_str_fmtd  = colorize(message_str, c_message);
+                  id_str_fmtd       = colorize(id, c_id);
                   message_str       = {message_str, " :", id};
                   message_str_fmtd  = {message_str_fmtd, " :", id_str_fmtd};
                end
@@ -362,9 +354,6 @@ class custom_report_server extends
                else
                  filename_str     = $sformatf("%s(%0d)", filename_nopath, line);
 
-               format_str         = $sformatf(fg_format[c_tracebackinfo[0]],
-                                              bg_format[c_tracebackinfo[1]]);
-
                // The traceback info will be indented with respect to the message_str
                if ( report_object_name=="reporter" )
                  tracebackinfo_str = {" ", report_object_name, "\n"};
@@ -377,7 +366,7 @@ class custom_report_server extends
                      tracebackinfo_str = {"\n", indentation_str, tracebackinfo_str};
                   end
                end
-               tracebackinfo_str_fmtd = $sformatf(format_str, tracebackinfo_str);
+               tracebackinfo_str_fmtd = colorize(tracebackinfo_str, c_tracebackinfo);
                // end REPORT_OBJECT_NAME + FILENAME + LINE NUMBER
 
                // --------------------------------------------------------------------
