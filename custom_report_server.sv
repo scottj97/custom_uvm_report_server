@@ -166,12 +166,6 @@ class custom_report_server extends
          severity_strings[UVM_ERROR  ] = {"  ", colorize("UVM_ERROR", c_uvm_error)};
          severity_strings[UVM_FATAL  ] = {"  ", colorize("UVM_FATAL", c_uvm_fatal)};
 
-         test_basename("/foo/bar/xyz.sv");
-         test_basename("/bar/xyz.sv");
-         test_basename("/xyz.sv");
-         test_basename("xyz.sv");
-         test_basename("");
-         test_basename("../xyz.sv");
       endfunction // new
 
       local function string colorize(string str, ref color_t colors[2]);
@@ -185,10 +179,6 @@ class custom_report_server extends
          if (i < 0) return filename;  // no slash found
          return filename.substr(i+1, filename.len()-1);
       endfunction: basename
-
-      local function void test_basename(string str);
-          $display("For %s, found %s", str, basename(str));
-      endfunction: test_basename
 
       virtual function string compose_report_message (uvm_report_message report_message,
                                                       string report_object_name = "");
