@@ -217,16 +217,18 @@ class custom_report_server extends
                id = report_message.get_id();
 
                if (l_severity==UVM_INFO) begin
-                  format_str        = $sformatf(fg_format[c_uvm_info[0]],
-                                                bg_format[c_uvm_info[1]]);
-                  severity_str      = "   UVM_INFO";
-                  severity_str_fmtd = $sformatf({"   ", format_str}, "UVM_INFO");
                   // Emulate $display if the last char of the uvm_info ID field is '*'
                   if (id[id.len()-1]=="*") begin
                      emulate_dollardisplay = 1;
                      // Remove that last '*' character from the ID string
                      id = id.substr(0, id.len()-2);
                   end // if (id[id.len()-1]=="*")
+               end
+               if (l_severity==UVM_INFO) begin
+                  format_str        = $sformatf(fg_format[c_uvm_info[0]],
+                                                bg_format[c_uvm_info[1]]);
+                  severity_str      = "   UVM_INFO";
+                  severity_str_fmtd = $sformatf({"   ", format_str}, "UVM_INFO");
                end else if (l_severity==UVM_WARNING) begin
                   format_str        = $sformatf(fg_format[c_uvm_warning[0]],
                                                 bg_format[c_uvm_warning[1]]);
