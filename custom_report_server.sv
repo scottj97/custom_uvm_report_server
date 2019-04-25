@@ -263,7 +263,7 @@ class custom_report_server extends
             string severity_str              = "";
             string time_str                  = "";
             string message_str_fmtd          = "";
-            string id_str_fmtd               = "";
+            string id_str                    = "";
             string tracebackinfo_str_fmtd    = "";
 
             string my_composed_message       = "";
@@ -323,8 +323,8 @@ class custom_report_server extends
                end else begin
                   // Append the id string to message_str
                   message_str_fmtd  = colorize(message_str, c_message);
-                  id_str_fmtd       = colorize(id, c_id);
-                  message_str_fmtd  = {message_str_fmtd, " :", id_str_fmtd};
+                  id_str            = colorize(id, c_id);
+                  message_str_fmtd  = {message_str_fmtd, " :", id_str};
                   // end MESSAGE + ID
 
                   // --------------------------------------------------------------------
