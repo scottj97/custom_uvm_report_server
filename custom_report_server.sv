@@ -191,7 +191,6 @@ class custom_report_server extends
          int    line     = 0;
          string id       = "";
 
-            string sev_string;
             string context_str;
             string verbosity_str;
             string prefix;
@@ -227,7 +226,6 @@ class custom_report_server extends
                // --------------------------------------------------------------------
                // SEVERITY
                l_severity = report_message.get_severity();
-               sev_string = l_severity.name();
 
                id = report_message.get_id();
 
