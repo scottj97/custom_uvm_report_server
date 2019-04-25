@@ -180,14 +180,10 @@ class custom_report_server extends
       endfunction: colorize
 
       local function string basename(const ref string filename);
-         string filename_nopath = "";
-         for (int i=filename.len(); i>=0; i--) begin
-            if (filename[i]=="/")
-              break;
-            else
-              filename_nopath = {filename[i], filename_nopath};
-         end
-         return filename_nopath;
+         int i = filename.len()-1;
+         while (i >= 0 && filename[i] != "/") i--;  // find last slash, if any
+         if (i < 0) return filename;  // no slash found
+         return filename.substr(i+1, filename.len()-1);
       endfunction: basename
 
       local function void test_basename(string str);
