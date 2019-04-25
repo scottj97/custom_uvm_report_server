@@ -318,44 +318,42 @@ class custom_report_server extends
 
                message_str = wordwrap(message, report_object_name, emulate_dollardisplay);
 
-               if (emulate_dollardisplay==0) begin
+               if (emulate_dollardisplay) begin
+                  my_composed_message_fmtd = message_str;
+               end else begin
                   // Append the id string to message_str
                   message_str_fmtd  = colorize(message_str, c_message);
                   id_str_fmtd       = colorize(id, c_id);
                   message_str_fmtd  = {message_str_fmtd, " :", id_str_fmtd};
-               end
-               // end MESSAGE + ID
+                  // end MESSAGE + ID
 
-               // --------------------------------------------------------------------
-               // REPORT_OBJECT_NAME + FILENAME + LINE NUMBER
-               // Extract just the file name, remove the preceeding path
-               filename = report_message.get_filename();
-               line     = report_message.get_line();
-               if (filename=="")
-                 filename_str = "";
-               else
-                 filename_str     = $sformatf("%s(%0d)", basename(filename), line);
+                  // --------------------------------------------------------------------
+                  // REPORT_OBJECT_NAME + FILENAME + LINE NUMBER
+                  // Extract just the file name, remove the preceeding path
+                  filename = report_message.get_filename();
+                  line     = report_message.get_line();
+                  if (filename=="")
+                    filename_str = "";
+                  else
+                    filename_str     = $sformatf("%s(%0d)", basename(filename), line);
 
-               // The traceback info will be indented with respect to the message_str
-               if ( report_object_name=="reporter" )
-                 tracebackinfo_str = {" ", report_object_name, "\n"};
-               else begin
-                  tracebackinfo_str = {report_object_name, ", ", filename_str};
-                  if ( tracebackinfo_str.len() > MAX_MSG_CHARS_PER_LINE ) begin
-                     tracebackinfo_str = {"\n", indentation_str, report_object_name, ",",
-                                          "\n", indentation_str, filename_str};
-                  end else begin
-                     tracebackinfo_str = {"\n", indentation_str, tracebackinfo_str};
+                  // The traceback info will be indented with respect to the message_str
+                  if ( report_object_name=="reporter" )
+                    tracebackinfo_str = {" ", report_object_name, "\n"};
+                  else begin
+                     tracebackinfo_str = {report_object_name, ", ", filename_str};
+                     if ( tracebackinfo_str.len() > MAX_MSG_CHARS_PER_LINE ) begin
+                        tracebackinfo_str = {"\n", indentation_str, report_object_name, ",",
+                                             "\n", indentation_str, filename_str};
+                     end else begin
+                        tracebackinfo_str = {"\n", indentation_str, tracebackinfo_str};
+                     end
                   end
-               end
-               tracebackinfo_str_fmtd = colorize(tracebackinfo_str, c_tracebackinfo);
-               // end REPORT_OBJECT_NAME + FILENAME + LINE NUMBER
+                  tracebackinfo_str_fmtd = colorize(tracebackinfo_str, c_tracebackinfo);
+                  // end REPORT_OBJECT_NAME + FILENAME + LINE NUMBER
 
-               // --------------------------------------------------------------------
-               // FINAL PRINTED MESSAGE
-               if (emulate_dollardisplay) begin
-                  my_composed_message_fmtd = message_str;
-               end else begin
+                  // --------------------------------------------------------------------
+                  // FINAL PRINTED MESSAGE
                   if ( uvm_report_traceback == UVM_REPORT_TRACEBACK_NONE ) begin
                      my_composed_message_fmtd = $sformatf("%5s %s  %s",
                                                           severity_str, time_str,
