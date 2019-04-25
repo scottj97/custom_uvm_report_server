@@ -47,6 +47,8 @@ class custom_report_server extends
    parameter MAX_MSG_LEN_FOR_WRAP            = 20*MAX_MSG_CHARS_PER_LINE;
    parameter NUM_CONSEC_DASH_TO_DETECT_TABLE = 15;
 
+   string indentation_str           = {INDENT{" "}};
+
    typedef enum {BLACK    , GRAY,GREY , UBLACK,
                  RED      , BRED      , URED,
                  GREEN    , BGREEN    , UGREEN,
@@ -198,7 +200,6 @@ class custom_report_server extends
             // Declare function-internal vars
             bit    add_newline               = 0;
             bit    emulate_dollardisplay     = 0;
-            string indentation_str           = {INDENT{" "}};
 
             int    dash_cnt                  = 0;
             bit    table_print_detected      = 0;
