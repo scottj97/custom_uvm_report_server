@@ -187,58 +187,57 @@ class custom_report_server extends
          bit add_newline          = 0;
          int dash_cnt             = 0;
          bit table_print_detected = 0;
-         if ( uvm_report_nomsgwrap ) begin
-            message_str = message;
+
+         if ( uvm_report_nomsgwrap ) return message;
+
+         // If the last character of message is a newline, replace it with
+         // space
+         if ( message[message.len()-1]=="\n" ) begin
+            message[message.len()-1] = " ";
+         end
+
+         // Wrap the message string if it's too long.
+         // Do not wrap the lines so that they break words (makes searching difficult)
+         // Do NOT wrap the message IF,
+         //  - message len > MAX_MSG_LEN_FOR_WRAP
+         //  - emulate_dollardisplay == 1
+         if ( report_object_name!="reporter" &&
+              message.len()<=MAX_MSG_LEN_FOR_WRAP &&
+              emulate_dollardisplay==0 ) begin
+            foreach(message[i]) begin
+               if ( message[i]=="-" ) begin
+                  dash_cnt++;
+               end else begin
+                  dash_cnt = 0;
+               end
+               // If more than NUM_CONSEC_DASH_TO_DETECT_TABLE consecutive
+               // dashes are detected, do not wrap the message as it could
+               // be a pre-formatted string output by the uvm_printer.
+               if ( dash_cnt > NUM_CONSEC_DASH_TO_DETECT_TABLE ) begin
+                  table_print_detected = 1;
+                  break;
+               end
+
+               // Set the "add_newline" flag so that newline is added as soon
+               // as a 'wrap-friendly' character is detected
+               if ( (i+1)%MAX_MSG_CHARS_PER_LINE==0) begin
+                  add_newline = 1;
+               end
+
+               if (add_newline &&
+                   // add newline only if the curr char is 'wrap-friendly'
+                   ( message[i]==" " || message[i]=="." || message[i]==":" ||
+                     message[i]=="/" || message[i]=="=" ||
+                     i==(message.len()-1) )) begin
+                  message_str = {message_str, message[i],"\n", indentation_str};
+                  add_newline = 0;
+               end else begin
+                  message_str = {message_str, message[i]};
+               end
+            end // foreach (message[i])
          end else begin
-            // If the last character of message is a newline, replace it with
-            // space
-            if ( message[message.len()-1]=="\n" ) begin
-               message[message.len()-1] = " ";
-            end
-
-            // Wrap the message string if it's too long.
-            // Do not wrap the lines so that they break words (makes searching difficult)
-            // Do NOT wrap the message IF,
-            //  - message len > MAX_MSG_LEN_FOR_WRAP
-            //  - emulate_dollardisplay == 1
-            if ( report_object_name!="reporter" &&
-                 message.len()<=MAX_MSG_LEN_FOR_WRAP &&
-                 emulate_dollardisplay==0 ) begin
-               foreach(message[i]) begin
-                  if ( message[i]=="-" ) begin
-                     dash_cnt++;
-                  end else begin
-                     dash_cnt = 0;
-                  end
-                  // If more than NUM_CONSEC_DASH_TO_DETECT_TABLE consecutive
-                  // dashes are detected, do not wrap the message as it could
-                  // be a pre-formatted string output by the uvm_printer.
-                  if ( dash_cnt > NUM_CONSEC_DASH_TO_DETECT_TABLE ) begin
-                     table_print_detected = 1;
-                     break;
-                  end
-
-                  // Set the "add_newline" flag so that newline is added as soon
-                  // as a 'wrap-friendly' character is detected
-                  if ( (i+1)%MAX_MSG_CHARS_PER_LINE==0) begin
-                     add_newline = 1;
-                  end
-
-                  if (add_newline &&
-                      // add newline only if the curr char is 'wrap-friendly'
-                      ( message[i]==" " || message[i]=="." || message[i]==":" ||
-                        message[i]=="/" || message[i]=="=" ||
-                        i==(message.len()-1) )) begin
-                     message_str = {message_str, message[i],"\n", indentation_str};
-                     add_newline = 0;
-                  end else begin
-                     message_str = {message_str, message[i]};
-                  end
-               end // foreach (message[i])
-            end else begin
-               message_str = message;
-            end // else: !if( message.len()<=20*MAX_MSG_CHARS_PER_LINE &&...
-         end // else: !if( uvm_report_nomsgwrap )
+            message_str = message;
+         end // else: !if( message.len()<=20*MAX_MSG_CHARS_PER_LINE &&...
 
          if ( table_print_detected ) begin
             message_str = message;
