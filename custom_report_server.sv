@@ -173,6 +173,17 @@ class custom_report_server extends
          return {"\033[", fg_format[colors[0]], bg_format[colors[1]], "m", str, "\033[0m"};
       endfunction: colorize
 
+      local function string basename(const ref string filename);
+         string filename_nopath = "";
+         for (int i=filename.len(); i>=0; i--) begin
+            if (filename[i]=="/")
+              break;
+            else
+              filename_nopath = {filename[i], filename_nopath};
+         end
+         return filename_nopath;
+      endfunction: basename
+
       virtual function string compose_report_message (uvm_report_message report_message,
                                                       string report_object_name = "");
          uvm_severity l_severity;
@@ -190,7 +201,6 @@ class custom_report_server extends
             string prefix;
 
             // Declare function-internal vars
-            string filename_nopath           = "";
             bit    add_newline               = 0;
             bit    emulate_dollardisplay     = 0;
             string indentation_str           = {INDENT{" "}};
@@ -332,17 +342,10 @@ class custom_report_server extends
                // Extract just the file name, remove the preceeding path
                filename = report_message.get_filename();
                line     = report_message.get_line();
-               for (int i=filename.len(); i>=0; i--) begin
-                  if (filename[i]=="/")
-                    break;
-                  else
-                    filename_nopath = {filename[i], filename_nopath};
-               end
-
                if (filename=="")
                  filename_str = "";
                else
-                 filename_str     = $sformatf("%s(%0d)", filename_nopath, line);
+                 filename_str     = $sformatf("%s(%0d)", basename(filename), line);
 
                // The traceback info will be indented with respect to the message_str
                if ( report_object_name=="reporter" )
