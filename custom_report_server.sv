@@ -328,31 +328,6 @@ class custom_report_server extends
                   // end MESSAGE + ID
 
                   // --------------------------------------------------------------------
-                  // REPORT_OBJECT_NAME + FILENAME + LINE NUMBER
-                  // Extract just the file name, remove the preceeding path
-                  filename = report_message.get_filename();
-                  line     = report_message.get_line();
-                  if (filename=="")
-                    filename_str = "";
-                  else
-                    filename_str     = $sformatf("%s(%0d)", basename(filename), line);
-
-                  // The traceback info will be indented with respect to the message_str
-                  if ( report_object_name=="reporter" )
-                    tracebackinfo_str = {" ", report_object_name, "\n"};
-                  else begin
-                     tracebackinfo_str = {report_object_name, ", ", filename_str};
-                     if ( tracebackinfo_str.len() > MAX_MSG_CHARS_PER_LINE ) begin
-                        tracebackinfo_str = {"\n", indentation_str, report_object_name, ",",
-                                             "\n", indentation_str, filename_str};
-                     end else begin
-                        tracebackinfo_str = {"\n", indentation_str, tracebackinfo_str};
-                     end
-                  end
-                  tracebackinfo_str = colorize(tracebackinfo_str, c_tracebackinfo);
-                  // end REPORT_OBJECT_NAME + FILENAME + LINE NUMBER
-
-                  // --------------------------------------------------------------------
                   // FINAL PRINTED MESSAGE
                   my_composed_message = $sformatf("%5s %s  %s",
                                                        severity_str, time_str,
@@ -374,6 +349,30 @@ class custom_report_server extends
                   end
 
                   if (add_traceback) begin
+                     // --------------------------------------------------------------------
+                     // REPORT_OBJECT_NAME + FILENAME + LINE NUMBER
+                     // Extract just the file name, remove the preceeding path
+                     filename = report_message.get_filename();
+                     line     = report_message.get_line();
+                     if (filename=="")
+                       filename_str = "";
+                     else
+                       filename_str     = $sformatf("%s(%0d)", basename(filename), line);
+
+                     // The traceback info will be indented with respect to the message_str
+                     if ( report_object_name=="reporter" )
+                       tracebackinfo_str = {" ", report_object_name, "\n"};
+                     else begin
+                        tracebackinfo_str = {report_object_name, ", ", filename_str};
+                        if ( tracebackinfo_str.len() > MAX_MSG_CHARS_PER_LINE ) begin
+                           tracebackinfo_str = {"\n", indentation_str, report_object_name, ",",
+                                                "\n", indentation_str, filename_str};
+                        end else begin
+                           tracebackinfo_str = {"\n", indentation_str, tracebackinfo_str};
+                        end
+                     end
+                     tracebackinfo_str = colorize(tracebackinfo_str, c_tracebackinfo);
+                     // end REPORT_OBJECT_NAME + FILENAME + LINE NUMBER
                      my_composed_message = {my_composed_message, tracebackinfo_str};
                   end
                end // else: !if(emulate_dollardisplay)
