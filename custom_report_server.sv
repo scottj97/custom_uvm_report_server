@@ -38,8 +38,6 @@ import "DPI-C" function string getenv(input string env_var);
 class custom_report_server extends
   uvm_default_report_server;
 
-   uvm_cmdline_processor clp;
-   string clp_uvm_args[$];
 
    // identation size = 11(%11s) + 1 space + 1("@") + 7(%7t) + 2("ns") +
    //                   2 spaces (%2s) + 2(extra indentation) = 26
@@ -116,6 +114,8 @@ class custom_report_server extends
    uvm_report_traceback_e uvm_report_traceback;
 
    function new(string name = "custom_report_server");
+      uvm_cmdline_processor clp;
+      string clp_uvm_args[$];
       super.new(name);
          clp = uvm_cmdline_processor::get_inst();
 
