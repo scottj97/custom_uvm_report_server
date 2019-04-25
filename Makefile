@@ -39,3 +39,19 @@ ncrun:
 	-R \
 	-input ida_probe.tcl \
 	$(EXTRA_RUN_ARGS)
+
+# Run with lots of different cmdline options to test everything
+regress: nccomp
+	$(NC2) -R
+	$(NC2) -R +UVM_REPORT_NOCOLOR
+	$(NC2) -R                     +UVM_REPORT_NOMSGWRAP
+	$(NC2) -R +UVM_REPORT_NOCOLOR +UVM_REPORT_NOMSGWRAP
+	$(NC2) -R                                           +UVM_REPORT_TRACEBACK=NONE
+	$(NC2) -R +UVM_REPORT_NOCOLOR                       +UVM_REPORT_TRACEBACK=NONE
+	$(NC2) -R                     +UVM_REPORT_NOMSGWRAP +UVM_REPORT_TRACEBACK=NONE
+	$(NC2) -R +UVM_REPORT_NOCOLOR +UVM_REPORT_NOMSGWRAP +UVM_REPORT_TRACEBACK=NONE
+	$(NC2) -R                                           +UVM_REPORT_TRACEBACK=ALL
+	$(NC2) -R +UVM_REPORT_NOCOLOR                       +UVM_REPORT_TRACEBACK=ALL
+	$(NC2) -R                     +UVM_REPORT_NOMSGWRAP +UVM_REPORT_TRACEBACK=ALL
+	$(NC2) -R +UVM_REPORT_NOCOLOR +UVM_REPORT_NOMSGWRAP +UVM_REPORT_TRACEBACK=ALL
+	TERM_BG_LIGHT=1 $(NC2) -R

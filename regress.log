@@ -1,0 +1,1376 @@
+xrun -sv +xmtimescale+1ns/10ps +define+UVM_NO_DEPRECATED +define+UVM_1p2 +UVM_VERBOSITY=UVM_HIGH -nowarn DSEMEL -nowarn DSEM2009 -nowarn RNDNOXCEL -nowarn RNDXCELON +incdir+./ -uvmhome CDNS-1.2 -c \
+-ida -linedebug \
+ \
+hello_world.sv
+xrun(64): 18.09-s010: (c) Copyright 1995-2019 Cadence Design Systems, Inc.
+xrun: *W,BADPRF: The -linedebug option may have an adverse performance impact.
+xrun -sv +xmtimescale+1ns/10ps +define+UVM_NO_DEPRECATED +define+UVM_1p2 +UVM_VERBOSITY=UVM_HIGH -nowarn DSEMEL -nowarn DSEM2009 -nowarn RNDNOXCEL -nowarn RNDXCELON +incdir+./ -uvmhome CDNS-1.2 -R
+xrun(64): 18.09-s010: (c) Copyright 1995-2019 Cadence Design Systems, Inc.
+Loading snapshot worklib.hello_world:sv .................... Done
+SVSEED default: 1
+Initializing Xcelium(64) (18.09 Build 424)  -  Linked on Fri Jan 25 16:06:55
+2019
+
+Protected by U.S. Patents 6,141,630 ;6,182,258; 6,219,809; 6,347,388;
+6,487,704; 6,499,132; 6,502,232; 6,519,727; 6,530,054; 6,675,138; 6,684,359;
+6,687,662; 6,907,599; 6,918,076; 6,920,583; Other Patents Pending.
+
+Checking license ... OK
+xcelium> source /aril/cad/tools/cadence/xcelium/18.09.010/tools/xcelium/files/xmsimrc
+xcelium> source /aril/cad/tools/cadence/xcelium/18.09.010/tools/methodology/UVM/CDNS-1.2/additions/sv/files/tcl/uvm_sim.tcl
+xcelium> run
+UVM_INFO /aril/cad/tools/cadence/xcelium/18.09.010/tools/methodology/UVM/CDNS-1.2/sv/src/base/uvm_root.svh(412) @ 0: reporter [UVM/RELNOTES] 
+----------------------------------------------------------------
+CDNS-UVM-1.2 (18.09-s010)
+(C) 2007-2014 Mentor Graphics Corporation
+(C) 2007-2014 Cadence Design Systems, Inc.
+(C) 2006-2014 Synopsys, Inc.
+(C) 2011-2013 Cypress Semiconductor Corp.
+(C) 2013-2014 NVIDIA Corporation
+----------------------------------------------------------------
+
+  ***********       IMPORTANT RELEASE NOTES         ************
+
+  You are using a version of the UVM library that has been compiled
+  with `UVM_OBJECT_DO_NOT_NEED_CONSTRUCTOR undefined.
+  See http://www.eda.org/svdb/view.php?id=3770 for more details.
+
+      (Specify +UVM_NO_RELNOTES to turn off this notice)
+
+UVM_INFO @ 0: reporter [RNTST] Running test ...
+--------------- Example of $display emulation ---------------
+   [0;90mUVM_INFO[0m @[0;36m      0[0mns  [0mThis is a long message: Lorem ipsum dolor sit amet, 
+                          consectetur adipiscing elit. Vivamus luctus, quam 
+                          in fringilla blandit, lorem sem vestibulum quam, 
+                          id pretium lorem justo vel neque. In quis ullamcorper 
+                          tellus. Donec eget cursus ex. Suspendisse 
+                          ut sodales ligula. Morbi id eros velit. Proin posuere 
+                          neque urna, nec rutrum dolor semper vitae.
+                           Ut dapibus libero nisi, eu feugiat urna placerat 
+                          a. Nunc blandit, sapien sit amet fringilla auctor, 
+                          sapien nibh gravida urna, vel venenatis elit nulla 
+                          sit amet elit. Suspendisse et diam finibus, 
+                          suscipit justo eget, luctus leo.[0m :[0;36mTEST_INFO[0m
+   [0;90mUVM_INFO[0m @[0;36m      0[0mns  [0mThis is a UVM_LOW info.[0m :[0;36mTEST_INFO[0m
+   [0;90mUVM_INFO[0m @[0;36m      0[0mns  [0mThis is a UVM_MEDIUM info.[0m :[0;36mTEST_INFO[0m
+   [0;90mUVM_INFO[0m @[0;36m      0[0mns  [0mThis is a UVM_HIGH info.[0m :[0;36mTEST_INFO[0m[0;90m
+                          top, top.sv(81)[0m
+[0;30;43mUVM_WARNING[0m @[0;36m      0[0mns  [0mThis is a warning.[0m :[0;36mTEST_WARN[0m[0;90m
+                          top, top.sv(82)[0m
+  [0;37;41mUVM_ERROR[0m @[0;36m      0[0mns  [0mThis is an error![0m :[0;36mTEST_ERR[0m[0;90m
+                          top, top.sv(83)[0m
+   [0;90mUVM_INFO[0m @[0;36m      0[0mns  [0mStarting.[0m :[0;36mproducer[0m
+SDI/Verilog Transaction Recording Facility Version 18.09-s010
+SDI2 Transaction Recording API Version 18.09-s010
+   [0;90mUVM_INFO[0m @[0;36m      0[0mns  [0mSending producer2-0[0m :[0;36mproducer[0m
+---------------------------------------
+Name         Type           Size  Value
+---------------------------------------
+producer2-0  packet         -     -    
+  addr       integral       32    'h1a 
+  initiator  producer #(T)  -1    @2007
+---------------------------------------
+   [0;90mUVM_INFO[0m @[0;36m      0[0mns  [0mStarting.[0m :[0;36mproducer[0m
+   [0;90mUVM_INFO[0m @[0;36m      0[0mns  [0mSending producer1-0[0m :[0;36mproducer[0m
+---------------------------------------
+Name         Type           Size  Value
+---------------------------------------
+producer1-0  packet         -     -    
+  addr       integral       32    'hac 
+  initiator  producer #(T)  -1    @1974
+---------------------------------------
+  [0;30;41mUVM_FATAL[0m @[0;36m      1[0mns  [0mThis is a fatal error![0m :[0;36mTEST_FATAL[0m[0;90m
+                          top, top.sv(85)[0m
+   [0;90mUVM_INFO[0m @[0;36m      1[0mns  [0m
+--- UVM Report catcher Summary ---
+
+
+Number of demoted UVM_FATAL reports  :    0
+Number of demoted UVM_ERROR reports  :    0
+Number of demoted UVM_WARNING reports:    0
+Number of caught UVM_FATAL reports   :    0
+Number of caught UVM_ERROR reports   :    0
+Number of caught UVM_WARNING reports :    0 [0m :[0;36mUVM/REPORT/CATCHER[0m
+   [0;90mUVM_INFO[0m @[0;36m      1[0mns  [0m
+--- UVM Report Summary ---
+
+** Report counts by severity
+UVM_INFO :   12
+UVM_WARNING :    1
+UVM_ERROR :    1
+UVM_FATAL :    1
+** Report counts by id
+[RNTST]     1
+[TEST*]     1
+[TEST_ERR]     1
+[TEST_FATAL]     1
+[TEST_INFO]     4
+[TEST_WARN]     1
+[UVM/RELNOTES]     1
+[UVM/REPORT/CATCHER]     1
+[producer]     4 [0m :[0;36mUVM/REPORT/SERVER[0m
+Simulation complete via $finish(1) at time 1 NS + 0
+/aril/cad/tools/cadence/xcelium/18.09.010/tools/methodology/UVM/CDNS-1.2/sv/src/base/uvm_root.svh:135     $finish;
+xcelium> exit
+xrun -sv +xmtimescale+1ns/10ps +define+UVM_NO_DEPRECATED +define+UVM_1p2 +UVM_VERBOSITY=UVM_HIGH -nowarn DSEMEL -nowarn DSEM2009 -nowarn RNDNOXCEL -nowarn RNDXCELON +incdir+./ -uvmhome CDNS-1.2 -R +UVM_REPORT_NOCOLOR
+xrun(64): 18.09-s010: (c) Copyright 1995-2019 Cadence Design Systems, Inc.
+Loading snapshot worklib.hello_world:sv .................... Done
+SVSEED default: 1
+Initializing Xcelium(64) (18.09 Build 424)  -  Linked on Fri Jan 25 16:06:55
+2019
+
+Protected by U.S. Patents 6,141,630 ;6,182,258; 6,219,809; 6,347,388;
+6,487,704; 6,499,132; 6,502,232; 6,519,727; 6,530,054; 6,675,138; 6,684,359;
+6,687,662; 6,907,599; 6,918,076; 6,920,583; Other Patents Pending.
+
+Checking license ... OK
+xcelium> source /aril/cad/tools/cadence/xcelium/18.09.010/tools/xcelium/files/xmsimrc
+xcelium> source /aril/cad/tools/cadence/xcelium/18.09.010/tools/methodology/UVM/CDNS-1.2/additions/sv/files/tcl/uvm_sim.tcl
+xcelium> run
+UVM_INFO /aril/cad/tools/cadence/xcelium/18.09.010/tools/methodology/UVM/CDNS-1.2/sv/src/base/uvm_root.svh(412) @ 0: reporter [UVM/RELNOTES] 
+----------------------------------------------------------------
+CDNS-UVM-1.2 (18.09-s010)
+(C) 2007-2014 Mentor Graphics Corporation
+(C) 2007-2014 Cadence Design Systems, Inc.
+(C) 2006-2014 Synopsys, Inc.
+(C) 2011-2013 Cypress Semiconductor Corp.
+(C) 2013-2014 NVIDIA Corporation
+----------------------------------------------------------------
+
+  ***********       IMPORTANT RELEASE NOTES         ************
+
+  You are using a version of the UVM library that has been compiled
+  with `UVM_OBJECT_DO_NOT_NEED_CONSTRUCTOR undefined.
+  See http://www.eda.org/svdb/view.php?id=3770 for more details.
+
+      (Specify +UVM_NO_RELNOTES to turn off this notice)
+
+UVM_INFO @ 0: reporter [RNTST] Running test ...
+--------------- Example of $display emulation ---------------
+   UVM_INFO @      0ns  This is a long message: Lorem ipsum dolor sit amet, 
+                          consectetur adipiscing elit. Vivamus luctus, quam 
+                          in fringilla blandit, lorem sem vestibulum quam, 
+                          id pretium lorem justo vel neque. In quis ullamcorper 
+                          tellus. Donec eget cursus ex. Suspendisse 
+                          ut sodales ligula. Morbi id eros velit. Proin posuere 
+                          neque urna, nec rutrum dolor semper vitae.
+                           Ut dapibus libero nisi, eu feugiat urna placerat 
+                          a. Nunc blandit, sapien sit amet fringilla auctor, 
+                          sapien nibh gravida urna, vel venenatis elit nulla 
+                          sit amet elit. Suspendisse et diam finibus, 
+                          suscipit justo eget, luctus leo. :TEST_INFO
+   UVM_INFO @      0ns  This is a UVM_LOW info. :TEST_INFO
+   UVM_INFO @      0ns  This is a UVM_MEDIUM info. :TEST_INFO
+   UVM_INFO @      0ns  This is a UVM_HIGH info. :TEST_INFO
+                          top, top.sv(81)
+UVM_WARNING @      0ns  This is a warning. :TEST_WARN
+                          top, top.sv(82)
+  UVM_ERROR @      0ns  This is an error! :TEST_ERR
+                          top, top.sv(83)
+   UVM_INFO @      0ns  Starting. :producer
+SDI/Verilog Transaction Recording Facility Version 18.09-s010
+SDI2 Transaction Recording API Version 18.09-s010
+   UVM_INFO @      0ns  Sending producer2-0 :producer
+---------------------------------------
+Name         Type           Size  Value
+---------------------------------------
+producer2-0  packet         -     -    
+  addr       integral       32    'h1a 
+  initiator  producer #(T)  -1    @2008
+---------------------------------------
+   UVM_INFO @      0ns  Starting. :producer
+   UVM_INFO @      0ns  Sending producer1-0 :producer
+---------------------------------------
+Name         Type           Size  Value
+---------------------------------------
+producer1-0  packet         -     -    
+  addr       integral       32    'hac 
+  initiator  producer #(T)  -1    @1975
+---------------------------------------
+  UVM_FATAL @      1ns  This is a fatal error! :TEST_FATAL
+                          top, top.sv(85)
+   UVM_INFO @      1ns  
+--- UVM Report catcher Summary ---
+
+
+Number of demoted UVM_FATAL reports  :    0
+Number of demoted UVM_ERROR reports  :    0
+Number of demoted UVM_WARNING reports:    0
+Number of caught UVM_FATAL reports   :    0
+Number of caught UVM_ERROR reports   :    0
+Number of caught UVM_WARNING reports :    0  :UVM/REPORT/CATCHER
+   UVM_INFO @      1ns  
+--- UVM Report Summary ---
+
+** Report counts by severity
+UVM_INFO :   12
+UVM_WARNING :    1
+UVM_ERROR :    1
+UVM_FATAL :    1
+** Report counts by id
+[RNTST]     1
+[TEST*]     1
+[TEST_ERR]     1
+[TEST_FATAL]     1
+[TEST_INFO]     4
+[TEST_WARN]     1
+[UVM/RELNOTES]     1
+[UVM/REPORT/CATCHER]     1
+[producer]     4  :UVM/REPORT/SERVER
+Simulation complete via $finish(1) at time 1 NS + 0
+/aril/cad/tools/cadence/xcelium/18.09.010/tools/methodology/UVM/CDNS-1.2/sv/src/base/uvm_root.svh:135     $finish;
+xcelium> exit
+xrun -sv +xmtimescale+1ns/10ps +define+UVM_NO_DEPRECATED +define+UVM_1p2 +UVM_VERBOSITY=UVM_HIGH -nowarn DSEMEL -nowarn DSEM2009 -nowarn RNDNOXCEL -nowarn RNDXCELON +incdir+./ -uvmhome CDNS-1.2 -R                     +UVM_REPORT_NOMSGWRAP
+xrun(64): 18.09-s010: (c) Copyright 1995-2019 Cadence Design Systems, Inc.
+Loading snapshot worklib.hello_world:sv .................... Done
+SVSEED default: 1
+Initializing Xcelium(64) (18.09 Build 424)  -  Linked on Fri Jan 25 16:06:55
+2019
+
+Protected by U.S. Patents 6,141,630 ;6,182,258; 6,219,809; 6,347,388;
+6,487,704; 6,499,132; 6,502,232; 6,519,727; 6,530,054; 6,675,138; 6,684,359;
+6,687,662; 6,907,599; 6,918,076; 6,920,583; Other Patents Pending.
+
+Checking license ... OK
+xcelium> source /aril/cad/tools/cadence/xcelium/18.09.010/tools/xcelium/files/xmsimrc
+xcelium> source /aril/cad/tools/cadence/xcelium/18.09.010/tools/methodology/UVM/CDNS-1.2/additions/sv/files/tcl/uvm_sim.tcl
+xcelium> run
+UVM_INFO /aril/cad/tools/cadence/xcelium/18.09.010/tools/methodology/UVM/CDNS-1.2/sv/src/base/uvm_root.svh(412) @ 0: reporter [UVM/RELNOTES] 
+----------------------------------------------------------------
+CDNS-UVM-1.2 (18.09-s010)
+(C) 2007-2014 Mentor Graphics Corporation
+(C) 2007-2014 Cadence Design Systems, Inc.
+(C) 2006-2014 Synopsys, Inc.
+(C) 2011-2013 Cypress Semiconductor Corp.
+(C) 2013-2014 NVIDIA Corporation
+----------------------------------------------------------------
+
+  ***********       IMPORTANT RELEASE NOTES         ************
+
+  You are using a version of the UVM library that has been compiled
+  with `UVM_OBJECT_DO_NOT_NEED_CONSTRUCTOR undefined.
+  See http://www.eda.org/svdb/view.php?id=3770 for more details.
+
+      (Specify +UVM_NO_RELNOTES to turn off this notice)
+
+UVM_INFO @ 0: reporter [RNTST] Running test ...
+--------------- Example of $display emulation ---------------
+   [0;90mUVM_INFO[0m @[0;36m      0[0mns  [0mThis is a long message: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus, quam in fringilla blandit, lorem sem vestibulum quam, id pretium lorem justo vel neque. In quis ullamcorper tellus. Donec eget cursus ex. Suspendisse ut sodales ligula. Morbi id eros velit. Proin posuere neque urna, nec rutrum dolor semper vitae. Ut dapibus libero nisi, eu feugiat urna placerat a. Nunc blandit, sapien sit amet fringilla auctor, sapien nibh gravida urna, vel venenatis elit nulla sit amet elit. Suspendisse et diam finibus, suscipit justo eget, luctus leo.[0m :[0;36mTEST_INFO[0m
+   [0;90mUVM_INFO[0m @[0;36m      0[0mns  [0mThis is a UVM_LOW info.[0m :[0;36mTEST_INFO[0m
+   [0;90mUVM_INFO[0m @[0;36m      0[0mns  [0mThis is a UVM_MEDIUM info.[0m :[0;36mTEST_INFO[0m
+   [0;90mUVM_INFO[0m @[0;36m      0[0mns  [0mThis is a UVM_HIGH info.[0m :[0;36mTEST_INFO[0m[0;90m
+                          top, top.sv(81)[0m
+[0;30;43mUVM_WARNING[0m @[0;36m      0[0mns  [0mThis is a warning.[0m :[0;36mTEST_WARN[0m[0;90m
+                          top, top.sv(82)[0m
+  [0;37;41mUVM_ERROR[0m @[0;36m      0[0mns  [0mThis is an error![0m :[0;36mTEST_ERR[0m[0;90m
+                          top, top.sv(83)[0m
+   [0;90mUVM_INFO[0m @[0;36m      0[0mns  [0mStarting.[0m :[0;36mproducer[0m
+SDI/Verilog Transaction Recording Facility Version 18.09-s010
+SDI2 Transaction Recording API Version 18.09-s010
+   [0;90mUVM_INFO[0m @[0;36m      0[0mns  [0mSending producer2-0[0m :[0;36mproducer[0m
+---------------------------------------
+Name         Type           Size  Value
+---------------------------------------
+producer2-0  packet         -     -    
+  addr       integral       32    'h1a 
+  initiator  producer #(T)  -1    @2008
+---------------------------------------
+   [0;90mUVM_INFO[0m @[0;36m      0[0mns  [0mStarting.[0m :[0;36mproducer[0m
+   [0;90mUVM_INFO[0m @[0;36m      0[0mns  [0mSending producer1-0[0m :[0;36mproducer[0m
+---------------------------------------
+Name         Type           Size  Value
+---------------------------------------
+producer1-0  packet         -     -    
+  addr       integral       32    'hac 
+  initiator  producer #(T)  -1    @1975
+---------------------------------------
+  [0;30;41mUVM_FATAL[0m @[0;36m      1[0mns  [0mThis is a fatal error![0m :[0;36mTEST_FATAL[0m[0;90m
+                          top, top.sv(85)[0m
+   [0;90mUVM_INFO[0m @[0;36m      1[0mns  [0m
+--- UVM Report catcher Summary ---
+
+
+Number of demoted UVM_FATAL reports  :    0
+Number of demoted UVM_ERROR reports  :    0
+Number of demoted UVM_WARNING reports:    0
+Number of caught UVM_FATAL reports   :    0
+Number of caught UVM_ERROR reports   :    0
+Number of caught UVM_WARNING reports :    0
+[0m :[0;36mUVM/REPORT/CATCHER[0m
+   [0;90mUVM_INFO[0m @[0;36m      1[0mns  [0m
+--- UVM Report Summary ---
+
+** Report counts by severity
+UVM_INFO :   12
+UVM_WARNING :    1
+UVM_ERROR :    1
+UVM_FATAL :    1
+** Report counts by id
+[RNTST]     1
+[TEST*]     1
+[TEST_ERR]     1
+[TEST_FATAL]     1
+[TEST_INFO]     4
+[TEST_WARN]     1
+[UVM/RELNOTES]     1
+[UVM/REPORT/CATCHER]     1
+[producer]     4
+[0m :[0;36mUVM/REPORT/SERVER[0m
+Simulation complete via $finish(1) at time 1 NS + 0
+/aril/cad/tools/cadence/xcelium/18.09.010/tools/methodology/UVM/CDNS-1.2/sv/src/base/uvm_root.svh:135     $finish;
+xcelium> exit
+xrun -sv +xmtimescale+1ns/10ps +define+UVM_NO_DEPRECATED +define+UVM_1p2 +UVM_VERBOSITY=UVM_HIGH -nowarn DSEMEL -nowarn DSEM2009 -nowarn RNDNOXCEL -nowarn RNDXCELON +incdir+./ -uvmhome CDNS-1.2 -R +UVM_REPORT_NOCOLOR +UVM_REPORT_NOMSGWRAP
+xrun(64): 18.09-s010: (c) Copyright 1995-2019 Cadence Design Systems, Inc.
+Loading snapshot worklib.hello_world:sv .................... Done
+SVSEED default: 1
+Initializing Xcelium(64) (18.09 Build 424)  -  Linked on Fri Jan 25 16:06:55
+2019
+
+Protected by U.S. Patents 6,141,630 ;6,182,258; 6,219,809; 6,347,388;
+6,487,704; 6,499,132; 6,502,232; 6,519,727; 6,530,054; 6,675,138; 6,684,359;
+6,687,662; 6,907,599; 6,918,076; 6,920,583; Other Patents Pending.
+
+Checking license ... OK
+xcelium> source /aril/cad/tools/cadence/xcelium/18.09.010/tools/xcelium/files/xmsimrc
+xcelium> source /aril/cad/tools/cadence/xcelium/18.09.010/tools/methodology/UVM/CDNS-1.2/additions/sv/files/tcl/uvm_sim.tcl
+xcelium> run
+UVM_INFO /aril/cad/tools/cadence/xcelium/18.09.010/tools/methodology/UVM/CDNS-1.2/sv/src/base/uvm_root.svh(412) @ 0: reporter [UVM/RELNOTES] 
+----------------------------------------------------------------
+CDNS-UVM-1.2 (18.09-s010)
+(C) 2007-2014 Mentor Graphics Corporation
+(C) 2007-2014 Cadence Design Systems, Inc.
+(C) 2006-2014 Synopsys, Inc.
+(C) 2011-2013 Cypress Semiconductor Corp.
+(C) 2013-2014 NVIDIA Corporation
+----------------------------------------------------------------
+
+  ***********       IMPORTANT RELEASE NOTES         ************
+
+  You are using a version of the UVM library that has been compiled
+  with `UVM_OBJECT_DO_NOT_NEED_CONSTRUCTOR undefined.
+  See http://www.eda.org/svdb/view.php?id=3770 for more details.
+
+      (Specify +UVM_NO_RELNOTES to turn off this notice)
+
+UVM_INFO @ 0: reporter [RNTST] Running test ...
+--------------- Example of $display emulation ---------------
+   UVM_INFO @      0ns  This is a long message: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus, quam in fringilla blandit, lorem sem vestibulum quam, id pretium lorem justo vel neque. In quis ullamcorper tellus. Donec eget cursus ex. Suspendisse ut sodales ligula. Morbi id eros velit. Proin posuere neque urna, nec rutrum dolor semper vitae. Ut dapibus libero nisi, eu feugiat urna placerat a. Nunc blandit, sapien sit amet fringilla auctor, sapien nibh gravida urna, vel venenatis elit nulla sit amet elit. Suspendisse et diam finibus, suscipit justo eget, luctus leo. :TEST_INFO
+   UVM_INFO @      0ns  This is a UVM_LOW info. :TEST_INFO
+   UVM_INFO @      0ns  This is a UVM_MEDIUM info. :TEST_INFO
+   UVM_INFO @      0ns  This is a UVM_HIGH info. :TEST_INFO
+                          top, top.sv(81)
+UVM_WARNING @      0ns  This is a warning. :TEST_WARN
+                          top, top.sv(82)
+  UVM_ERROR @      0ns  This is an error! :TEST_ERR
+                          top, top.sv(83)
+   UVM_INFO @      0ns  Starting. :producer
+SDI/Verilog Transaction Recording Facility Version 18.09-s010
+SDI2 Transaction Recording API Version 18.09-s010
+   UVM_INFO @      0ns  Sending producer2-0 :producer
+---------------------------------------
+Name         Type           Size  Value
+---------------------------------------
+producer2-0  packet         -     -    
+  addr       integral       32    'h1a 
+  initiator  producer #(T)  -1    @2009
+---------------------------------------
+   UVM_INFO @      0ns  Starting. :producer
+   UVM_INFO @      0ns  Sending producer1-0 :producer
+---------------------------------------
+Name         Type           Size  Value
+---------------------------------------
+producer1-0  packet         -     -    
+  addr       integral       32    'hac 
+  initiator  producer #(T)  -1    @1976
+---------------------------------------
+  UVM_FATAL @      1ns  This is a fatal error! :TEST_FATAL
+                          top, top.sv(85)
+   UVM_INFO @      1ns  
+--- UVM Report catcher Summary ---
+
+
+Number of demoted UVM_FATAL reports  :    0
+Number of demoted UVM_ERROR reports  :    0
+Number of demoted UVM_WARNING reports:    0
+Number of caught UVM_FATAL reports   :    0
+Number of caught UVM_ERROR reports   :    0
+Number of caught UVM_WARNING reports :    0
+ :UVM/REPORT/CATCHER
+   UVM_INFO @      1ns  
+--- UVM Report Summary ---
+
+** Report counts by severity
+UVM_INFO :   12
+UVM_WARNING :    1
+UVM_ERROR :    1
+UVM_FATAL :    1
+** Report counts by id
+[RNTST]     1
+[TEST*]     1
+[TEST_ERR]     1
+[TEST_FATAL]     1
+[TEST_INFO]     4
+[TEST_WARN]     1
+[UVM/RELNOTES]     1
+[UVM/REPORT/CATCHER]     1
+[producer]     4
+ :UVM/REPORT/SERVER
+Simulation complete via $finish(1) at time 1 NS + 0
+/aril/cad/tools/cadence/xcelium/18.09.010/tools/methodology/UVM/CDNS-1.2/sv/src/base/uvm_root.svh:135     $finish;
+xcelium> exit
+xrun -sv +xmtimescale+1ns/10ps +define+UVM_NO_DEPRECATED +define+UVM_1p2 +UVM_VERBOSITY=UVM_HIGH -nowarn DSEMEL -nowarn DSEM2009 -nowarn RNDNOXCEL -nowarn RNDXCELON +incdir+./ -uvmhome CDNS-1.2 -R                                           +UVM_REPORT_TRACEBACK=NONE
+xrun(64): 18.09-s010: (c) Copyright 1995-2019 Cadence Design Systems, Inc.
+Loading snapshot worklib.hello_world:sv .................... Done
+SVSEED default: 1
+Initializing Xcelium(64) (18.09 Build 424)  -  Linked on Fri Jan 25 16:06:55
+2019
+
+Protected by U.S. Patents 6,141,630 ;6,182,258; 6,219,809; 6,347,388;
+6,487,704; 6,499,132; 6,502,232; 6,519,727; 6,530,054; 6,675,138; 6,684,359;
+6,687,662; 6,907,599; 6,918,076; 6,920,583; Other Patents Pending.
+
+Checking license ... OK
+xcelium> source /aril/cad/tools/cadence/xcelium/18.09.010/tools/xcelium/files/xmsimrc
+xcelium> source /aril/cad/tools/cadence/xcelium/18.09.010/tools/methodology/UVM/CDNS-1.2/additions/sv/files/tcl/uvm_sim.tcl
+xcelium> run
+UVM_INFO /aril/cad/tools/cadence/xcelium/18.09.010/tools/methodology/UVM/CDNS-1.2/sv/src/base/uvm_root.svh(412) @ 0: reporter [UVM/RELNOTES] 
+----------------------------------------------------------------
+CDNS-UVM-1.2 (18.09-s010)
+(C) 2007-2014 Mentor Graphics Corporation
+(C) 2007-2014 Cadence Design Systems, Inc.
+(C) 2006-2014 Synopsys, Inc.
+(C) 2011-2013 Cypress Semiconductor Corp.
+(C) 2013-2014 NVIDIA Corporation
+----------------------------------------------------------------
+
+  ***********       IMPORTANT RELEASE NOTES         ************
+
+  You are using a version of the UVM library that has been compiled
+  with `UVM_OBJECT_DO_NOT_NEED_CONSTRUCTOR undefined.
+  See http://www.eda.org/svdb/view.php?id=3770 for more details.
+
+      (Specify +UVM_NO_RELNOTES to turn off this notice)
+
+UVM_INFO @ 0: reporter [RNTST] Running test ...
+--------------- Example of $display emulation ---------------
+   [0;90mUVM_INFO[0m @[0;36m      0[0mns  [0mThis is a long message: Lorem ipsum dolor sit amet, 
+                          consectetur adipiscing elit. Vivamus luctus, quam 
+                          in fringilla blandit, lorem sem vestibulum quam, 
+                          id pretium lorem justo vel neque. In quis ullamcorper 
+                          tellus. Donec eget cursus ex. Suspendisse 
+                          ut sodales ligula. Morbi id eros velit. Proin posuere 
+                          neque urna, nec rutrum dolor semper vitae.
+                           Ut dapibus libero nisi, eu feugiat urna placerat 
+                          a. Nunc blandit, sapien sit amet fringilla auctor, 
+                          sapien nibh gravida urna, vel venenatis elit nulla 
+                          sit amet elit. Suspendisse et diam finibus, 
+                          suscipit justo eget, luctus leo.[0m :[0;36mTEST_INFO[0m
+   [0;90mUVM_INFO[0m @[0;36m      0[0mns  [0mThis is a UVM_LOW info.[0m :[0;36mTEST_INFO[0m
+   [0;90mUVM_INFO[0m @[0;36m      0[0mns  [0mThis is a UVM_MEDIUM info.[0m :[0;36mTEST_INFO[0m
+   [0;90mUVM_INFO[0m @[0;36m      0[0mns  [0mThis is a UVM_HIGH info.[0m :[0;36mTEST_INFO[0m
+[0;30;43mUVM_WARNING[0m @[0;36m      0[0mns  [0mThis is a warning.[0m :[0;36mTEST_WARN[0m
+  [0;37;41mUVM_ERROR[0m @[0;36m      0[0mns  [0mThis is an error![0m :[0;36mTEST_ERR[0m
+   [0;90mUVM_INFO[0m @[0;36m      0[0mns  [0mStarting.[0m :[0;36mproducer[0m
+SDI/Verilog Transaction Recording Facility Version 18.09-s010
+SDI2 Transaction Recording API Version 18.09-s010
+   [0;90mUVM_INFO[0m @[0;36m      0[0mns  [0mSending producer2-0[0m :[0;36mproducer[0m
+---------------------------------------
+Name         Type           Size  Value
+---------------------------------------
+producer2-0  packet         -     -    
+  addr       integral       32    'h1a 
+  initiator  producer #(T)  -1    @2008
+---------------------------------------
+   [0;90mUVM_INFO[0m @[0;36m      0[0mns  [0mStarting.[0m :[0;36mproducer[0m
+   [0;90mUVM_INFO[0m @[0;36m      0[0mns  [0mSending producer1-0[0m :[0;36mproducer[0m
+---------------------------------------
+Name         Type           Size  Value
+---------------------------------------
+producer1-0  packet         -     -    
+  addr       integral       32    'hac 
+  initiator  producer #(T)  -1    @1975
+---------------------------------------
+  [0;30;41mUVM_FATAL[0m @[0;36m      1[0mns  [0mThis is a fatal error![0m :[0;36mTEST_FATAL[0m
+   [0;90mUVM_INFO[0m @[0;36m      1[0mns  [0m
+--- UVM Report catcher Summary ---
+
+
+Number of demoted UVM_FATAL reports  :    0
+Number of demoted UVM_ERROR reports  :    0
+Number of demoted UVM_WARNING reports:    0
+Number of caught UVM_FATAL reports   :    0
+Number of caught UVM_ERROR reports   :    0
+Number of caught UVM_WARNING reports :    0 [0m :[0;36mUVM/REPORT/CATCHER[0m
+   [0;90mUVM_INFO[0m @[0;36m      1[0mns  [0m
+--- UVM Report Summary ---
+
+** Report counts by severity
+UVM_INFO :   12
+UVM_WARNING :    1
+UVM_ERROR :    1
+UVM_FATAL :    1
+** Report counts by id
+[RNTST]     1
+[TEST*]     1
+[TEST_ERR]     1
+[TEST_FATAL]     1
+[TEST_INFO]     4
+[TEST_WARN]     1
+[UVM/RELNOTES]     1
+[UVM/REPORT/CATCHER]     1
+[producer]     4 [0m :[0;36mUVM/REPORT/SERVER[0m
+Simulation complete via $finish(1) at time 1 NS + 0
+/aril/cad/tools/cadence/xcelium/18.09.010/tools/methodology/UVM/CDNS-1.2/sv/src/base/uvm_root.svh:135     $finish;
+xcelium> exit
+xrun -sv +xmtimescale+1ns/10ps +define+UVM_NO_DEPRECATED +define+UVM_1p2 +UVM_VERBOSITY=UVM_HIGH -nowarn DSEMEL -nowarn DSEM2009 -nowarn RNDNOXCEL -nowarn RNDXCELON +incdir+./ -uvmhome CDNS-1.2 -R +UVM_REPORT_NOCOLOR                       +UVM_REPORT_TRACEBACK=NONE
+xrun(64): 18.09-s010: (c) Copyright 1995-2019 Cadence Design Systems, Inc.
+Loading snapshot worklib.hello_world:sv .................... Done
+SVSEED default: 1
+Initializing Xcelium(64) (18.09 Build 424)  -  Linked on Fri Jan 25 16:06:55
+2019
+
+Protected by U.S. Patents 6,141,630 ;6,182,258; 6,219,809; 6,347,388;
+6,487,704; 6,499,132; 6,502,232; 6,519,727; 6,530,054; 6,675,138; 6,684,359;
+6,687,662; 6,907,599; 6,918,076; 6,920,583; Other Patents Pending.
+
+Checking license ... OK
+xcelium> source /aril/cad/tools/cadence/xcelium/18.09.010/tools/xcelium/files/xmsimrc
+xcelium> source /aril/cad/tools/cadence/xcelium/18.09.010/tools/methodology/UVM/CDNS-1.2/additions/sv/files/tcl/uvm_sim.tcl
+xcelium> run
+UVM_INFO /aril/cad/tools/cadence/xcelium/18.09.010/tools/methodology/UVM/CDNS-1.2/sv/src/base/uvm_root.svh(412) @ 0: reporter [UVM/RELNOTES] 
+----------------------------------------------------------------
+CDNS-UVM-1.2 (18.09-s010)
+(C) 2007-2014 Mentor Graphics Corporation
+(C) 2007-2014 Cadence Design Systems, Inc.
+(C) 2006-2014 Synopsys, Inc.
+(C) 2011-2013 Cypress Semiconductor Corp.
+(C) 2013-2014 NVIDIA Corporation
+----------------------------------------------------------------
+
+  ***********       IMPORTANT RELEASE NOTES         ************
+
+  You are using a version of the UVM library that has been compiled
+  with `UVM_OBJECT_DO_NOT_NEED_CONSTRUCTOR undefined.
+  See http://www.eda.org/svdb/view.php?id=3770 for more details.
+
+      (Specify +UVM_NO_RELNOTES to turn off this notice)
+
+UVM_INFO @ 0: reporter [RNTST] Running test ...
+--------------- Example of $display emulation ---------------
+   UVM_INFO @      0ns  This is a long message: Lorem ipsum dolor sit amet, 
+                          consectetur adipiscing elit. Vivamus luctus, quam 
+                          in fringilla blandit, lorem sem vestibulum quam, 
+                          id pretium lorem justo vel neque. In quis ullamcorper 
+                          tellus. Donec eget cursus ex. Suspendisse 
+                          ut sodales ligula. Morbi id eros velit. Proin posuere 
+                          neque urna, nec rutrum dolor semper vitae.
+                           Ut dapibus libero nisi, eu feugiat urna placerat 
+                          a. Nunc blandit, sapien sit amet fringilla auctor, 
+                          sapien nibh gravida urna, vel venenatis elit nulla 
+                          sit amet elit. Suspendisse et diam finibus, 
+                          suscipit justo eget, luctus leo. :TEST_INFO
+   UVM_INFO @      0ns  This is a UVM_LOW info. :TEST_INFO
+   UVM_INFO @      0ns  This is a UVM_MEDIUM info. :TEST_INFO
+   UVM_INFO @      0ns  This is a UVM_HIGH info. :TEST_INFO
+UVM_WARNING @      0ns  This is a warning. :TEST_WARN
+  UVM_ERROR @      0ns  This is an error! :TEST_ERR
+   UVM_INFO @      0ns  Starting. :producer
+SDI/Verilog Transaction Recording Facility Version 18.09-s010
+SDI2 Transaction Recording API Version 18.09-s010
+   UVM_INFO @      0ns  Sending producer2-0 :producer
+---------------------------------------
+Name         Type           Size  Value
+---------------------------------------
+producer2-0  packet         -     -    
+  addr       integral       32    'h1a 
+  initiator  producer #(T)  -1    @2009
+---------------------------------------
+   UVM_INFO @      0ns  Starting. :producer
+   UVM_INFO @      0ns  Sending producer1-0 :producer
+---------------------------------------
+Name         Type           Size  Value
+---------------------------------------
+producer1-0  packet         -     -    
+  addr       integral       32    'hac 
+  initiator  producer #(T)  -1    @1976
+---------------------------------------
+  UVM_FATAL @      1ns  This is a fatal error! :TEST_FATAL
+   UVM_INFO @      1ns  
+--- UVM Report catcher Summary ---
+
+
+Number of demoted UVM_FATAL reports  :    0
+Number of demoted UVM_ERROR reports  :    0
+Number of demoted UVM_WARNING reports:    0
+Number of caught UVM_FATAL reports   :    0
+Number of caught UVM_ERROR reports   :    0
+Number of caught UVM_WARNING reports :    0  :UVM/REPORT/CATCHER
+   UVM_INFO @      1ns  
+--- UVM Report Summary ---
+
+** Report counts by severity
+UVM_INFO :   12
+UVM_WARNING :    1
+UVM_ERROR :    1
+UVM_FATAL :    1
+** Report counts by id
+[RNTST]     1
+[TEST*]     1
+[TEST_ERR]     1
+[TEST_FATAL]     1
+[TEST_INFO]     4
+[TEST_WARN]     1
+[UVM/RELNOTES]     1
+[UVM/REPORT/CATCHER]     1
+[producer]     4  :UVM/REPORT/SERVER
+Simulation complete via $finish(1) at time 1 NS + 0
+/aril/cad/tools/cadence/xcelium/18.09.010/tools/methodology/UVM/CDNS-1.2/sv/src/base/uvm_root.svh:135     $finish;
+xcelium> exit
+xrun -sv +xmtimescale+1ns/10ps +define+UVM_NO_DEPRECATED +define+UVM_1p2 +UVM_VERBOSITY=UVM_HIGH -nowarn DSEMEL -nowarn DSEM2009 -nowarn RNDNOXCEL -nowarn RNDXCELON +incdir+./ -uvmhome CDNS-1.2 -R                     +UVM_REPORT_NOMSGWRAP +UVM_REPORT_TRACEBACK=NONE
+xrun(64): 18.09-s010: (c) Copyright 1995-2019 Cadence Design Systems, Inc.
+Loading snapshot worklib.hello_world:sv .................... Done
+SVSEED default: 1
+Initializing Xcelium(64) (18.09 Build 424)  -  Linked on Fri Jan 25 16:06:55
+2019
+
+Protected by U.S. Patents 6,141,630 ;6,182,258; 6,219,809; 6,347,388;
+6,487,704; 6,499,132; 6,502,232; 6,519,727; 6,530,054; 6,675,138; 6,684,359;
+6,687,662; 6,907,599; 6,918,076; 6,920,583; Other Patents Pending.
+
+Checking license ... OK
+xcelium> source /aril/cad/tools/cadence/xcelium/18.09.010/tools/xcelium/files/xmsimrc
+xcelium> source /aril/cad/tools/cadence/xcelium/18.09.010/tools/methodology/UVM/CDNS-1.2/additions/sv/files/tcl/uvm_sim.tcl
+xcelium> run
+UVM_INFO /aril/cad/tools/cadence/xcelium/18.09.010/tools/methodology/UVM/CDNS-1.2/sv/src/base/uvm_root.svh(412) @ 0: reporter [UVM/RELNOTES] 
+----------------------------------------------------------------
+CDNS-UVM-1.2 (18.09-s010)
+(C) 2007-2014 Mentor Graphics Corporation
+(C) 2007-2014 Cadence Design Systems, Inc.
+(C) 2006-2014 Synopsys, Inc.
+(C) 2011-2013 Cypress Semiconductor Corp.
+(C) 2013-2014 NVIDIA Corporation
+----------------------------------------------------------------
+
+  ***********       IMPORTANT RELEASE NOTES         ************
+
+  You are using a version of the UVM library that has been compiled
+  with `UVM_OBJECT_DO_NOT_NEED_CONSTRUCTOR undefined.
+  See http://www.eda.org/svdb/view.php?id=3770 for more details.
+
+      (Specify +UVM_NO_RELNOTES to turn off this notice)
+
+UVM_INFO @ 0: reporter [RNTST] Running test ...
+--------------- Example of $display emulation ---------------
+   [0;90mUVM_INFO[0m @[0;36m      0[0mns  [0mThis is a long message: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus, quam in fringilla blandit, lorem sem vestibulum quam, id pretium lorem justo vel neque. In quis ullamcorper tellus. Donec eget cursus ex. Suspendisse ut sodales ligula. Morbi id eros velit. Proin posuere neque urna, nec rutrum dolor semper vitae. Ut dapibus libero nisi, eu feugiat urna placerat a. Nunc blandit, sapien sit amet fringilla auctor, sapien nibh gravida urna, vel venenatis elit nulla sit amet elit. Suspendisse et diam finibus, suscipit justo eget, luctus leo.[0m :[0;36mTEST_INFO[0m
+   [0;90mUVM_INFO[0m @[0;36m      0[0mns  [0mThis is a UVM_LOW info.[0m :[0;36mTEST_INFO[0m
+   [0;90mUVM_INFO[0m @[0;36m      0[0mns  [0mThis is a UVM_MEDIUM info.[0m :[0;36mTEST_INFO[0m
+   [0;90mUVM_INFO[0m @[0;36m      0[0mns  [0mThis is a UVM_HIGH info.[0m :[0;36mTEST_INFO[0m
+[0;30;43mUVM_WARNING[0m @[0;36m      0[0mns  [0mThis is a warning.[0m :[0;36mTEST_WARN[0m
+  [0;37;41mUVM_ERROR[0m @[0;36m      0[0mns  [0mThis is an error![0m :[0;36mTEST_ERR[0m
+   [0;90mUVM_INFO[0m @[0;36m      0[0mns  [0mStarting.[0m :[0;36mproducer[0m
+SDI/Verilog Transaction Recording Facility Version 18.09-s010
+SDI2 Transaction Recording API Version 18.09-s010
+   [0;90mUVM_INFO[0m @[0;36m      0[0mns  [0mSending producer2-0[0m :[0;36mproducer[0m
+---------------------------------------
+Name         Type           Size  Value
+---------------------------------------
+producer2-0  packet         -     -    
+  addr       integral       32    'h1a 
+  initiator  producer #(T)  -1    @2009
+---------------------------------------
+   [0;90mUVM_INFO[0m @[0;36m      0[0mns  [0mStarting.[0m :[0;36mproducer[0m
+   [0;90mUVM_INFO[0m @[0;36m      0[0mns  [0mSending producer1-0[0m :[0;36mproducer[0m
+---------------------------------------
+Name         Type           Size  Value
+---------------------------------------
+producer1-0  packet         -     -    
+  addr       integral       32    'hac 
+  initiator  producer #(T)  -1    @1976
+---------------------------------------
+  [0;30;41mUVM_FATAL[0m @[0;36m      1[0mns  [0mThis is a fatal error![0m :[0;36mTEST_FATAL[0m
+   [0;90mUVM_INFO[0m @[0;36m      1[0mns  [0m
+--- UVM Report catcher Summary ---
+
+
+Number of demoted UVM_FATAL reports  :    0
+Number of demoted UVM_ERROR reports  :    0
+Number of demoted UVM_WARNING reports:    0
+Number of caught UVM_FATAL reports   :    0
+Number of caught UVM_ERROR reports   :    0
+Number of caught UVM_WARNING reports :    0
+[0m :[0;36mUVM/REPORT/CATCHER[0m
+   [0;90mUVM_INFO[0m @[0;36m      1[0mns  [0m
+--- UVM Report Summary ---
+
+** Report counts by severity
+UVM_INFO :   12
+UVM_WARNING :    1
+UVM_ERROR :    1
+UVM_FATAL :    1
+** Report counts by id
+[RNTST]     1
+[TEST*]     1
+[TEST_ERR]     1
+[TEST_FATAL]     1
+[TEST_INFO]     4
+[TEST_WARN]     1
+[UVM/RELNOTES]     1
+[UVM/REPORT/CATCHER]     1
+[producer]     4
+[0m :[0;36mUVM/REPORT/SERVER[0m
+Simulation complete via $finish(1) at time 1 NS + 0
+/aril/cad/tools/cadence/xcelium/18.09.010/tools/methodology/UVM/CDNS-1.2/sv/src/base/uvm_root.svh:135     $finish;
+xcelium> exit
+xrun -sv +xmtimescale+1ns/10ps +define+UVM_NO_DEPRECATED +define+UVM_1p2 +UVM_VERBOSITY=UVM_HIGH -nowarn DSEMEL -nowarn DSEM2009 -nowarn RNDNOXCEL -nowarn RNDXCELON +incdir+./ -uvmhome CDNS-1.2 -R +UVM_REPORT_NOCOLOR +UVM_REPORT_NOMSGWRAP +UVM_REPORT_TRACEBACK=NONE
+xrun(64): 18.09-s010: (c) Copyright 1995-2019 Cadence Design Systems, Inc.
+Loading snapshot worklib.hello_world:sv .................... Done
+SVSEED default: 1
+Initializing Xcelium(64) (18.09 Build 424)  -  Linked on Fri Jan 25 16:06:55
+2019
+
+Protected by U.S. Patents 6,141,630 ;6,182,258; 6,219,809; 6,347,388;
+6,487,704; 6,499,132; 6,502,232; 6,519,727; 6,530,054; 6,675,138; 6,684,359;
+6,687,662; 6,907,599; 6,918,076; 6,920,583; Other Patents Pending.
+
+Checking license ... OK
+xcelium> source /aril/cad/tools/cadence/xcelium/18.09.010/tools/xcelium/files/xmsimrc
+xcelium> source /aril/cad/tools/cadence/xcelium/18.09.010/tools/methodology/UVM/CDNS-1.2/additions/sv/files/tcl/uvm_sim.tcl
+xcelium> run
+UVM_INFO /aril/cad/tools/cadence/xcelium/18.09.010/tools/methodology/UVM/CDNS-1.2/sv/src/base/uvm_root.svh(412) @ 0: reporter [UVM/RELNOTES] 
+----------------------------------------------------------------
+CDNS-UVM-1.2 (18.09-s010)
+(C) 2007-2014 Mentor Graphics Corporation
+(C) 2007-2014 Cadence Design Systems, Inc.
+(C) 2006-2014 Synopsys, Inc.
+(C) 2011-2013 Cypress Semiconductor Corp.
+(C) 2013-2014 NVIDIA Corporation
+----------------------------------------------------------------
+
+  ***********       IMPORTANT RELEASE NOTES         ************
+
+  You are using a version of the UVM library that has been compiled
+  with `UVM_OBJECT_DO_NOT_NEED_CONSTRUCTOR undefined.
+  See http://www.eda.org/svdb/view.php?id=3770 for more details.
+
+      (Specify +UVM_NO_RELNOTES to turn off this notice)
+
+UVM_INFO @ 0: reporter [RNTST] Running test ...
+--------------- Example of $display emulation ---------------
+   UVM_INFO @      0ns  This is a long message: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus, quam in fringilla blandit, lorem sem vestibulum quam, id pretium lorem justo vel neque. In quis ullamcorper tellus. Donec eget cursus ex. Suspendisse ut sodales ligula. Morbi id eros velit. Proin posuere neque urna, nec rutrum dolor semper vitae. Ut dapibus libero nisi, eu feugiat urna placerat a. Nunc blandit, sapien sit amet fringilla auctor, sapien nibh gravida urna, vel venenatis elit nulla sit amet elit. Suspendisse et diam finibus, suscipit justo eget, luctus leo. :TEST_INFO
+   UVM_INFO @      0ns  This is a UVM_LOW info. :TEST_INFO
+   UVM_INFO @      0ns  This is a UVM_MEDIUM info. :TEST_INFO
+   UVM_INFO @      0ns  This is a UVM_HIGH info. :TEST_INFO
+UVM_WARNING @      0ns  This is a warning. :TEST_WARN
+  UVM_ERROR @      0ns  This is an error! :TEST_ERR
+   UVM_INFO @      0ns  Starting. :producer
+SDI/Verilog Transaction Recording Facility Version 18.09-s010
+SDI2 Transaction Recording API Version 18.09-s010
+   UVM_INFO @      0ns  Sending producer2-0 :producer
+---------------------------------------
+Name         Type           Size  Value
+---------------------------------------
+producer2-0  packet         -     -    
+  addr       integral       32    'h1a 
+  initiator  producer #(T)  -1    @2010
+---------------------------------------
+   UVM_INFO @      0ns  Starting. :producer
+   UVM_INFO @      0ns  Sending producer1-0 :producer
+---------------------------------------
+Name         Type           Size  Value
+---------------------------------------
+producer1-0  packet         -     -    
+  addr       integral       32    'hac 
+  initiator  producer #(T)  -1    @1977
+---------------------------------------
+  UVM_FATAL @      1ns  This is a fatal error! :TEST_FATAL
+   UVM_INFO @      1ns  
+--- UVM Report catcher Summary ---
+
+
+Number of demoted UVM_FATAL reports  :    0
+Number of demoted UVM_ERROR reports  :    0
+Number of demoted UVM_WARNING reports:    0
+Number of caught UVM_FATAL reports   :    0
+Number of caught UVM_ERROR reports   :    0
+Number of caught UVM_WARNING reports :    0
+ :UVM/REPORT/CATCHER
+   UVM_INFO @      1ns  
+--- UVM Report Summary ---
+
+** Report counts by severity
+UVM_INFO :   12
+UVM_WARNING :    1
+UVM_ERROR :    1
+UVM_FATAL :    1
+** Report counts by id
+[RNTST]     1
+[TEST*]     1
+[TEST_ERR]     1
+[TEST_FATAL]     1
+[TEST_INFO]     4
+[TEST_WARN]     1
+[UVM/RELNOTES]     1
+[UVM/REPORT/CATCHER]     1
+[producer]     4
+ :UVM/REPORT/SERVER
+Simulation complete via $finish(1) at time 1 NS + 0
+/aril/cad/tools/cadence/xcelium/18.09.010/tools/methodology/UVM/CDNS-1.2/sv/src/base/uvm_root.svh:135     $finish;
+xcelium> exit
+xrun -sv +xmtimescale+1ns/10ps +define+UVM_NO_DEPRECATED +define+UVM_1p2 +UVM_VERBOSITY=UVM_HIGH -nowarn DSEMEL -nowarn DSEM2009 -nowarn RNDNOXCEL -nowarn RNDXCELON +incdir+./ -uvmhome CDNS-1.2 -R                                           +UVM_REPORT_TRACEBACK=ALL
+xrun(64): 18.09-s010: (c) Copyright 1995-2019 Cadence Design Systems, Inc.
+Loading snapshot worklib.hello_world:sv .................... Done
+SVSEED default: 1
+Initializing Xcelium(64) (18.09 Build 424)  -  Linked on Fri Jan 25 16:06:55
+2019
+
+Protected by U.S. Patents 6,141,630 ;6,182,258; 6,219,809; 6,347,388;
+6,487,704; 6,499,132; 6,502,232; 6,519,727; 6,530,054; 6,675,138; 6,684,359;
+6,687,662; 6,907,599; 6,918,076; 6,920,583; Other Patents Pending.
+
+Checking license ... OK
+xcelium> source /aril/cad/tools/cadence/xcelium/18.09.010/tools/xcelium/files/xmsimrc
+xcelium> source /aril/cad/tools/cadence/xcelium/18.09.010/tools/methodology/UVM/CDNS-1.2/additions/sv/files/tcl/uvm_sim.tcl
+xcelium> run
+UVM_INFO /aril/cad/tools/cadence/xcelium/18.09.010/tools/methodology/UVM/CDNS-1.2/sv/src/base/uvm_root.svh(412) @ 0: reporter [UVM/RELNOTES] 
+----------------------------------------------------------------
+CDNS-UVM-1.2 (18.09-s010)
+(C) 2007-2014 Mentor Graphics Corporation
+(C) 2007-2014 Cadence Design Systems, Inc.
+(C) 2006-2014 Synopsys, Inc.
+(C) 2011-2013 Cypress Semiconductor Corp.
+(C) 2013-2014 NVIDIA Corporation
+----------------------------------------------------------------
+
+  ***********       IMPORTANT RELEASE NOTES         ************
+
+  You are using a version of the UVM library that has been compiled
+  with `UVM_OBJECT_DO_NOT_NEED_CONSTRUCTOR undefined.
+  See http://www.eda.org/svdb/view.php?id=3770 for more details.
+
+      (Specify +UVM_NO_RELNOTES to turn off this notice)
+
+UVM_INFO @ 0: reporter [RNTST] Running test ...
+--------------- Example of $display emulation ---------------
+   [0;90mUVM_INFO[0m @[0;36m      0[0mns  [0mThis is a long message: Lorem ipsum dolor sit amet, 
+                          consectetur adipiscing elit. Vivamus luctus, quam 
+                          in fringilla blandit, lorem sem vestibulum quam, 
+                          id pretium lorem justo vel neque. In quis ullamcorper 
+                          tellus. Donec eget cursus ex. Suspendisse 
+                          ut sodales ligula. Morbi id eros velit. Proin posuere 
+                          neque urna, nec rutrum dolor semper vitae.
+                           Ut dapibus libero nisi, eu feugiat urna placerat 
+                          a. Nunc blandit, sapien sit amet fringilla auctor, 
+                          sapien nibh gravida urna, vel venenatis elit nulla 
+                          sit amet elit. Suspendisse et diam finibus, 
+                          suscipit justo eget, luctus leo.[0m :[0;36mTEST_INFO[0m[0;90m
+                          top, top.sv(78)[0m
+   [0;90mUVM_INFO[0m @[0;36m      0[0mns  [0mThis is a UVM_LOW info.[0m :[0;36mTEST_INFO[0m[0;90m
+                          top, top.sv(79)[0m
+   [0;90mUVM_INFO[0m @[0;36m      0[0mns  [0mThis is a UVM_MEDIUM info.[0m :[0;36mTEST_INFO[0m[0;90m
+                          top, top.sv(80)[0m
+   [0;90mUVM_INFO[0m @[0;36m      0[0mns  [0mThis is a UVM_HIGH info.[0m :[0;36mTEST_INFO[0m[0;90m
+                          top, top.sv(81)[0m
+[0;30;43mUVM_WARNING[0m @[0;36m      0[0mns  [0mThis is a warning.[0m :[0;36mTEST_WARN[0m[0;90m
+                          top, top.sv(82)[0m
+  [0;37;41mUVM_ERROR[0m @[0;36m      0[0mns  [0mThis is an error![0m :[0;36mTEST_ERR[0m[0;90m
+                          top, top.sv(83)[0m
+   [0;90mUVM_INFO[0m @[0;36m      0[0mns  [0mStarting.[0m :[0;36mproducer[0m[0;90m
+                          top.producer2, producer.sv(46)[0m
+SDI/Verilog Transaction Recording Facility Version 18.09-s010
+SDI2 Transaction Recording API Version 18.09-s010
+   [0;90mUVM_INFO[0m @[0;36m      0[0mns  [0mSending producer2-0[0m :[0;36mproducer[0m[0;90m
+                          top.producer2, producer.sv(67)[0m
+---------------------------------------
+Name         Type           Size  Value
+---------------------------------------
+producer2-0  packet         -     -    
+  addr       integral       32    'h1a 
+  initiator  producer #(T)  -1    @2008
+---------------------------------------
+   [0;90mUVM_INFO[0m @[0;36m      0[0mns  [0mStarting.[0m :[0;36mproducer[0m[0;90m
+                          top.producer1, producer.sv(46)[0m
+   [0;90mUVM_INFO[0m @[0;36m      0[0mns  [0mSending producer1-0[0m :[0;36mproducer[0m[0;90m
+                          top.producer1, producer.sv(67)[0m
+---------------------------------------
+Name         Type           Size  Value
+---------------------------------------
+producer1-0  packet         -     -    
+  addr       integral       32    'hac 
+  initiator  producer #(T)  -1    @1975
+---------------------------------------
+  [0;30;41mUVM_FATAL[0m @[0;36m      1[0mns  [0mThis is a fatal error![0m :[0;36mTEST_FATAL[0m[0;90m
+                          top, top.sv(85)[0m
+   [0;90mUVM_INFO[0m @[0;36m      1[0mns  [0m
+--- UVM Report catcher Summary ---
+
+
+Number of demoted UVM_FATAL reports  :    0
+Number of demoted UVM_ERROR reports  :    0
+Number of demoted UVM_WARNING reports:    0
+Number of caught UVM_FATAL reports   :    0
+Number of caught UVM_ERROR reports   :    0
+Number of caught UVM_WARNING reports :    0 [0m :[0;36mUVM/REPORT/CATCHER[0m[0;90m reporter
+[0m
+   [0;90mUVM_INFO[0m @[0;36m      1[0mns  [0m
+--- UVM Report Summary ---
+
+** Report counts by severity
+UVM_INFO :   12
+UVM_WARNING :    1
+UVM_ERROR :    1
+UVM_FATAL :    1
+** Report counts by id
+[RNTST]     1
+[TEST*]     1
+[TEST_ERR]     1
+[TEST_FATAL]     1
+[TEST_INFO]     4
+[TEST_WARN]     1
+[UVM/RELNOTES]     1
+[UVM/REPORT/CATCHER]     1
+[producer]     4 [0m :[0;36mUVM/REPORT/SERVER[0m[0;90m reporter
+[0m
+Simulation complete via $finish(1) at time 1 NS + 0
+/aril/cad/tools/cadence/xcelium/18.09.010/tools/methodology/UVM/CDNS-1.2/sv/src/base/uvm_root.svh:135     $finish;
+xcelium> exit
+xrun -sv +xmtimescale+1ns/10ps +define+UVM_NO_DEPRECATED +define+UVM_1p2 +UVM_VERBOSITY=UVM_HIGH -nowarn DSEMEL -nowarn DSEM2009 -nowarn RNDNOXCEL -nowarn RNDXCELON +incdir+./ -uvmhome CDNS-1.2 -R +UVM_REPORT_NOCOLOR                       +UVM_REPORT_TRACEBACK=ALL
+xrun(64): 18.09-s010: (c) Copyright 1995-2019 Cadence Design Systems, Inc.
+Loading snapshot worklib.hello_world:sv .................... Done
+SVSEED default: 1
+Initializing Xcelium(64) (18.09 Build 424)  -  Linked on Fri Jan 25 16:06:55
+2019
+
+Protected by U.S. Patents 6,141,630 ;6,182,258; 6,219,809; 6,347,388;
+6,487,704; 6,499,132; 6,502,232; 6,519,727; 6,530,054; 6,675,138; 6,684,359;
+6,687,662; 6,907,599; 6,918,076; 6,920,583; Other Patents Pending.
+
+Checking license ... OK
+xcelium> source /aril/cad/tools/cadence/xcelium/18.09.010/tools/xcelium/files/xmsimrc
+xcelium> source /aril/cad/tools/cadence/xcelium/18.09.010/tools/methodology/UVM/CDNS-1.2/additions/sv/files/tcl/uvm_sim.tcl
+xcelium> run
+UVM_INFO /aril/cad/tools/cadence/xcelium/18.09.010/tools/methodology/UVM/CDNS-1.2/sv/src/base/uvm_root.svh(412) @ 0: reporter [UVM/RELNOTES] 
+----------------------------------------------------------------
+CDNS-UVM-1.2 (18.09-s010)
+(C) 2007-2014 Mentor Graphics Corporation
+(C) 2007-2014 Cadence Design Systems, Inc.
+(C) 2006-2014 Synopsys, Inc.
+(C) 2011-2013 Cypress Semiconductor Corp.
+(C) 2013-2014 NVIDIA Corporation
+----------------------------------------------------------------
+
+  ***********       IMPORTANT RELEASE NOTES         ************
+
+  You are using a version of the UVM library that has been compiled
+  with `UVM_OBJECT_DO_NOT_NEED_CONSTRUCTOR undefined.
+  See http://www.eda.org/svdb/view.php?id=3770 for more details.
+
+      (Specify +UVM_NO_RELNOTES to turn off this notice)
+
+UVM_INFO @ 0: reporter [RNTST] Running test ...
+--------------- Example of $display emulation ---------------
+   UVM_INFO @      0ns  This is a long message: Lorem ipsum dolor sit amet, 
+                          consectetur adipiscing elit. Vivamus luctus, quam 
+                          in fringilla blandit, lorem sem vestibulum quam, 
+                          id pretium lorem justo vel neque. In quis ullamcorper 
+                          tellus. Donec eget cursus ex. Suspendisse 
+                          ut sodales ligula. Morbi id eros velit. Proin posuere 
+                          neque urna, nec rutrum dolor semper vitae.
+                           Ut dapibus libero nisi, eu feugiat urna placerat 
+                          a. Nunc blandit, sapien sit amet fringilla auctor, 
+                          sapien nibh gravida urna, vel venenatis elit nulla 
+                          sit amet elit. Suspendisse et diam finibus, 
+                          suscipit justo eget, luctus leo. :TEST_INFO
+                          top, top.sv(78)
+   UVM_INFO @      0ns  This is a UVM_LOW info. :TEST_INFO
+                          top, top.sv(79)
+   UVM_INFO @      0ns  This is a UVM_MEDIUM info. :TEST_INFO
+                          top, top.sv(80)
+   UVM_INFO @      0ns  This is a UVM_HIGH info. :TEST_INFO
+                          top, top.sv(81)
+UVM_WARNING @      0ns  This is a warning. :TEST_WARN
+                          top, top.sv(82)
+  UVM_ERROR @      0ns  This is an error! :TEST_ERR
+                          top, top.sv(83)
+   UVM_INFO @      0ns  Starting. :producer
+                          top.producer2, producer.sv(46)
+SDI/Verilog Transaction Recording Facility Version 18.09-s010
+SDI2 Transaction Recording API Version 18.09-s010
+   UVM_INFO @      0ns  Sending producer2-0 :producer
+                          top.producer2, producer.sv(67)
+---------------------------------------
+Name         Type           Size  Value
+---------------------------------------
+producer2-0  packet         -     -    
+  addr       integral       32    'h1a 
+  initiator  producer #(T)  -1    @2009
+---------------------------------------
+   UVM_INFO @      0ns  Starting. :producer
+                          top.producer1, producer.sv(46)
+   UVM_INFO @      0ns  Sending producer1-0 :producer
+                          top.producer1, producer.sv(67)
+---------------------------------------
+Name         Type           Size  Value
+---------------------------------------
+producer1-0  packet         -     -    
+  addr       integral       32    'hac 
+  initiator  producer #(T)  -1    @1976
+---------------------------------------
+  UVM_FATAL @      1ns  This is a fatal error! :TEST_FATAL
+                          top, top.sv(85)
+   UVM_INFO @      1ns  
+--- UVM Report catcher Summary ---
+
+
+Number of demoted UVM_FATAL reports  :    0
+Number of demoted UVM_ERROR reports  :    0
+Number of demoted UVM_WARNING reports:    0
+Number of caught UVM_FATAL reports   :    0
+Number of caught UVM_ERROR reports   :    0
+Number of caught UVM_WARNING reports :    0  :UVM/REPORT/CATCHER reporter
+
+   UVM_INFO @      1ns  
+--- UVM Report Summary ---
+
+** Report counts by severity
+UVM_INFO :   12
+UVM_WARNING :    1
+UVM_ERROR :    1
+UVM_FATAL :    1
+** Report counts by id
+[RNTST]     1
+[TEST*]     1
+[TEST_ERR]     1
+[TEST_FATAL]     1
+[TEST_INFO]     4
+[TEST_WARN]     1
+[UVM/RELNOTES]     1
+[UVM/REPORT/CATCHER]     1
+[producer]     4  :UVM/REPORT/SERVER reporter
+
+Simulation complete via $finish(1) at time 1 NS + 0
+/aril/cad/tools/cadence/xcelium/18.09.010/tools/methodology/UVM/CDNS-1.2/sv/src/base/uvm_root.svh:135     $finish;
+xcelium> exit
+xrun -sv +xmtimescale+1ns/10ps +define+UVM_NO_DEPRECATED +define+UVM_1p2 +UVM_VERBOSITY=UVM_HIGH -nowarn DSEMEL -nowarn DSEM2009 -nowarn RNDNOXCEL -nowarn RNDXCELON +incdir+./ -uvmhome CDNS-1.2 -R                     +UVM_REPORT_NOMSGWRAP +UVM_REPORT_TRACEBACK=ALL
+xrun(64): 18.09-s010: (c) Copyright 1995-2019 Cadence Design Systems, Inc.
+Loading snapshot worklib.hello_world:sv .................... Done
+SVSEED default: 1
+Initializing Xcelium(64) (18.09 Build 424)  -  Linked on Fri Jan 25 16:06:55
+2019
+
+Protected by U.S. Patents 6,141,630 ;6,182,258; 6,219,809; 6,347,388;
+6,487,704; 6,499,132; 6,502,232; 6,519,727; 6,530,054; 6,675,138; 6,684,359;
+6,687,662; 6,907,599; 6,918,076; 6,920,583; Other Patents Pending.
+
+Checking license ... OK
+xcelium> source /aril/cad/tools/cadence/xcelium/18.09.010/tools/xcelium/files/xmsimrc
+xcelium> source /aril/cad/tools/cadence/xcelium/18.09.010/tools/methodology/UVM/CDNS-1.2/additions/sv/files/tcl/uvm_sim.tcl
+xcelium> run
+UVM_INFO /aril/cad/tools/cadence/xcelium/18.09.010/tools/methodology/UVM/CDNS-1.2/sv/src/base/uvm_root.svh(412) @ 0: reporter [UVM/RELNOTES] 
+----------------------------------------------------------------
+CDNS-UVM-1.2 (18.09-s010)
+(C) 2007-2014 Mentor Graphics Corporation
+(C) 2007-2014 Cadence Design Systems, Inc.
+(C) 2006-2014 Synopsys, Inc.
+(C) 2011-2013 Cypress Semiconductor Corp.
+(C) 2013-2014 NVIDIA Corporation
+----------------------------------------------------------------
+
+  ***********       IMPORTANT RELEASE NOTES         ************
+
+  You are using a version of the UVM library that has been compiled
+  with `UVM_OBJECT_DO_NOT_NEED_CONSTRUCTOR undefined.
+  See http://www.eda.org/svdb/view.php?id=3770 for more details.
+
+      (Specify +UVM_NO_RELNOTES to turn off this notice)
+
+UVM_INFO @ 0: reporter [RNTST] Running test ...
+--------------- Example of $display emulation ---------------
+   [0;90mUVM_INFO[0m @[0;36m      0[0mns  [0mThis is a long message: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus, quam in fringilla blandit, lorem sem vestibulum quam, id pretium lorem justo vel neque. In quis ullamcorper tellus. Donec eget cursus ex. Suspendisse ut sodales ligula. Morbi id eros velit. Proin posuere neque urna, nec rutrum dolor semper vitae. Ut dapibus libero nisi, eu feugiat urna placerat a. Nunc blandit, sapien sit amet fringilla auctor, sapien nibh gravida urna, vel venenatis elit nulla sit amet elit. Suspendisse et diam finibus, suscipit justo eget, luctus leo.[0m :[0;36mTEST_INFO[0m[0;90m
+                          top, top.sv(78)[0m
+   [0;90mUVM_INFO[0m @[0;36m      0[0mns  [0mThis is a UVM_LOW info.[0m :[0;36mTEST_INFO[0m[0;90m
+                          top, top.sv(79)[0m
+   [0;90mUVM_INFO[0m @[0;36m      0[0mns  [0mThis is a UVM_MEDIUM info.[0m :[0;36mTEST_INFO[0m[0;90m
+                          top, top.sv(80)[0m
+   [0;90mUVM_INFO[0m @[0;36m      0[0mns  [0mThis is a UVM_HIGH info.[0m :[0;36mTEST_INFO[0m[0;90m
+                          top, top.sv(81)[0m
+[0;30;43mUVM_WARNING[0m @[0;36m      0[0mns  [0mThis is a warning.[0m :[0;36mTEST_WARN[0m[0;90m
+                          top, top.sv(82)[0m
+  [0;37;41mUVM_ERROR[0m @[0;36m      0[0mns  [0mThis is an error![0m :[0;36mTEST_ERR[0m[0;90m
+                          top, top.sv(83)[0m
+   [0;90mUVM_INFO[0m @[0;36m      0[0mns  [0mStarting.[0m :[0;36mproducer[0m[0;90m
+                          top.producer2, producer.sv(46)[0m
+SDI/Verilog Transaction Recording Facility Version 18.09-s010
+SDI2 Transaction Recording API Version 18.09-s010
+   [0;90mUVM_INFO[0m @[0;36m      0[0mns  [0mSending producer2-0[0m :[0;36mproducer[0m[0;90m
+                          top.producer2, producer.sv(67)[0m
+---------------------------------------
+Name         Type           Size  Value
+---------------------------------------
+producer2-0  packet         -     -    
+  addr       integral       32    'h1a 
+  initiator  producer #(T)  -1    @2009
+---------------------------------------
+   [0;90mUVM_INFO[0m @[0;36m      0[0mns  [0mStarting.[0m :[0;36mproducer[0m[0;90m
+                          top.producer1, producer.sv(46)[0m
+   [0;90mUVM_INFO[0m @[0;36m      0[0mns  [0mSending producer1-0[0m :[0;36mproducer[0m[0;90m
+                          top.producer1, producer.sv(67)[0m
+---------------------------------------
+Name         Type           Size  Value
+---------------------------------------
+producer1-0  packet         -     -    
+  addr       integral       32    'hac 
+  initiator  producer #(T)  -1    @1976
+---------------------------------------
+  [0;30;41mUVM_FATAL[0m @[0;36m      1[0mns  [0mThis is a fatal error![0m :[0;36mTEST_FATAL[0m[0;90m
+                          top, top.sv(85)[0m
+   [0;90mUVM_INFO[0m @[0;36m      1[0mns  [0m
+--- UVM Report catcher Summary ---
+
+
+Number of demoted UVM_FATAL reports  :    0
+Number of demoted UVM_ERROR reports  :    0
+Number of demoted UVM_WARNING reports:    0
+Number of caught UVM_FATAL reports   :    0
+Number of caught UVM_ERROR reports   :    0
+Number of caught UVM_WARNING reports :    0
+[0m :[0;36mUVM/REPORT/CATCHER[0m[0;90m reporter
+[0m
+   [0;90mUVM_INFO[0m @[0;36m      1[0mns  [0m
+--- UVM Report Summary ---
+
+** Report counts by severity
+UVM_INFO :   12
+UVM_WARNING :    1
+UVM_ERROR :    1
+UVM_FATAL :    1
+** Report counts by id
+[RNTST]     1
+[TEST*]     1
+[TEST_ERR]     1
+[TEST_FATAL]     1
+[TEST_INFO]     4
+[TEST_WARN]     1
+[UVM/RELNOTES]     1
+[UVM/REPORT/CATCHER]     1
+[producer]     4
+[0m :[0;36mUVM/REPORT/SERVER[0m[0;90m reporter
+[0m
+Simulation complete via $finish(1) at time 1 NS + 0
+/aril/cad/tools/cadence/xcelium/18.09.010/tools/methodology/UVM/CDNS-1.2/sv/src/base/uvm_root.svh:135     $finish;
+xcelium> exit
+xrun -sv +xmtimescale+1ns/10ps +define+UVM_NO_DEPRECATED +define+UVM_1p2 +UVM_VERBOSITY=UVM_HIGH -nowarn DSEMEL -nowarn DSEM2009 -nowarn RNDNOXCEL -nowarn RNDXCELON +incdir+./ -uvmhome CDNS-1.2 -R +UVM_REPORT_NOCOLOR +UVM_REPORT_NOMSGWRAP +UVM_REPORT_TRACEBACK=ALL
+xrun(64): 18.09-s010: (c) Copyright 1995-2019 Cadence Design Systems, Inc.
+Loading snapshot worklib.hello_world:sv .................... Done
+SVSEED default: 1
+Initializing Xcelium(64) (18.09 Build 424)  -  Linked on Fri Jan 25 16:06:55
+2019
+
+Protected by U.S. Patents 6,141,630 ;6,182,258; 6,219,809; 6,347,388;
+6,487,704; 6,499,132; 6,502,232; 6,519,727; 6,530,054; 6,675,138; 6,684,359;
+6,687,662; 6,907,599; 6,918,076; 6,920,583; Other Patents Pending.
+
+Checking license ... OK
+xcelium> source /aril/cad/tools/cadence/xcelium/18.09.010/tools/xcelium/files/xmsimrc
+xcelium> source /aril/cad/tools/cadence/xcelium/18.09.010/tools/methodology/UVM/CDNS-1.2/additions/sv/files/tcl/uvm_sim.tcl
+xcelium> run
+UVM_INFO /aril/cad/tools/cadence/xcelium/18.09.010/tools/methodology/UVM/CDNS-1.2/sv/src/base/uvm_root.svh(412) @ 0: reporter [UVM/RELNOTES] 
+----------------------------------------------------------------
+CDNS-UVM-1.2 (18.09-s010)
+(C) 2007-2014 Mentor Graphics Corporation
+(C) 2007-2014 Cadence Design Systems, Inc.
+(C) 2006-2014 Synopsys, Inc.
+(C) 2011-2013 Cypress Semiconductor Corp.
+(C) 2013-2014 NVIDIA Corporation
+----------------------------------------------------------------
+
+  ***********       IMPORTANT RELEASE NOTES         ************
+
+  You are using a version of the UVM library that has been compiled
+  with `UVM_OBJECT_DO_NOT_NEED_CONSTRUCTOR undefined.
+  See http://www.eda.org/svdb/view.php?id=3770 for more details.
+
+      (Specify +UVM_NO_RELNOTES to turn off this notice)
+
+UVM_INFO @ 0: reporter [RNTST] Running test ...
+--------------- Example of $display emulation ---------------
+   UVM_INFO @      0ns  This is a long message: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus, quam in fringilla blandit, lorem sem vestibulum quam, id pretium lorem justo vel neque. In quis ullamcorper tellus. Donec eget cursus ex. Suspendisse ut sodales ligula. Morbi id eros velit. Proin posuere neque urna, nec rutrum dolor semper vitae. Ut dapibus libero nisi, eu feugiat urna placerat a. Nunc blandit, sapien sit amet fringilla auctor, sapien nibh gravida urna, vel venenatis elit nulla sit amet elit. Suspendisse et diam finibus, suscipit justo eget, luctus leo. :TEST_INFO
+                          top, top.sv(78)
+   UVM_INFO @      0ns  This is a UVM_LOW info. :TEST_INFO
+                          top, top.sv(79)
+   UVM_INFO @      0ns  This is a UVM_MEDIUM info. :TEST_INFO
+                          top, top.sv(80)
+   UVM_INFO @      0ns  This is a UVM_HIGH info. :TEST_INFO
+                          top, top.sv(81)
+UVM_WARNING @      0ns  This is a warning. :TEST_WARN
+                          top, top.sv(82)
+  UVM_ERROR @      0ns  This is an error! :TEST_ERR
+                          top, top.sv(83)
+   UVM_INFO @      0ns  Starting. :producer
+                          top.producer2, producer.sv(46)
+SDI/Verilog Transaction Recording Facility Version 18.09-s010
+SDI2 Transaction Recording API Version 18.09-s010
+   UVM_INFO @      0ns  Sending producer2-0 :producer
+                          top.producer2, producer.sv(67)
+---------------------------------------
+Name         Type           Size  Value
+---------------------------------------
+producer2-0  packet         -     -    
+  addr       integral       32    'h1a 
+  initiator  producer #(T)  -1    @2010
+---------------------------------------
+   UVM_INFO @      0ns  Starting. :producer
+                          top.producer1, producer.sv(46)
+   UVM_INFO @      0ns  Sending producer1-0 :producer
+                          top.producer1, producer.sv(67)
+---------------------------------------
+Name         Type           Size  Value
+---------------------------------------
+producer1-0  packet         -     -    
+  addr       integral       32    'hac 
+  initiator  producer #(T)  -1    @1977
+---------------------------------------
+  UVM_FATAL @      1ns  This is a fatal error! :TEST_FATAL
+                          top, top.sv(85)
+   UVM_INFO @      1ns  
+--- UVM Report catcher Summary ---
+
+
+Number of demoted UVM_FATAL reports  :    0
+Number of demoted UVM_ERROR reports  :    0
+Number of demoted UVM_WARNING reports:    0
+Number of caught UVM_FATAL reports   :    0
+Number of caught UVM_ERROR reports   :    0
+Number of caught UVM_WARNING reports :    0
+ :UVM/REPORT/CATCHER reporter
+
+   UVM_INFO @      1ns  
+--- UVM Report Summary ---
+
+** Report counts by severity
+UVM_INFO :   12
+UVM_WARNING :    1
+UVM_ERROR :    1
+UVM_FATAL :    1
+** Report counts by id
+[RNTST]     1
+[TEST*]     1
+[TEST_ERR]     1
+[TEST_FATAL]     1
+[TEST_INFO]     4
+[TEST_WARN]     1
+[UVM/RELNOTES]     1
+[UVM/REPORT/CATCHER]     1
+[producer]     4
+ :UVM/REPORT/SERVER reporter
+
+Simulation complete via $finish(1) at time 1 NS + 0
+/aril/cad/tools/cadence/xcelium/18.09.010/tools/methodology/UVM/CDNS-1.2/sv/src/base/uvm_root.svh:135     $finish;
+xcelium> exit
+TERM_BG_LIGHT=1 xrun -sv +xmtimescale+1ns/10ps +define+UVM_NO_DEPRECATED +define+UVM_1p2 +UVM_VERBOSITY=UVM_HIGH -nowarn DSEMEL -nowarn DSEM2009 -nowarn RNDNOXCEL -nowarn RNDXCELON +incdir+./ -uvmhome CDNS-1.2 -R
+xrun(64): 18.09-s010: (c) Copyright 1995-2019 Cadence Design Systems, Inc.
+Loading snapshot worklib.hello_world:sv .................... Done
+SVSEED default: 1
+Initializing Xcelium(64) (18.09 Build 424)  -  Linked on Fri Jan 25 16:06:55
+2019
+
+Protected by U.S. Patents 6,141,630 ;6,182,258; 6,219,809; 6,347,388;
+6,487,704; 6,499,132; 6,502,232; 6,519,727; 6,530,054; 6,675,138; 6,684,359;
+6,687,662; 6,907,599; 6,918,076; 6,920,583; Other Patents Pending.
+
+Checking license ... OK
+xcelium> source /aril/cad/tools/cadence/xcelium/18.09.010/tools/xcelium/files/xmsimrc
+xcelium> source /aril/cad/tools/cadence/xcelium/18.09.010/tools/methodology/UVM/CDNS-1.2/additions/sv/files/tcl/uvm_sim.tcl
+xcelium> run
+UVM_INFO /aril/cad/tools/cadence/xcelium/18.09.010/tools/methodology/UVM/CDNS-1.2/sv/src/base/uvm_root.svh(412) @ 0: reporter [UVM/RELNOTES] 
+----------------------------------------------------------------
+CDNS-UVM-1.2 (18.09-s010)
+(C) 2007-2014 Mentor Graphics Corporation
+(C) 2007-2014 Cadence Design Systems, Inc.
+(C) 2006-2014 Synopsys, Inc.
+(C) 2011-2013 Cypress Semiconductor Corp.
+(C) 2013-2014 NVIDIA Corporation
+----------------------------------------------------------------
+
+  ***********       IMPORTANT RELEASE NOTES         ************
+
+  You are using a version of the UVM library that has been compiled
+  with `UVM_OBJECT_DO_NOT_NEED_CONSTRUCTOR undefined.
+  See http://www.eda.org/svdb/view.php?id=3770 for more details.
+
+      (Specify +UVM_NO_RELNOTES to turn off this notice)
+
+UVM_INFO @ 0: reporter [RNTST] Running test ...
+--------------- Example of $display emulation ---------------
+   [0;90mUVM_INFO[0m @[0;34m      0[0mns  [0mThis is a long message: Lorem ipsum dolor sit amet, 
+                          consectetur adipiscing elit. Vivamus luctus, quam 
+                          in fringilla blandit, lorem sem vestibulum quam, 
+                          id pretium lorem justo vel neque. In quis ullamcorper 
+                          tellus. Donec eget cursus ex. Suspendisse 
+                          ut sodales ligula. Morbi id eros velit. Proin posuere 
+                          neque urna, nec rutrum dolor semper vitae.
+                           Ut dapibus libero nisi, eu feugiat urna placerat 
+                          a. Nunc blandit, sapien sit amet fringilla auctor, 
+                          sapien nibh gravida urna, vel venenatis elit nulla 
+                          sit amet elit. Suspendisse et diam finibus, 
+                          suscipit justo eget, luctus leo.[0m :[0;34mTEST_INFO[0m
+   [0;90mUVM_INFO[0m @[0;34m      0[0mns  [0mThis is a UVM_LOW info.[0m :[0;34mTEST_INFO[0m
+   [0;90mUVM_INFO[0m @[0;34m      0[0mns  [0mThis is a UVM_MEDIUM info.[0m :[0;34mTEST_INFO[0m
+   [0;90mUVM_INFO[0m @[0;34m      0[0mns  [0mThis is a UVM_HIGH info.[0m :[0;34mTEST_INFO[0m[0;90m
+                          top, top.sv(81)[0m
+[0;30;43mUVM_WARNING[0m @[0;34m      0[0mns  [0mThis is a warning.[0m :[0;34mTEST_WARN[0m[0;90m
+                          top, top.sv(82)[0m
+  [0;37;41mUVM_ERROR[0m @[0;34m      0[0mns  [0mThis is an error![0m :[0;34mTEST_ERR[0m[0;90m
+                          top, top.sv(83)[0m
+   [0;90mUVM_INFO[0m @[0;34m      0[0mns  [0mStarting.[0m :[0;34mproducer[0m
+SDI/Verilog Transaction Recording Facility Version 18.09-s010
+SDI2 Transaction Recording API Version 18.09-s010
+   [0;90mUVM_INFO[0m @[0;34m      0[0mns  [0mSending producer2-0[0m :[0;34mproducer[0m
+---------------------------------------
+Name         Type           Size  Value
+---------------------------------------
+producer2-0  packet         -     -    
+  addr       integral       32    'h1a 
+  initiator  producer #(T)  -1    @2007
+---------------------------------------
+   [0;90mUVM_INFO[0m @[0;34m      0[0mns  [0mStarting.[0m :[0;34mproducer[0m
+   [0;90mUVM_INFO[0m @[0;34m      0[0mns  [0mSending producer1-0[0m :[0;34mproducer[0m
+---------------------------------------
+Name         Type           Size  Value
+---------------------------------------
+producer1-0  packet         -     -    
+  addr       integral       32    'hac 
+  initiator  producer #(T)  -1    @1974
+---------------------------------------
+  [0;30;41mUVM_FATAL[0m @[0;34m      1[0mns  [0mThis is a fatal error![0m :[0;34mTEST_FATAL[0m[0;90m
+                          top, top.sv(85)[0m
+   [0;90mUVM_INFO[0m @[0;34m      1[0mns  [0m
+--- UVM Report catcher Summary ---
+
+
+Number of demoted UVM_FATAL reports  :    0
+Number of demoted UVM_ERROR reports  :    0
+Number of demoted UVM_WARNING reports:    0
+Number of caught UVM_FATAL reports   :    0
+Number of caught UVM_ERROR reports   :    0
+Number of caught UVM_WARNING reports :    0 [0m :[0;34mUVM/REPORT/CATCHER[0m
+   [0;90mUVM_INFO[0m @[0;34m      1[0mns  [0m
+--- UVM Report Summary ---
+
+** Report counts by severity
+UVM_INFO :   12
+UVM_WARNING :    1
+UVM_ERROR :    1
+UVM_FATAL :    1
+** Report counts by id
+[RNTST]     1
+[TEST*]     1
+[TEST_ERR]     1
+[TEST_FATAL]     1
+[TEST_INFO]     4
+[TEST_WARN]     1
+[UVM/RELNOTES]     1
+[UVM/REPORT/CATCHER]     1
+[producer]     4 [0m :[0;34mUVM/REPORT/SERVER[0m
+Simulation complete via $finish(1) at time 1 NS + 0
+/aril/cad/tools/cadence/xcelium/18.09.010/tools/methodology/UVM/CDNS-1.2/sv/src/base/uvm_root.svh:135     $finish;
+xcelium> exit
