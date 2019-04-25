@@ -319,6 +319,8 @@ class custom_report_server extends
                if (emulate_dollardisplay) begin
                   my_composed_message = message_str;
                end else begin
+                  bit add_traceback = 0;
+
                   // Append the id string to message_str
                   message_str  = colorize(message_str, c_message);
                   id_str       = colorize(id, c_id);
@@ -352,16 +354,13 @@ class custom_report_server extends
 
                   // --------------------------------------------------------------------
                   // FINAL PRINTED MESSAGE
-                  if ( uvm_report_traceback == UVM_REPORT_TRACEBACK_NONE ) begin
-                     my_composed_message = $sformatf("%5s %s  %s",
-                                                          severity_str, time_str,
-                                                          message_str);
-                  end else if ( uvm_report_traceback == UVM_REPORT_TRACEBACK_ALL ) begin
-                     my_composed_message = $sformatf("%5s %s  %s%s",
-                                                          severity_str, time_str,
-                                                          message_str,
-                                                          tracebackinfo_str);
-                  end else begin
+                  my_composed_message = $sformatf("%5s %s  %s",
+                                                       severity_str, time_str,
+                                                       message_str);
+                  if ( uvm_report_traceback == UVM_REPORT_TRACEBACK_ALL ) begin
+                     add_traceback = 1;
+                  end else if ( uvm_report_traceback != UVM_REPORT_TRACEBACK_NONE ) begin
+
                      // By default do not print the traceback info only for
                      // UVM_LOW and UVM_MEDIUM verbosity messages
                      if ($cast(l_verbosity, report_message.get_verbosity()))
@@ -369,18 +368,14 @@ class custom_report_server extends
                      else
                        verbosity_str.itoa(report_message.get_verbosity());
 
-                     if ( verbosity_str=="UVM_LOW"
-                          || verbosity_str=="UVM_MEDIUM") begin
-                        my_composed_message = $sformatf("%5s %s  %s",
-                                                             severity_str, time_str,
-                                                             message_str);
-                     end else begin
-                        my_composed_message = $sformatf("%5s %s  %s%s",
-                                                             severity_str, time_str,
-                                                             message_str,
-                                                             tracebackinfo_str);
-                     end // else: !if( verbosity_str=="UVM_MEDIUM" )
-                  end // else: !if( uvm_report_traceback == UVM_REPORT_TRACEBACK_ALL )
+                     if ( verbosity_str!="UVM_LOW"
+                          && verbosity_str!="UVM_MEDIUM")
+                        add_traceback = 1;
+                  end
+
+                  if (add_traceback) begin
+                     my_composed_message = {my_composed_message, tracebackinfo_str};
+                  end
                end // else: !if(emulate_dollardisplay)
                // end FINAL PRINTED MESSAGE
 
