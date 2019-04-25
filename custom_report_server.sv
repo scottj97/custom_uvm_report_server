@@ -374,7 +374,7 @@ class custom_report_server extends
                      tracebackinfo_str = colorize(tracebackinfo_str, c_tracebackinfo);
                      // end REPORT_OBJECT_NAME + FILENAME + LINE NUMBER
                      my_composed_message = {my_composed_message, tracebackinfo_str};
-                  end
+                  end // if (add_traceback)
                end // else: !if(emulate_dollardisplay)
                // end FINAL PRINTED MESSAGE
 
