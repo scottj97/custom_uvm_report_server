@@ -256,7 +256,6 @@ class custom_report_server extends
             bit    emulate_dollardisplay     = 0;
 
 
-            string time_str                  = "";
             string message_str               = "";
             string filename_str              = "";
             string tracebackinfo_str         = "";
@@ -301,7 +300,6 @@ class custom_report_server extends
                 // Print the simulation time in ns by default
                 $timeformat(-9, 0, "", 11);  // units, precision, suffix, min field width
                 */
-               time_str      = $sformatf("@%7tns", $time);
                time_str_fmtd = {"@", colorize($sformatf("%7t", $time), c_time), "ns"};
                // end TIME
 
