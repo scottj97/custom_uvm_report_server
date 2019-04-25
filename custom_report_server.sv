@@ -161,7 +161,9 @@ class custom_report_server extends
       endfunction // new
 
       local function string colorize(string str, ref color_t colors[2]);
-         string format_str = $sformatf(fg_format[colors[0]], bg_format[colors[1]]);
+         string format_str;
+         if (uvm_report_nocolor) return str;
+         format_str = $sformatf(fg_format[colors[0]], bg_format[colors[1]]);
          return $sformatf(format_str, str);
       endfunction: colorize
 
