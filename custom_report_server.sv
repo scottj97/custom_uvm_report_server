@@ -113,6 +113,8 @@ class custom_report_server extends
                             UVM_REPORT_TRACEBACK_ALL } uvm_report_traceback_e;
    uvm_report_traceback_e uvm_report_traceback;
 
+   string severity_strings[uvm_severity]; // colorized "UVM_INFO", "UVM_WARNING", etc
+
    function new(string name = "custom_report_server");
       uvm_cmdline_processor clp;
       string clp_uvm_args[$];
@@ -158,6 +160,12 @@ class custom_report_server extends
             c_id             = {CYAN     ,NOCHANGE};
             c_tracebackinfo  = {GREY     ,NOCHANGE};
          end
+
+         severity_strings[UVM_INFO   ] = {"   ", colorize("UVM_INFO", c_uvm_info)};
+         severity_strings[UVM_WARNING] = colorize("UVM_WARNING", c_uvm_warning);
+         severity_strings[UVM_ERROR  ] = {"  ", colorize("UVM_ERROR", c_uvm_error)};
+         severity_strings[UVM_FATAL  ] = {"  ", colorize("UVM_FATAL", c_uvm_fatal)};
+
       endfunction // new
 
       local function string colorize(string str, ref color_t colors[2]);
@@ -228,18 +236,7 @@ class custom_report_server extends
                      id = id.substr(0, id.len()-2);
                   end // if (id[id.len()-1]=="*")
                end
-               if (l_severity==UVM_INFO) begin
-                  severity_str_fmtd = {"   ", colorize("UVM_INFO", c_uvm_info)};
-               end else if (l_severity==UVM_WARNING) begin
-                  severity_str_fmtd = colorize("UVM_WARNING", c_uvm_warning);
-               end else if (l_severity==UVM_ERROR) begin
-                  severity_str_fmtd = {"  ", colorize("UVM_ERROR", c_uvm_error)};
-               end else if (l_severity==UVM_FATAL) begin
-                  severity_str_fmtd = {"  ", colorize("UVM_FATAL", c_uvm_fatal)};
-                  // The below else condition should never be executed
-               end else begin
-                  severity_str_fmtd = "";
-               end
+               severity_str_fmtd = severity_strings[l_severity];
                // end SEVERITY
 
                // --------------------------------------------------------------------
