@@ -262,7 +262,6 @@ class custom_report_server extends
 
             string severity_str              = "";
             string time_str                  = "";
-            string message_str_fmtd          = "";
             string id_str                    = "";
             string tracebackinfo_str_fmtd    = "";
 
@@ -322,9 +321,9 @@ class custom_report_server extends
                   my_composed_message = message_str;
                end else begin
                   // Append the id string to message_str
-                  message_str_fmtd  = colorize(message_str, c_message);
-                  id_str            = colorize(id, c_id);
-                  message_str_fmtd  = {message_str_fmtd, " :", id_str};
+                  message_str  = colorize(message_str, c_message);
+                  id_str       = colorize(id, c_id);
+                  message_str  = {message_str, " :", id_str};
                   // end MESSAGE + ID
 
                   // --------------------------------------------------------------------
@@ -357,11 +356,11 @@ class custom_report_server extends
                   if ( uvm_report_traceback == UVM_REPORT_TRACEBACK_NONE ) begin
                      my_composed_message = $sformatf("%5s %s  %s",
                                                           severity_str, time_str,
-                                                          message_str_fmtd);
+                                                          message_str);
                   end else if ( uvm_report_traceback == UVM_REPORT_TRACEBACK_ALL ) begin
                      my_composed_message = $sformatf("%5s %s  %s%s",
                                                           severity_str, time_str,
-                                                          message_str_fmtd,
+                                                          message_str,
                                                           tracebackinfo_str_fmtd);
                   end else begin
                      // By default do not print the traceback info only for
@@ -375,11 +374,11 @@ class custom_report_server extends
                           || verbosity_str=="UVM_MEDIUM") begin
                         my_composed_message = $sformatf("%5s %s  %s",
                                                              severity_str, time_str,
-                                                             message_str_fmtd);
+                                                             message_str);
                      end else begin
                         my_composed_message = $sformatf("%5s %s  %s%s",
                                                              severity_str, time_str,
-                                                             message_str_fmtd,
+                                                             message_str,
                                                              tracebackinfo_str_fmtd);
                      end // else: !if( verbosity_str=="UVM_MEDIUM" )
                   end // else: !if( uvm_report_traceback == UVM_REPORT_TRACEBACK_ALL )
