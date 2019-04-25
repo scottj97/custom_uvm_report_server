@@ -334,7 +334,6 @@ class custom_report_server extends
                   // Append the id string to message_str
                   message_str_fmtd  = colorize(message_str, c_message);
                   id_str_fmtd       = colorize(id, c_id);
-                  message_str       = {message_str, " :", id};
                   message_str_fmtd  = {message_str_fmtd, " :", id_str_fmtd};
                end
                // end MESSAGE + ID
@@ -374,19 +373,13 @@ class custom_report_server extends
                // --------------------------------------------------------------------
                // FINAL PRINTED MESSAGE
                if (emulate_dollardisplay) begin
-                  my_composed_message      = message_str;
                   my_composed_message_fmtd = message_str;
                end else begin
                   if ( uvm_report_traceback == UVM_REPORT_TRACEBACK_NONE ) begin
-                     my_composed_message = $sformatf("%5s %s  %s",
-                                                     severity_str, time_str, message_str);
                      my_composed_message_fmtd = $sformatf("%5s %s  %s",
                                                           severity_str_fmtd, time_str_fmtd,
                                                           message_str_fmtd);
                   end else if ( uvm_report_traceback == UVM_REPORT_TRACEBACK_ALL ) begin
-                     my_composed_message = $sformatf("%5s %s  %s%s",
-                                                     severity_str, time_str, message_str,
-                                                     tracebackinfo_str);
                      my_composed_message_fmtd = $sformatf("%5s %s  %s%s",
                                                           severity_str_fmtd, time_str_fmtd,
                                                           message_str_fmtd,
@@ -401,15 +394,10 @@ class custom_report_server extends
 
                      if ( verbosity_str=="UVM_LOW"
                           || verbosity_str=="UVM_MEDIUM") begin
-                        my_composed_message = $sformatf("%5s %s  %s",
-                                                        severity_str, time_str, message_str);
                         my_composed_message_fmtd = $sformatf("%5s %s  %s",
                                                              severity_str_fmtd, time_str_fmtd,
                                                              message_str_fmtd);
                      end else begin
-                        my_composed_message = $sformatf("%5s %s  %s%s",
-                                                        severity_str, time_str, message_str,
-                                                        tracebackinfo_str);
                         my_composed_message_fmtd = $sformatf("%5s %s  %s%s",
                                                              severity_str_fmtd, time_str_fmtd,
                                                              message_str_fmtd,
