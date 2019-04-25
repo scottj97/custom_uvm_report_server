@@ -66,9 +66,7 @@ class producer #(type T=packet) extends uvm_component;
 
          `uvm_info("producer", $sformatf("Sending %s",p.get_name()), UVM_MEDIUM)
 
-         if(uvm_report_enabled(UVM_HIGH,UVM_INFO,""))
-           p.print();
-
+         `uvm_info("scottj", p.sprint(), UVM_HIGH)
          out.put(p);
 
          #10;
