@@ -240,15 +240,9 @@ class custom_report_server extends
    virtual function string compose_report_message(uvm_report_message report_message,
                                                   string report_object_name = "");
       uvm_severity l_severity;
-      uvm_verbosity l_verbosity;
       uvm_report_message_element_container el_container;
-      uvm_report_handler l_report_handler;
       string message  = "";
       string id       = "";
-
-      string context_str;
-      string verbosity_str;
-      string prefix;
 
       // Declare function-internal vars
       bit    emulate_dollardisplay     = 0;
@@ -259,6 +253,7 @@ class custom_report_server extends
       string my_composed_message       = "";
 
       if (report_object_name == "") begin
+         uvm_report_handler l_report_handler;
          l_report_handler = report_message.get_report_handler();
          report_object_name = l_report_handler.get_full_name();
       end
@@ -298,7 +293,7 @@ class custom_report_server extends
       if (el_container.size() == 0)
         message = report_message.get_message();
       else begin
-         prefix = uvm_default_printer.knobs.prefix;
+         string prefix = uvm_default_printer.knobs.prefix;
          uvm_default_printer.knobs.prefix = " +";
          message = {report_message.get_message(), "\n", el_container.sprint()};
          uvm_default_printer.knobs.prefix = prefix;
@@ -325,7 +320,8 @@ class custom_report_server extends
          if ( uvm_report_traceback == UVM_REPORT_TRACEBACK_ALL ) begin
             add_traceback = 1;
          end else if ( uvm_report_traceback != UVM_REPORT_TRACEBACK_NONE ) begin
-
+            uvm_verbosity l_verbosity;
+            string verbosity_str;
             // By default do not print the traceback info only for
             // UVM_LOW and UVM_MEDIUM verbosity messages
             if ($cast(l_verbosity, report_message.get_verbosity()))
