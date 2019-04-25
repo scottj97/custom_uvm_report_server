@@ -57,44 +57,44 @@ class custom_report_server extends
                  WHITE    , BWHITE    , UWHITE,
                  NOCHANGE , BOLD      , ULINE} color_t;
 
-   string fg_format[color_t] = '{BLACK    : "\033[0;30%s\033[0m",
-                                 GRAY     : "\033[0;90%s\033[0m",
-                                 GREY     : "\033[0;90%s\033[0m",
-                                 UBLACK   : "\033[4;30%s\033[0m",
-                                 RED      : "\033[0;31%s\033[0m",
-                                 BRED     : "\033[0;91%s\033[0m",
-                                 URED     : "\033[4;31%s\033[0m",
-                                 GREEN    : "\033[0;32%s\033[0m",
-                                 BGREEN   : "\033[0;92%s\033[0m",
-                                 UGREEN   : "\033[4;32%s\033[0m",
-                                 YELLOW   : "\033[0;33%s\033[0m",
-                                 BYELLOW  : "\033[0;93%s\033[0m",
-                                 UYELLOW  : "\033[4;33%s\033[0m",
-                                 BLUE     : "\033[0;34%s\033[0m",
-                                 BBLUE    : "\033[0;94%s\033[0m",
-                                 UBLUE    : "\033[4;34%s\033[0m",
-                                 MAGENTA  : "\033[0;35%s\033[0m",
-                                 BMAGENTA : "\033[0;95%s\033[0m",
-                                 UMAGENTA : "\033[4;35%s\033[0m",
-                                 CYAN     : "\033[0;36%s\033[0m",
-                                 BCYAN    : "\033[0;96%s\033[0m",
-                                 UCYAN    : "\033[4;36%s\033[0m",
-                                 WHITE    : "\033[0;37%s\033[0m",
-                                 BWHITE   : "\033[0;97%s\033[0m",
-                                 UWHITE   : "\033[4;37%s\033[0m",
-                                 NOCHANGE : "\033[0%s\033[0m",
-                                 BOLD     : "\033[1%s\033[0m",
-                                 ULINE    : "\033[4%s\033[0m"};
+   string fg_format[color_t] = '{BLACK    : "0;30",
+                                 GRAY     : "0;90",
+                                 GREY     : "0;90",
+                                 UBLACK   : "4;30",
+                                 RED      : "0;31",
+                                 BRED     : "0;91",
+                                 URED     : "4;31",
+                                 GREEN    : "0;32",
+                                 BGREEN   : "0;92",
+                                 UGREEN   : "4;32",
+                                 YELLOW   : "0;33",
+                                 BYELLOW  : "0;93",
+                                 UYELLOW  : "4;33",
+                                 BLUE     : "0;34",
+                                 BBLUE    : "0;94",
+                                 UBLUE    : "4;34",
+                                 MAGENTA  : "0;35",
+                                 BMAGENTA : "0;95",
+                                 UMAGENTA : "4;35",
+                                 CYAN     : "0;36",
+                                 BCYAN    : "0;96",
+                                 UCYAN    : "4;36",
+                                 WHITE    : "0;37",
+                                 BWHITE   : "0;97",
+                                 UWHITE   : "4;37",
+                                 NOCHANGE : "0",
+                                 BOLD     : "1",
+                                 ULINE    : "4"};
 
-   string bg_format[color_t] = '{BLACK    : ";40m%s",
-                                 RED      : ";41m%s",
-                                 GREEN    : ";42m%s",
-                                 YELLOW   : ";43m%s",
-                                 BLUE     : ";44m%s",
-                                 MAGENTA  : ";45m%s",
-                                 CYAN     : ";46m%s",
-                                 WHITE    : ";47m%s",
-                                 NOCHANGE : "m%s"};
+   string bg_format[color_t] = '{BLACK    : ";40",
+                                 RED      : ";41",
+                                 GREEN    : ";42",
+                                 YELLOW   : ";43",
+                                 BLUE     : ";44",
+                                 MAGENTA  : ";45",
+                                 CYAN     : ";46",
+                                 WHITE    : ";47",
+                                 NOCHANGE : ""};
 
    color_t c_uvm_info[2];
    color_t c_uvm_warning[2];
@@ -169,10 +169,8 @@ class custom_report_server extends
       endfunction // new
 
       local function string colorize(string str, ref color_t colors[2]);
-         string format_str;
          if (uvm_report_nocolor) return str;
-         format_str = $sformatf(fg_format[colors[0]], bg_format[colors[1]]);
-         return $sformatf(format_str, str);
+         return {"\033[", fg_format[colors[0]], bg_format[colors[1]], "m", str, "\033[0m"};
       endfunction: colorize
 
       virtual function string compose_report_message (uvm_report_message report_message,
