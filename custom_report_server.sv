@@ -160,6 +160,11 @@ class custom_report_server extends
          end
       endfunction // new
 
+      local function string colorize(string str, ref color_t colors[2]);
+         string format_str = $sformatf(fg_format[c_uvm_info[0]], bg_format[c_uvm_info[1]]);
+         return $sformatf(format_str, str);
+      endfunction: colorize
+
       virtual function string compose_report_message (uvm_report_message report_message,
                                                       string report_object_name = "");
          uvm_severity l_severity;
@@ -225,10 +230,8 @@ class custom_report_server extends
                   end // if (id[id.len()-1]=="*")
                end
                if (l_severity==UVM_INFO) begin
-                  format_str        = $sformatf(fg_format[c_uvm_info[0]],
-                                                bg_format[c_uvm_info[1]]);
                   severity_str      = "   UVM_INFO";
-                  severity_str_fmtd = $sformatf({"   ", format_str}, "UVM_INFO");
+                  severity_str_fmtd = {"   ", colorize("UVM_INFO", c_uvm_info)};
                end else if (l_severity==UVM_WARNING) begin
                   format_str        = $sformatf(fg_format[c_uvm_warning[0]],
                                                 bg_format[c_uvm_warning[1]]);
