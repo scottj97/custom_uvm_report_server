@@ -215,7 +215,6 @@ class custom_report_server extends
             string id_str_fmtd               = "";
             string tracebackinfo_str_fmtd    = "";
 
-            string my_composed_message       = "";
             string my_composed_message_fmtd  = "";
 
             begin
