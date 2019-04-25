@@ -168,7 +168,7 @@ class custom_report_server extends
 
       endfunction // new
 
-      local function string colorize(string str, ref color_t colors[2]);
+      local function string colorize(string str, const ref color_t colors[2]);
          if (uvm_report_nocolor) return str;
          return {"\033[", fg_format[colors[0]], bg_format[colors[1]], "m", str, "\033[0m"};
       endfunction: colorize
