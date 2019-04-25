@@ -263,7 +263,6 @@ class custom_report_server extends
             string severity_str              = "";
             string time_str                  = "";
             string id_str                    = "";
-            string tracebackinfo_str_fmtd    = "";
 
             string my_composed_message       = "";
 
@@ -348,7 +347,7 @@ class custom_report_server extends
                         tracebackinfo_str = {"\n", indentation_str, tracebackinfo_str};
                      end
                   end
-                  tracebackinfo_str_fmtd = colorize(tracebackinfo_str, c_tracebackinfo);
+                  tracebackinfo_str = colorize(tracebackinfo_str, c_tracebackinfo);
                   // end REPORT_OBJECT_NAME + FILENAME + LINE NUMBER
 
                   // --------------------------------------------------------------------
@@ -361,7 +360,7 @@ class custom_report_server extends
                      my_composed_message = $sformatf("%5s %s  %s%s",
                                                           severity_str, time_str,
                                                           message_str,
-                                                          tracebackinfo_str_fmtd);
+                                                          tracebackinfo_str);
                   end else begin
                      // By default do not print the traceback info only for
                      // UVM_LOW and UVM_MEDIUM verbosity messages
@@ -379,7 +378,7 @@ class custom_report_server extends
                         my_composed_message = $sformatf("%5s %s  %s%s",
                                                              severity_str, time_str,
                                                              message_str,
-                                                             tracebackinfo_str_fmtd);
+                                                             tracebackinfo_str);
                      end // else: !if( verbosity_str=="UVM_MEDIUM" )
                   end // else: !if( uvm_report_traceback == UVM_REPORT_TRACEBACK_ALL )
                end // else: !if(emulate_dollardisplay)
