@@ -36,7 +36,7 @@
 import "DPI-C" function string getenv(input string env_var);
 
 class custom_report_server extends
-  uvm_default_report_server;
+   uvm_default_report_server;
 
 
    // identation size = 11(%11s) + 1 space + 1("@") + 7(%7t) + 2("ns") +
@@ -121,263 +121,259 @@ class custom_report_server extends
       uvm_cmdline_processor clp;
       string clp_uvm_args[$];
       super.new(name);
-         clp = uvm_cmdline_processor::get_inst();
+      clp = uvm_cmdline_processor::get_inst();
 
-         if (clp.get_arg_matches("+UVM_REPORT_NOCOLOR", clp_uvm_args)) begin
-            uvm_report_nocolor = 1;
+      if (clp.get_arg_matches("+UVM_REPORT_NOCOLOR", clp_uvm_args)) begin
+         uvm_report_nocolor = 1;
+      end else begin
+         uvm_report_nocolor = 0;
+      end
+
+      if (clp.get_arg_matches("+UVM_REPORT_NOMSGWRAP", clp_uvm_args)) begin
+         uvm_report_nomsgwrap = 1;
+      end else begin
+         uvm_report_nomsgwrap = 0;
+      end
+
+      if (clp.get_arg_matches("+UVM_REPORT_TRACEBACK=NONE", clp_uvm_args)) begin
+         uvm_report_traceback = UVM_REPORT_TRACEBACK_NONE;
+      end else if (clp.get_arg_matches("+UVM_REPORT_TRACEBACK=ALL", clp_uvm_args)) begin
+         uvm_report_traceback = UVM_REPORT_TRACEBACK_ALL;
+      end else begin
+         uvm_report_traceback = UVM_REPORT_TRACEBACK_HIGHPLUS;
+      end
+
+      if ( getenv("TERM_BG_LIGHT") == "1" ) begin
+         c_uvm_info       = {GREY     ,NOCHANGE};
+         c_uvm_warning    = {BLACK    ,YELLOW};
+         c_uvm_error      = {WHITE    ,RED};
+         c_uvm_fatal      = {BLACK    ,RED};
+         c_time           = {BLUE     ,NOCHANGE};
+         c_message        = {NOCHANGE ,NOCHANGE};
+         c_id             = {BLUE     ,NOCHANGE};
+         c_tracebackinfo  = {GREY     ,NOCHANGE};
+      end else begin
+         c_uvm_info       = {GREY     ,NOCHANGE};
+         c_uvm_warning    = {BLACK    ,YELLOW};
+         c_uvm_error      = {WHITE    ,RED};
+         c_uvm_fatal      = {BLACK    ,RED};
+         c_time           = {CYAN     ,NOCHANGE};
+         c_message        = {NOCHANGE ,NOCHANGE};
+         c_id             = {CYAN     ,NOCHANGE};
+         c_tracebackinfo  = {GREY     ,NOCHANGE};
+      end
+
+      severity_strings[UVM_INFO   ] = {"   ", colorize("UVM_INFO", c_uvm_info)};
+      severity_strings[UVM_WARNING] = colorize("UVM_WARNING", c_uvm_warning);
+      severity_strings[UVM_ERROR  ] = {"  ", colorize("UVM_ERROR", c_uvm_error)};
+      severity_strings[UVM_FATAL  ] = {"  ", colorize("UVM_FATAL", c_uvm_fatal)};
+
+   endfunction // new
+
+   local function string colorize(string str, const ref color_t colors[2]);
+      if (uvm_report_nocolor) return str;
+      return {"\033[", fg_format[colors[0]], bg_format[colors[1]], "m", str, "\033[0m"};
+   endfunction: colorize
+
+   local function string basename(const ref string filename);
+      int i = filename.len()-1;
+      while (i >= 0 && filename[i] != "/") i--;  // find last slash, if any
+      if (i < 0) return filename;  // no slash found
+      return filename.substr(i+1, filename.len()-1);
+   endfunction: basename
+
+   local function string wordwrap(string message, const ref string report_object_name, bit emulate_dollardisplay);
+      string message_str       = "";
+      bit add_newline          = 0;
+      int dash_cnt             = 0;
+
+      if ( uvm_report_nomsgwrap ) return message;
+
+      // If the last character of message is a newline, replace it with
+      // space
+      if ( message[message.len()-1]=="\n" ) begin
+         message[message.len()-1] = " ";
+      end
+
+      // Wrap the message string if it's too long.
+      // Do not wrap the lines so that they break words (makes searching difficult)
+      // Do NOT wrap the message IF,
+      //  - message len > MAX_MSG_LEN_FOR_WRAP
+      //  - emulate_dollardisplay == 1
+      if ( report_object_name=="reporter" ||
+           message.len()>MAX_MSG_LEN_FOR_WRAP ||
+           emulate_dollardisplay==1 )
+         return message;
+      foreach(message[i]) begin
+         if ( message[i]=="-" ) begin
+            dash_cnt++;
          end else begin
-            uvm_report_nocolor = 0;
+            dash_cnt = 0;
          end
-
-         if (clp.get_arg_matches("+UVM_REPORT_NOMSGWRAP", clp_uvm_args)) begin
-            uvm_report_nomsgwrap = 1;
-         end else begin
-            uvm_report_nomsgwrap = 0;
-         end
-
-         if (clp.get_arg_matches("+UVM_REPORT_TRACEBACK=NONE", clp_uvm_args)) begin
-            uvm_report_traceback = UVM_REPORT_TRACEBACK_NONE;
-         end else if (clp.get_arg_matches("+UVM_REPORT_TRACEBACK=ALL", clp_uvm_args)) begin
-            uvm_report_traceback = UVM_REPORT_TRACEBACK_ALL;
-         end else begin
-            uvm_report_traceback = UVM_REPORT_TRACEBACK_HIGHPLUS;
-         end
-
-         if ( getenv("TERM_BG_LIGHT") == "1" ) begin
-            c_uvm_info       = {GREY     ,NOCHANGE};
-            c_uvm_warning    = {BLACK    ,YELLOW};
-            c_uvm_error      = {WHITE    ,RED};
-            c_uvm_fatal      = {BLACK    ,RED};
-            c_time           = {BLUE     ,NOCHANGE};
-            c_message        = {NOCHANGE ,NOCHANGE};
-            c_id             = {BLUE     ,NOCHANGE};
-            c_tracebackinfo  = {GREY     ,NOCHANGE};
-         end else begin
-            c_uvm_info       = {GREY     ,NOCHANGE};
-            c_uvm_warning    = {BLACK    ,YELLOW};
-            c_uvm_error      = {WHITE    ,RED};
-            c_uvm_fatal      = {BLACK    ,RED};
-            c_time           = {CYAN     ,NOCHANGE};
-            c_message        = {NOCHANGE ,NOCHANGE};
-            c_id             = {CYAN     ,NOCHANGE};
-            c_tracebackinfo  = {GREY     ,NOCHANGE};
-         end
-
-         severity_strings[UVM_INFO   ] = {"   ", colorize("UVM_INFO", c_uvm_info)};
-         severity_strings[UVM_WARNING] = colorize("UVM_WARNING", c_uvm_warning);
-         severity_strings[UVM_ERROR  ] = {"  ", colorize("UVM_ERROR", c_uvm_error)};
-         severity_strings[UVM_FATAL  ] = {"  ", colorize("UVM_FATAL", c_uvm_fatal)};
-
-      endfunction // new
-
-      local function string colorize(string str, const ref color_t colors[2]);
-         if (uvm_report_nocolor) return str;
-         return {"\033[", fg_format[colors[0]], bg_format[colors[1]], "m", str, "\033[0m"};
-      endfunction: colorize
-
-      local function string basename(const ref string filename);
-         int i = filename.len()-1;
-         while (i >= 0 && filename[i] != "/") i--;  // find last slash, if any
-         if (i < 0) return filename;  // no slash found
-         return filename.substr(i+1, filename.len()-1);
-      endfunction: basename
-
-      local function string wordwrap(string message, const ref string report_object_name, bit emulate_dollardisplay);
-         string message_str       = "";
-         bit add_newline          = 0;
-         int dash_cnt             = 0;
-
-         if ( uvm_report_nomsgwrap ) return message;
-
-         // If the last character of message is a newline, replace it with
-         // space
-         if ( message[message.len()-1]=="\n" ) begin
-            message[message.len()-1] = " ";
-         end
-
-         // Wrap the message string if it's too long.
-         // Do not wrap the lines so that they break words (makes searching difficult)
-         // Do NOT wrap the message IF,
-         //  - message len > MAX_MSG_LEN_FOR_WRAP
-         //  - emulate_dollardisplay == 1
-         if ( report_object_name=="reporter" ||
-              message.len()>MAX_MSG_LEN_FOR_WRAP ||
-              emulate_dollardisplay==1 )
+         // If more than NUM_CONSEC_DASH_TO_DETECT_TABLE consecutive
+         // dashes are detected, do not wrap the message as it could
+         // be a pre-formatted string output by the uvm_printer.
+         if ( dash_cnt > NUM_CONSEC_DASH_TO_DETECT_TABLE ) begin
             return message;
-         foreach(message[i]) begin
-            if ( message[i]=="-" ) begin
-               dash_cnt++;
-            end else begin
-               dash_cnt = 0;
-            end
-            // If more than NUM_CONSEC_DASH_TO_DETECT_TABLE consecutive
-            // dashes are detected, do not wrap the message as it could
-            // be a pre-formatted string output by the uvm_printer.
-            if ( dash_cnt > NUM_CONSEC_DASH_TO_DETECT_TABLE ) begin
-               return message;
-            end
+         end
 
-            // Set the "add_newline" flag so that newline is added as soon
-            // as a 'wrap-friendly' character is detected
-            if ( (i+1)%MAX_MSG_CHARS_PER_LINE==0) begin
-               add_newline = 1;
-            end
+         // Set the "add_newline" flag so that newline is added as soon
+         // as a 'wrap-friendly' character is detected
+         if ( (i+1)%MAX_MSG_CHARS_PER_LINE==0) begin
+            add_newline = 1;
+         end
 
-            if (add_newline &&
-                // add newline only if the curr char is 'wrap-friendly'
-                ( message[i]==" " || message[i]=="." || message[i]==":" ||
-                  message[i]=="/" || message[i]=="=" ||
-                  i==(message.len()-1) )) begin
-               message_str = {message_str, message[i],"\n", indentation_str};
-               add_newline = 0;
-            end else begin
-               message_str = {message_str, message[i]};
-            end
-         end // foreach (message[i])
-         return message_str;
-      endfunction: wordwrap
+         if (add_newline &&
+             // add newline only if the curr char is 'wrap-friendly'
+             ( message[i]==" " || message[i]=="." || message[i]==":" ||
+               message[i]=="/" || message[i]=="=" ||
+               i==(message.len()-1) )) begin
+            message_str = {message_str, message[i],"\n", indentation_str};
+            add_newline = 0;
+         end else begin
+            message_str = {message_str, message[i]};
+         end
+      end // foreach (message[i])
+      return message_str;
+   endfunction: wordwrap
 
-      virtual function string compose_report_message (uvm_report_message report_message,
-                                                      string report_object_name = "");
-         uvm_severity l_severity;
-         uvm_verbosity l_verbosity;
-         uvm_report_message_element_container el_container;
-         uvm_report_handler l_report_handler;
-         string message  = "";
-         string id       = "";
+   virtual function string compose_report_message(uvm_report_message report_message,
+                                                  string report_object_name = "");
+      uvm_severity l_severity;
+      uvm_verbosity l_verbosity;
+      uvm_report_message_element_container el_container;
+      uvm_report_handler l_report_handler;
+      string message  = "";
+      string id       = "";
 
-            string context_str;
-            string verbosity_str;
-            string prefix;
+      string context_str;
+      string verbosity_str;
+      string prefix;
 
-            // Declare function-internal vars
-            bit    emulate_dollardisplay     = 0;
+      // Declare function-internal vars
+      bit    emulate_dollardisplay     = 0;
+      string message_str               = "";
+      string severity_str              = "";
+      string time_str                  = "";
+      string id_str                    = "";
+      string my_composed_message       = "";
 
+      if (report_object_name == "") begin
+         l_report_handler = report_message.get_report_handler();
+         report_object_name = l_report_handler.get_full_name();
+      end
 
-            string message_str               = "";
+      // --------------------------------------------------------------------
+      // SEVERITY
+      l_severity = report_message.get_severity();
 
-            string severity_str              = "";
-            string time_str                  = "";
-            string id_str                    = "";
+      id = report_message.get_id();
 
-            string my_composed_message       = "";
+      if (l_severity==UVM_INFO) begin
+         // Emulate $display if the last char of the uvm_info ID field is '*'
+         if (id[id.len()-1]=="*") begin
+            emulate_dollardisplay = 1;
+            // Remove that last '*' character from the ID string
+            id = id.substr(0, id.len()-2);
+         end // if (id[id.len()-1]=="*")
+      end
+      severity_str = severity_strings[l_severity];
+      // end SEVERITY
 
-               if (report_object_name == "") begin
-                  l_report_handler = report_message.get_report_handler();
-                  report_object_name = l_report_handler.get_full_name();
-               end
+      // --------------------------------------------------------------------
+      // TIME
+      // Note: Add the below statement in the initial block in top.sv along
+      // with run_test()
+      /*
+       // Print the simulation time in ns by default
+       $timeformat(-9, 0, "", 11);  // units, precision, suffix, min field width
+       */
+      time_str = {"@", colorize($sformatf("%7t", $time), c_time), "ns"};
+      // end TIME
 
-               // --------------------------------------------------------------------
-               // SEVERITY
-               l_severity = report_message.get_severity();
+      // --------------------------------------------------------------------
+      // MESSAGE + ID
 
-               id = report_message.get_id();
+      el_container = report_message.get_element_container();
+      if (el_container.size() == 0)
+        message = report_message.get_message();
+      else begin
+         prefix = uvm_default_printer.knobs.prefix;
+         uvm_default_printer.knobs.prefix = " +";
+         message = {report_message.get_message(), "\n", el_container.sprint()};
+         uvm_default_printer.knobs.prefix = prefix;
+      end
 
-               if (l_severity==UVM_INFO) begin
-                  // Emulate $display if the last char of the uvm_info ID field is '*'
-                  if (id[id.len()-1]=="*") begin
-                     emulate_dollardisplay = 1;
-                     // Remove that last '*' character from the ID string
-                     id = id.substr(0, id.len()-2);
-                  end // if (id[id.len()-1]=="*")
-               end
-               severity_str = severity_strings[l_severity];
-               // end SEVERITY
+      message_str = wordwrap(message, report_object_name, emulate_dollardisplay);
 
-               // --------------------------------------------------------------------
-               // TIME
-               // Note: Add the below statement in the initial block in top.sv along
-               // with run_test()
-               /*
-                // Print the simulation time in ns by default
-                $timeformat(-9, 0, "", 11);  // units, precision, suffix, min field width
-                */
-               time_str = {"@", colorize($sformatf("%7t", $time), c_time), "ns"};
-               // end TIME
+      if (emulate_dollardisplay) begin
+         my_composed_message = message_str;
+      end else begin
+         bit add_traceback = 0;
 
-               // --------------------------------------------------------------------
-               // MESSAGE + ID
+         // Append the id string to message_str
+         message_str  = colorize(message_str, c_message);
+         id_str       = colorize(id, c_id);
+         message_str  = {message_str, " :", id_str};
+         // end MESSAGE + ID
 
-               el_container = report_message.get_element_container();
-               if (el_container.size() == 0)
-                 message = report_message.get_message();
-               else begin
-                  prefix = uvm_default_printer.knobs.prefix;
-                  uvm_default_printer.knobs.prefix = " +";
-                  message = {report_message.get_message(), "\n", el_container.sprint()};
-                  uvm_default_printer.knobs.prefix = prefix;
-               end
+         // --------------------------------------------------------------------
+         // FINAL PRINTED MESSAGE
+         my_composed_message = $sformatf("%5s %s  %s",
+                                              severity_str, time_str,
+                                              message_str);
+         if ( uvm_report_traceback == UVM_REPORT_TRACEBACK_ALL ) begin
+            add_traceback = 1;
+         end else if ( uvm_report_traceback != UVM_REPORT_TRACEBACK_NONE ) begin
 
-               message_str = wordwrap(message, report_object_name, emulate_dollardisplay);
+            // By default do not print the traceback info only for
+            // UVM_LOW and UVM_MEDIUM verbosity messages
+            if ($cast(l_verbosity, report_message.get_verbosity()))
+              verbosity_str = l_verbosity.name();
+            else
+              verbosity_str.itoa(report_message.get_verbosity());
 
-               if (emulate_dollardisplay) begin
-                  my_composed_message = message_str;
+            if ( verbosity_str!="UVM_LOW"
+                 && verbosity_str!="UVM_MEDIUM")
+               add_traceback = 1;
+         end
+
+         if (add_traceback) begin
+            string filename;
+            string filename_str;
+            string tracebackinfo_str;
+            int line;
+            // --------------------------------------------------------------------
+            // REPORT_OBJECT_NAME + FILENAME + LINE NUMBER
+            // Extract just the file name, remove the preceeding path
+            filename = report_message.get_filename();
+            line     = report_message.get_line();
+            if (filename=="")
+              filename_str = "";
+            else
+              filename_str     = $sformatf("%s(%0d)", basename(filename), line);
+
+            // The traceback info will be indented with respect to the message_str
+            if ( report_object_name=="reporter" )
+              tracebackinfo_str = {" ", report_object_name, "\n"};
+            else begin
+               tracebackinfo_str = {report_object_name, ", ", filename_str};
+               if ( tracebackinfo_str.len() > MAX_MSG_CHARS_PER_LINE ) begin
+                  tracebackinfo_str = {"\n", indentation_str, report_object_name, ",",
+                                       "\n", indentation_str, filename_str};
                end else begin
-                  bit add_traceback = 0;
+                  tracebackinfo_str = {"\n", indentation_str, tracebackinfo_str};
+               end
+            end
+            tracebackinfo_str = colorize(tracebackinfo_str, c_tracebackinfo);
+            // end REPORT_OBJECT_NAME + FILENAME + LINE NUMBER
+            my_composed_message = {my_composed_message, tracebackinfo_str};
+         end // if (add_traceback)
+      end // else: !if(emulate_dollardisplay)
+      // end FINAL PRINTED MESSAGE
 
-                  // Append the id string to message_str
-                  message_str  = colorize(message_str, c_message);
-                  id_str       = colorize(id, c_id);
-                  message_str  = {message_str, " :", id_str};
-                  // end MESSAGE + ID
+      compose_report_message = my_composed_message;
+   endfunction // compose_report_message
 
-                  // --------------------------------------------------------------------
-                  // FINAL PRINTED MESSAGE
-                  my_composed_message = $sformatf("%5s %s  %s",
-                                                       severity_str, time_str,
-                                                       message_str);
-                  if ( uvm_report_traceback == UVM_REPORT_TRACEBACK_ALL ) begin
-                     add_traceback = 1;
-                  end else if ( uvm_report_traceback != UVM_REPORT_TRACEBACK_NONE ) begin
-
-                     // By default do not print the traceback info only for
-                     // UVM_LOW and UVM_MEDIUM verbosity messages
-                     if ($cast(l_verbosity, report_message.get_verbosity()))
-                       verbosity_str = l_verbosity.name();
-                     else
-                       verbosity_str.itoa(report_message.get_verbosity());
-
-                     if ( verbosity_str!="UVM_LOW"
-                          && verbosity_str!="UVM_MEDIUM")
-                        add_traceback = 1;
-                  end
-
-                  if (add_traceback) begin
-                     string filename;
-                     string filename_str;
-                     string tracebackinfo_str;
-                     int line;
-                     // --------------------------------------------------------------------
-                     // REPORT_OBJECT_NAME + FILENAME + LINE NUMBER
-                     // Extract just the file name, remove the preceeding path
-                     filename = report_message.get_filename();
-                     line     = report_message.get_line();
-                     if (filename=="")
-                       filename_str = "";
-                     else
-                       filename_str     = $sformatf("%s(%0d)", basename(filename), line);
-
-                     // The traceback info will be indented with respect to the message_str
-                     if ( report_object_name=="reporter" )
-                       tracebackinfo_str = {" ", report_object_name, "\n"};
-                     else begin
-                        tracebackinfo_str = {report_object_name, ", ", filename_str};
-                        if ( tracebackinfo_str.len() > MAX_MSG_CHARS_PER_LINE ) begin
-                           tracebackinfo_str = {"\n", indentation_str, report_object_name, ",",
-                                                "\n", indentation_str, filename_str};
-                        end else begin
-                           tracebackinfo_str = {"\n", indentation_str, tracebackinfo_str};
-                        end
-                     end
-                     tracebackinfo_str = colorize(tracebackinfo_str, c_tracebackinfo);
-                     // end REPORT_OBJECT_NAME + FILENAME + LINE NUMBER
-                     my_composed_message = {my_composed_message, tracebackinfo_str};
-                  end // if (add_traceback)
-               end // else: !if(emulate_dollardisplay)
-               // end FINAL PRINTED MESSAGE
-
-               compose_report_message = my_composed_message;
-         endfunction // compose_report_message
-
-      endclass // custom_report_server
+endclass // custom_report_server
 `endif //  `ifndef custom_report_server__SV
