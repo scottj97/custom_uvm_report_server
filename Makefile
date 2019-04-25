@@ -30,7 +30,6 @@ run:
 
 nccomp:
 	$(NC2) -c \
-	-ida -linedebug \
 	$(EXTRA_COMP_ARGS) \
 	hello_world.sv
 

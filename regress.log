@@ -1,21 +1,11 @@
 xrun -sv +xmtimescale+1ns/10ps +define+UVM_NO_DEPRECATED +define+UVM_1p2 +UVM_VERBOSITY=UVM_HIGH -nowarn DSEMEL -nowarn DSEM2009 -nowarn RNDNOXCEL -nowarn RNDXCELON +incdir+./ -uvmhome CDNS-1.2 -c \
--ida -linedebug \
  \
 hello_world.sv
 xrun(64): 18.09-s010: (c) Copyright 1995-2019 Cadence Design Systems, Inc.
-xrun: *W,BADPRF: The -linedebug option may have an adverse performance impact.
 xrun -sv +xmtimescale+1ns/10ps +define+UVM_NO_DEPRECATED +define+UVM_1p2 +UVM_VERBOSITY=UVM_HIGH -nowarn DSEMEL -nowarn DSEM2009 -nowarn RNDNOXCEL -nowarn RNDXCELON +incdir+./ -uvmhome CDNS-1.2 -R
 xrun(64): 18.09-s010: (c) Copyright 1995-2019 Cadence Design Systems, Inc.
 Loading snapshot worklib.hello_world:sv .................... Done
 SVSEED default: 1
-Initializing Xcelium(64) (18.09 Build 424)  -  Linked on Fri Jan 25 16:06:55
-2019
-
-Protected by U.S. Patents 6,141,630 ;6,182,258; 6,219,809; 6,347,388;
-6,487,704; 6,499,132; 6,502,232; 6,519,727; 6,530,054; 6,675,138; 6,684,359;
-6,687,662; 6,907,599; 6,918,076; 6,920,583; Other Patents Pending.
-
-Checking license ... OK
 xcelium> source /aril/cad/tools/cadence/xcelium/18.09.010/tools/xcelium/files/xmsimrc
 xcelium> source /aril/cad/tools/cadence/xcelium/18.09.010/tools/methodology/UVM/CDNS-1.2/additions/sv/files/tcl/uvm_sim.tcl
 xcelium> run
@@ -68,7 +58,7 @@ Name         Type           Size  Value
 ---------------------------------------
 producer2-0  packet         -     -    
   addr       integral       32    'h1a 
-  initiator  producer #(T)  -1    @2007
+  initiator  producer #(T)  -1    @1940
 ---------------------------------------
    [0;90mUVM_INFO[0m @[0;36m      0[0mns  [0mStarting.[0m :[0;36mproducer[0m
    [0;90mUVM_INFO[0m @[0;36m      0[0mns  [0mSending producer1-0[0m :[0;36mproducer[0m
@@ -77,7 +67,7 @@ Name         Type           Size  Value
 ---------------------------------------
 producer1-0  packet         -     -    
   addr       integral       32    'hac 
-  initiator  producer #(T)  -1    @1974
+  initiator  producer #(T)  -1    @1903
 ---------------------------------------
   [0;30;41mUVM_FATAL[0m @[0;36m      1[0mns  [0mThis is a fatal error![0m :[0;36mTEST_FATAL[0m[0;90m
                           top, top.sv(85)[0m
@@ -116,14 +106,6 @@ xrun -sv +xmtimescale+1ns/10ps +define+UVM_NO_DEPRECATED +define+UVM_1p2 +UVM_VE
 xrun(64): 18.09-s010: (c) Copyright 1995-2019 Cadence Design Systems, Inc.
 Loading snapshot worklib.hello_world:sv .................... Done
 SVSEED default: 1
-Initializing Xcelium(64) (18.09 Build 424)  -  Linked on Fri Jan 25 16:06:55
-2019
-
-Protected by U.S. Patents 6,141,630 ;6,182,258; 6,219,809; 6,347,388;
-6,487,704; 6,499,132; 6,502,232; 6,519,727; 6,530,054; 6,675,138; 6,684,359;
-6,687,662; 6,907,599; 6,918,076; 6,920,583; Other Patents Pending.
-
-Checking license ... OK
 xcelium> source /aril/cad/tools/cadence/xcelium/18.09.010/tools/xcelium/files/xmsimrc
 xcelium> source /aril/cad/tools/cadence/xcelium/18.09.010/tools/methodology/UVM/CDNS-1.2/additions/sv/files/tcl/uvm_sim.tcl
 xcelium> run
@@ -176,7 +158,7 @@ Name         Type           Size  Value
 ---------------------------------------
 producer2-0  packet         -     -    
   addr       integral       32    'h1a 
-  initiator  producer #(T)  -1    @2008
+  initiator  producer #(T)  -1    @1941
 ---------------------------------------
    UVM_INFO @      0ns  Starting. :producer
    UVM_INFO @      0ns  Sending producer1-0 :producer
@@ -185,7 +167,7 @@ Name         Type           Size  Value
 ---------------------------------------
 producer1-0  packet         -     -    
   addr       integral       32    'hac 
-  initiator  producer #(T)  -1    @1975
+  initiator  producer #(T)  -1    @1904
 ---------------------------------------
   UVM_FATAL @      1ns  This is a fatal error! :TEST_FATAL
                           top, top.sv(85)
@@ -224,14 +206,6 @@ xrun -sv +xmtimescale+1ns/10ps +define+UVM_NO_DEPRECATED +define+UVM_1p2 +UVM_VE
 xrun(64): 18.09-s010: (c) Copyright 1995-2019 Cadence Design Systems, Inc.
 Loading snapshot worklib.hello_world:sv .................... Done
 SVSEED default: 1
-Initializing Xcelium(64) (18.09 Build 424)  -  Linked on Fri Jan 25 16:06:55
-2019
-
-Protected by U.S. Patents 6,141,630 ;6,182,258; 6,219,809; 6,347,388;
-6,487,704; 6,499,132; 6,502,232; 6,519,727; 6,530,054; 6,675,138; 6,684,359;
-6,687,662; 6,907,599; 6,918,076; 6,920,583; Other Patents Pending.
-
-Checking license ... OK
 xcelium> source /aril/cad/tools/cadence/xcelium/18.09.010/tools/xcelium/files/xmsimrc
 xcelium> source /aril/cad/tools/cadence/xcelium/18.09.010/tools/methodology/UVM/CDNS-1.2/additions/sv/files/tcl/uvm_sim.tcl
 xcelium> run
@@ -273,7 +247,7 @@ Name         Type           Size  Value
 ---------------------------------------
 producer2-0  packet         -     -    
   addr       integral       32    'h1a 
-  initiator  producer #(T)  -1    @2008
+  initiator  producer #(T)  -1    @1941
 ---------------------------------------
    [0;90mUVM_INFO[0m @[0;36m      0[0mns  [0mStarting.[0m :[0;36mproducer[0m
    [0;90mUVM_INFO[0m @[0;36m      0[0mns  [0mSending producer1-0[0m :[0;36mproducer[0m
@@ -282,7 +256,7 @@ Name         Type           Size  Value
 ---------------------------------------
 producer1-0  packet         -     -    
   addr       integral       32    'hac 
-  initiator  producer #(T)  -1    @1975
+  initiator  producer #(T)  -1    @1904
 ---------------------------------------
   [0;30;41mUVM_FATAL[0m @[0;36m      1[0mns  [0mThis is a fatal error![0m :[0;36mTEST_FATAL[0m[0;90m
                           top, top.sv(85)[0m
@@ -323,14 +297,6 @@ xrun -sv +xmtimescale+1ns/10ps +define+UVM_NO_DEPRECATED +define+UVM_1p2 +UVM_VE
 xrun(64): 18.09-s010: (c) Copyright 1995-2019 Cadence Design Systems, Inc.
 Loading snapshot worklib.hello_world:sv .................... Done
 SVSEED default: 1
-Initializing Xcelium(64) (18.09 Build 424)  -  Linked on Fri Jan 25 16:06:55
-2019
-
-Protected by U.S. Patents 6,141,630 ;6,182,258; 6,219,809; 6,347,388;
-6,487,704; 6,499,132; 6,502,232; 6,519,727; 6,530,054; 6,675,138; 6,684,359;
-6,687,662; 6,907,599; 6,918,076; 6,920,583; Other Patents Pending.
-
-Checking license ... OK
 xcelium> source /aril/cad/tools/cadence/xcelium/18.09.010/tools/xcelium/files/xmsimrc
 xcelium> source /aril/cad/tools/cadence/xcelium/18.09.010/tools/methodology/UVM/CDNS-1.2/additions/sv/files/tcl/uvm_sim.tcl
 xcelium> run
@@ -372,7 +338,7 @@ Name         Type           Size  Value
 ---------------------------------------
 producer2-0  packet         -     -    
   addr       integral       32    'h1a 
-  initiator  producer #(T)  -1    @2009
+  initiator  producer #(T)  -1    @1942
 ---------------------------------------
    UVM_INFO @      0ns  Starting. :producer
    UVM_INFO @      0ns  Sending producer1-0 :producer
@@ -381,7 +347,7 @@ Name         Type           Size  Value
 ---------------------------------------
 producer1-0  packet         -     -    
   addr       integral       32    'hac 
-  initiator  producer #(T)  -1    @1976
+  initiator  producer #(T)  -1    @1905
 ---------------------------------------
   UVM_FATAL @      1ns  This is a fatal error! :TEST_FATAL
                           top, top.sv(85)
@@ -422,14 +388,6 @@ xrun -sv +xmtimescale+1ns/10ps +define+UVM_NO_DEPRECATED +define+UVM_1p2 +UVM_VE
 xrun(64): 18.09-s010: (c) Copyright 1995-2019 Cadence Design Systems, Inc.
 Loading snapshot worklib.hello_world:sv .................... Done
 SVSEED default: 1
-Initializing Xcelium(64) (18.09 Build 424)  -  Linked on Fri Jan 25 16:06:55
-2019
-
-Protected by U.S. Patents 6,141,630 ;6,182,258; 6,219,809; 6,347,388;
-6,487,704; 6,499,132; 6,502,232; 6,519,727; 6,530,054; 6,675,138; 6,684,359;
-6,687,662; 6,907,599; 6,918,076; 6,920,583; Other Patents Pending.
-
-Checking license ... OK
 xcelium> source /aril/cad/tools/cadence/xcelium/18.09.010/tools/xcelium/files/xmsimrc
 xcelium> source /aril/cad/tools/cadence/xcelium/18.09.010/tools/methodology/UVM/CDNS-1.2/additions/sv/files/tcl/uvm_sim.tcl
 xcelium> run
@@ -479,7 +437,7 @@ Name         Type           Size  Value
 ---------------------------------------
 producer2-0  packet         -     -    
   addr       integral       32    'h1a 
-  initiator  producer #(T)  -1    @2008
+  initiator  producer #(T)  -1    @1941
 ---------------------------------------
    [0;90mUVM_INFO[0m @[0;36m      0[0mns  [0mStarting.[0m :[0;36mproducer[0m
    [0;90mUVM_INFO[0m @[0;36m      0[0mns  [0mSending producer1-0[0m :[0;36mproducer[0m
@@ -488,7 +446,7 @@ Name         Type           Size  Value
 ---------------------------------------
 producer1-0  packet         -     -    
   addr       integral       32    'hac 
-  initiator  producer #(T)  -1    @1975
+  initiator  producer #(T)  -1    @1904
 ---------------------------------------
   [0;30;41mUVM_FATAL[0m @[0;36m      1[0mns  [0mThis is a fatal error![0m :[0;36mTEST_FATAL[0m
    [0;90mUVM_INFO[0m @[0;36m      1[0mns  [0m
@@ -526,14 +484,6 @@ xrun -sv +xmtimescale+1ns/10ps +define+UVM_NO_DEPRECATED +define+UVM_1p2 +UVM_VE
 xrun(64): 18.09-s010: (c) Copyright 1995-2019 Cadence Design Systems, Inc.
 Loading snapshot worklib.hello_world:sv .................... Done
 SVSEED default: 1
-Initializing Xcelium(64) (18.09 Build 424)  -  Linked on Fri Jan 25 16:06:55
-2019
-
-Protected by U.S. Patents 6,141,630 ;6,182,258; 6,219,809; 6,347,388;
-6,487,704; 6,499,132; 6,502,232; 6,519,727; 6,530,054; 6,675,138; 6,684,359;
-6,687,662; 6,907,599; 6,918,076; 6,920,583; Other Patents Pending.
-
-Checking license ... OK
 xcelium> source /aril/cad/tools/cadence/xcelium/18.09.010/tools/xcelium/files/xmsimrc
 xcelium> source /aril/cad/tools/cadence/xcelium/18.09.010/tools/methodology/UVM/CDNS-1.2/additions/sv/files/tcl/uvm_sim.tcl
 xcelium> run
@@ -583,7 +533,7 @@ Name         Type           Size  Value
 ---------------------------------------
 producer2-0  packet         -     -    
   addr       integral       32    'h1a 
-  initiator  producer #(T)  -1    @2009
+  initiator  producer #(T)  -1    @1942
 ---------------------------------------
    UVM_INFO @      0ns  Starting. :producer
    UVM_INFO @      0ns  Sending producer1-0 :producer
@@ -592,7 +542,7 @@ Name         Type           Size  Value
 ---------------------------------------
 producer1-0  packet         -     -    
   addr       integral       32    'hac 
-  initiator  producer #(T)  -1    @1976
+  initiator  producer #(T)  -1    @1905
 ---------------------------------------
   UVM_FATAL @      1ns  This is a fatal error! :TEST_FATAL
    UVM_INFO @      1ns  
@@ -630,14 +580,6 @@ xrun -sv +xmtimescale+1ns/10ps +define+UVM_NO_DEPRECATED +define+UVM_1p2 +UVM_VE
 xrun(64): 18.09-s010: (c) Copyright 1995-2019 Cadence Design Systems, Inc.
 Loading snapshot worklib.hello_world:sv .................... Done
 SVSEED default: 1
-Initializing Xcelium(64) (18.09 Build 424)  -  Linked on Fri Jan 25 16:06:55
-2019
-
-Protected by U.S. Patents 6,141,630 ;6,182,258; 6,219,809; 6,347,388;
-6,487,704; 6,499,132; 6,502,232; 6,519,727; 6,530,054; 6,675,138; 6,684,359;
-6,687,662; 6,907,599; 6,918,076; 6,920,583; Other Patents Pending.
-
-Checking license ... OK
 xcelium> source /aril/cad/tools/cadence/xcelium/18.09.010/tools/xcelium/files/xmsimrc
 xcelium> source /aril/cad/tools/cadence/xcelium/18.09.010/tools/methodology/UVM/CDNS-1.2/additions/sv/files/tcl/uvm_sim.tcl
 xcelium> run
@@ -676,7 +618,7 @@ Name         Type           Size  Value
 ---------------------------------------
 producer2-0  packet         -     -    
   addr       integral       32    'h1a 
-  initiator  producer #(T)  -1    @2009
+  initiator  producer #(T)  -1    @1942
 ---------------------------------------
    [0;90mUVM_INFO[0m @[0;36m      0[0mns  [0mStarting.[0m :[0;36mproducer[0m
    [0;90mUVM_INFO[0m @[0;36m      0[0mns  [0mSending producer1-0[0m :[0;36mproducer[0m
@@ -685,7 +627,7 @@ Name         Type           Size  Value
 ---------------------------------------
 producer1-0  packet         -     -    
   addr       integral       32    'hac 
-  initiator  producer #(T)  -1    @1976
+  initiator  producer #(T)  -1    @1905
 ---------------------------------------
   [0;30;41mUVM_FATAL[0m @[0;36m      1[0mns  [0mThis is a fatal error![0m :[0;36mTEST_FATAL[0m
    [0;90mUVM_INFO[0m @[0;36m      1[0mns  [0m
@@ -725,14 +667,6 @@ xrun -sv +xmtimescale+1ns/10ps +define+UVM_NO_DEPRECATED +define+UVM_1p2 +UVM_VE
 xrun(64): 18.09-s010: (c) Copyright 1995-2019 Cadence Design Systems, Inc.
 Loading snapshot worklib.hello_world:sv .................... Done
 SVSEED default: 1
-Initializing Xcelium(64) (18.09 Build 424)  -  Linked on Fri Jan 25 16:06:55
-2019
-
-Protected by U.S. Patents 6,141,630 ;6,182,258; 6,219,809; 6,347,388;
-6,487,704; 6,499,132; 6,502,232; 6,519,727; 6,530,054; 6,675,138; 6,684,359;
-6,687,662; 6,907,599; 6,918,076; 6,920,583; Other Patents Pending.
-
-Checking license ... OK
 xcelium> source /aril/cad/tools/cadence/xcelium/18.09.010/tools/xcelium/files/xmsimrc
 xcelium> source /aril/cad/tools/cadence/xcelium/18.09.010/tools/methodology/UVM/CDNS-1.2/additions/sv/files/tcl/uvm_sim.tcl
 xcelium> run
@@ -771,7 +705,7 @@ Name         Type           Size  Value
 ---------------------------------------
 producer2-0  packet         -     -    
   addr       integral       32    'h1a 
-  initiator  producer #(T)  -1    @2010
+  initiator  producer #(T)  -1    @1943
 ---------------------------------------
    UVM_INFO @      0ns  Starting. :producer
    UVM_INFO @      0ns  Sending producer1-0 :producer
@@ -780,7 +714,7 @@ Name         Type           Size  Value
 ---------------------------------------
 producer1-0  packet         -     -    
   addr       integral       32    'hac 
-  initiator  producer #(T)  -1    @1977
+  initiator  producer #(T)  -1    @1906
 ---------------------------------------
   UVM_FATAL @      1ns  This is a fatal error! :TEST_FATAL
    UVM_INFO @      1ns  
@@ -820,14 +754,6 @@ xrun -sv +xmtimescale+1ns/10ps +define+UVM_NO_DEPRECATED +define+UVM_1p2 +UVM_VE
 xrun(64): 18.09-s010: (c) Copyright 1995-2019 Cadence Design Systems, Inc.
 Loading snapshot worklib.hello_world:sv .................... Done
 SVSEED default: 1
-Initializing Xcelium(64) (18.09 Build 424)  -  Linked on Fri Jan 25 16:06:55
-2019
-
-Protected by U.S. Patents 6,141,630 ;6,182,258; 6,219,809; 6,347,388;
-6,487,704; 6,499,132; 6,502,232; 6,519,727; 6,530,054; 6,675,138; 6,684,359;
-6,687,662; 6,907,599; 6,918,076; 6,920,583; Other Patents Pending.
-
-Checking license ... OK
 xcelium> source /aril/cad/tools/cadence/xcelium/18.09.010/tools/xcelium/files/xmsimrc
 xcelium> source /aril/cad/tools/cadence/xcelium/18.09.010/tools/methodology/UVM/CDNS-1.2/additions/sv/files/tcl/uvm_sim.tcl
 xcelium> run
@@ -885,7 +811,7 @@ Name         Type           Size  Value
 ---------------------------------------
 producer2-0  packet         -     -    
   addr       integral       32    'h1a 
-  initiator  producer #(T)  -1    @2008
+  initiator  producer #(T)  -1    @1941
 ---------------------------------------
    [0;90mUVM_INFO[0m @[0;36m      0[0mns  [0mStarting.[0m :[0;36mproducer[0m[0;90m
                           top.producer1, producer.sv(46)[0m
@@ -896,7 +822,7 @@ Name         Type           Size  Value
 ---------------------------------------
 producer1-0  packet         -     -    
   addr       integral       32    'hac 
-  initiator  producer #(T)  -1    @1975
+  initiator  producer #(T)  -1    @1904
 ---------------------------------------
   [0;30;41mUVM_FATAL[0m @[0;36m      1[0mns  [0mThis is a fatal error![0m :[0;36mTEST_FATAL[0m[0;90m
                           top, top.sv(85)[0m
@@ -937,14 +863,6 @@ xrun -sv +xmtimescale+1ns/10ps +define+UVM_NO_DEPRECATED +define+UVM_1p2 +UVM_VE
 xrun(64): 18.09-s010: (c) Copyright 1995-2019 Cadence Design Systems, Inc.
 Loading snapshot worklib.hello_world:sv .................... Done
 SVSEED default: 1
-Initializing Xcelium(64) (18.09 Build 424)  -  Linked on Fri Jan 25 16:06:55
-2019
-
-Protected by U.S. Patents 6,141,630 ;6,182,258; 6,219,809; 6,347,388;
-6,487,704; 6,499,132; 6,502,232; 6,519,727; 6,530,054; 6,675,138; 6,684,359;
-6,687,662; 6,907,599; 6,918,076; 6,920,583; Other Patents Pending.
-
-Checking license ... OK
 xcelium> source /aril/cad/tools/cadence/xcelium/18.09.010/tools/xcelium/files/xmsimrc
 xcelium> source /aril/cad/tools/cadence/xcelium/18.09.010/tools/methodology/UVM/CDNS-1.2/additions/sv/files/tcl/uvm_sim.tcl
 xcelium> run
@@ -1002,7 +920,7 @@ Name         Type           Size  Value
 ---------------------------------------
 producer2-0  packet         -     -    
   addr       integral       32    'h1a 
-  initiator  producer #(T)  -1    @2009
+  initiator  producer #(T)  -1    @1942
 ---------------------------------------
    UVM_INFO @      0ns  Starting. :producer
                           top.producer1, producer.sv(46)
@@ -1013,7 +931,7 @@ Name         Type           Size  Value
 ---------------------------------------
 producer1-0  packet         -     -    
   addr       integral       32    'hac 
-  initiator  producer #(T)  -1    @1976
+  initiator  producer #(T)  -1    @1905
 ---------------------------------------
   UVM_FATAL @      1ns  This is a fatal error! :TEST_FATAL
                           top, top.sv(85)
@@ -1054,14 +972,6 @@ xrun -sv +xmtimescale+1ns/10ps +define+UVM_NO_DEPRECATED +define+UVM_1p2 +UVM_VE
 xrun(64): 18.09-s010: (c) Copyright 1995-2019 Cadence Design Systems, Inc.
 Loading snapshot worklib.hello_world:sv .................... Done
 SVSEED default: 1
-Initializing Xcelium(64) (18.09 Build 424)  -  Linked on Fri Jan 25 16:06:55
-2019
-
-Protected by U.S. Patents 6,141,630 ;6,182,258; 6,219,809; 6,347,388;
-6,487,704; 6,499,132; 6,502,232; 6,519,727; 6,530,054; 6,675,138; 6,684,359;
-6,687,662; 6,907,599; 6,918,076; 6,920,583; Other Patents Pending.
-
-Checking license ... OK
 xcelium> source /aril/cad/tools/cadence/xcelium/18.09.010/tools/xcelium/files/xmsimrc
 xcelium> source /aril/cad/tools/cadence/xcelium/18.09.010/tools/methodology/UVM/CDNS-1.2/additions/sv/files/tcl/uvm_sim.tcl
 xcelium> run
@@ -1108,7 +1018,7 @@ Name         Type           Size  Value
 ---------------------------------------
 producer2-0  packet         -     -    
   addr       integral       32    'h1a 
-  initiator  producer #(T)  -1    @2009
+  initiator  producer #(T)  -1    @1942
 ---------------------------------------
    [0;90mUVM_INFO[0m @[0;36m      0[0mns  [0mStarting.[0m :[0;36mproducer[0m[0;90m
                           top.producer1, producer.sv(46)[0m
@@ -1119,7 +1029,7 @@ Name         Type           Size  Value
 ---------------------------------------
 producer1-0  packet         -     -    
   addr       integral       32    'hac 
-  initiator  producer #(T)  -1    @1976
+  initiator  producer #(T)  -1    @1905
 ---------------------------------------
   [0;30;41mUVM_FATAL[0m @[0;36m      1[0mns  [0mThis is a fatal error![0m :[0;36mTEST_FATAL[0m[0;90m
                           top, top.sv(85)[0m
@@ -1162,14 +1072,6 @@ xrun -sv +xmtimescale+1ns/10ps +define+UVM_NO_DEPRECATED +define+UVM_1p2 +UVM_VE
 xrun(64): 18.09-s010: (c) Copyright 1995-2019 Cadence Design Systems, Inc.
 Loading snapshot worklib.hello_world:sv .................... Done
 SVSEED default: 1
-Initializing Xcelium(64) (18.09 Build 424)  -  Linked on Fri Jan 25 16:06:55
-2019
-
-Protected by U.S. Patents 6,141,630 ;6,182,258; 6,219,809; 6,347,388;
-6,487,704; 6,499,132; 6,502,232; 6,519,727; 6,530,054; 6,675,138; 6,684,359;
-6,687,662; 6,907,599; 6,918,076; 6,920,583; Other Patents Pending.
-
-Checking license ... OK
 xcelium> source /aril/cad/tools/cadence/xcelium/18.09.010/tools/xcelium/files/xmsimrc
 xcelium> source /aril/cad/tools/cadence/xcelium/18.09.010/tools/methodology/UVM/CDNS-1.2/additions/sv/files/tcl/uvm_sim.tcl
 xcelium> run
@@ -1216,7 +1118,7 @@ Name         Type           Size  Value
 ---------------------------------------
 producer2-0  packet         -     -    
   addr       integral       32    'h1a 
-  initiator  producer #(T)  -1    @2010
+  initiator  producer #(T)  -1    @1943
 ---------------------------------------
    UVM_INFO @      0ns  Starting. :producer
                           top.producer1, producer.sv(46)
@@ -1227,7 +1129,7 @@ Name         Type           Size  Value
 ---------------------------------------
 producer1-0  packet         -     -    
   addr       integral       32    'hac 
-  initiator  producer #(T)  -1    @1977
+  initiator  producer #(T)  -1    @1906
 ---------------------------------------
   UVM_FATAL @      1ns  This is a fatal error! :TEST_FATAL
                           top, top.sv(85)
@@ -1270,14 +1172,6 @@ TERM_BG_LIGHT=1 xrun -sv +xmtimescale+1ns/10ps +define+UVM_NO_DEPRECATED +define
 xrun(64): 18.09-s010: (c) Copyright 1995-2019 Cadence Design Systems, Inc.
 Loading snapshot worklib.hello_world:sv .................... Done
 SVSEED default: 1
-Initializing Xcelium(64) (18.09 Build 424)  -  Linked on Fri Jan 25 16:06:55
-2019
-
-Protected by U.S. Patents 6,141,630 ;6,182,258; 6,219,809; 6,347,388;
-6,487,704; 6,499,132; 6,502,232; 6,519,727; 6,530,054; 6,675,138; 6,684,359;
-6,687,662; 6,907,599; 6,918,076; 6,920,583; Other Patents Pending.
-
-Checking license ... OK
 xcelium> source /aril/cad/tools/cadence/xcelium/18.09.010/tools/xcelium/files/xmsimrc
 xcelium> source /aril/cad/tools/cadence/xcelium/18.09.010/tools/methodology/UVM/CDNS-1.2/additions/sv/files/tcl/uvm_sim.tcl
 xcelium> run
@@ -1330,7 +1224,7 @@ Name         Type           Size  Value
 ---------------------------------------
 producer2-0  packet         -     -    
   addr       integral       32    'h1a 
-  initiator  producer #(T)  -1    @2007
+  initiator  producer #(T)  -1    @1940
 ---------------------------------------
    [0;90mUVM_INFO[0m @[0;34m      0[0mns  [0mStarting.[0m :[0;34mproducer[0m
    [0;90mUVM_INFO[0m @[0;34m      0[0mns  [0mSending producer1-0[0m :[0;34mproducer[0m
@@ -1339,7 +1233,7 @@ Name         Type           Size  Value
 ---------------------------------------
 producer1-0  packet         -     -    
   addr       integral       32    'hac 
-  initiator  producer #(T)  -1    @1974
+  initiator  producer #(T)  -1    @1903
 ---------------------------------------
   [0;30;41mUVM_FATAL[0m @[0;34m      1[0mns  [0mThis is a fatal error![0m :[0;34mTEST_FATAL[0m[0;90m
                           top, top.sv(85)[0m
