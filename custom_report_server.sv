@@ -36,11 +36,7 @@
 import "DPI-C" function string getenv(input string env_var);
 
 class custom_report_server extends
-   `ifndef UVM_1p1d
   uvm_default_report_server;
-   `else
-   uvm_report_server;
-   `endif
 
    uvm_cmdline_processor clp;
    string clp_uvm_args[$];
@@ -119,13 +115,8 @@ class custom_report_server extends
                             UVM_REPORT_TRACEBACK_ALL } uvm_report_traceback_e;
    uvm_report_traceback_e uvm_report_traceback;
 
-   `ifndef UVM_1p1d
    function new(string name = "custom_report_server");
       super.new(name);
-   `else
-      function new();
-         super.new();
-   `endif
          clp = uvm_cmdline_processor::get_inst();
 
          if (clp.get_arg_matches("+UVM_REPORT_NOCOLOR", clp_uvm_args)) begin
@@ -169,7 +160,6 @@ class custom_report_server extends
          end
       endfunction // new
 
-   `ifndef UVM_1p1d
       virtual function string compose_report_message (uvm_report_message report_message,
                                                       string report_object_name = "");
          uvm_severity l_severity;
@@ -180,36 +170,6 @@ class custom_report_server extends
          string filename = "";
          int    line     = 0;
          string id       = "";
-   `else
-         virtual function string compose_message
-           ( uvm_severity severity,
-             string name,
-             string id,
-             string message,
-             string filename,
-             int line );
-            // Do nothing
-            return "";
-         endfunction // compose_message
-
-         virtual function void process_report
-           ( uvm_severity severity,
-             string name,
-             string id,
-             string message,
-             uvm_action action,
-             UVM_FILE file,
-             string filename,
-             int line,
-             string composed_message, // this input is provided by compose_message
-             // function but we are not using that function
-             int verbosity_level,
-             uvm_report_object client );
-
-            uvm_severity_type severity_type = uvm_severity_type'( severity );
-            string report_object_name       = "";
-            string compose_report_message   = "";
-   `endif // !`ifndef UVM_1p1d
 
             string sev_string;
             string context_str;
@@ -244,27 +204,17 @@ class custom_report_server extends
 
             begin
 
-   `ifndef UVM_1p1d
                if (report_object_name == "") begin
                   l_report_handler = report_message.get_report_handler();
                   report_object_name = l_report_handler.get_full_name();
                end
-   `else
-               report_object_name  = name;
-   `endif
 
                // --------------------------------------------------------------------
                // SEVERITY
-   `ifndef UVM_1p1d
                l_severity = report_message.get_severity();
                sev_string = l_severity.name();
-   `else
-               sev_string = severity_type.name();
-   `endif
 
-   `ifndef UVM_1p1d
                id = report_message.get_id();
-   `endif
 
                if (sev_string=="UVM_INFO") begin
                   format_str        = $sformatf(fg_format[c_uvm_info[0]],
@@ -316,7 +266,6 @@ class custom_report_server extends
                // --------------------------------------------------------------------
                // MESSAGE + ID
 
-   `ifndef UVM_1p1d
                el_container = report_message.get_element_container();
                if (el_container.size() == 0)
                  message = report_message.get_message();
@@ -326,7 +275,6 @@ class custom_report_server extends
                   message = {report_message.get_message(), "\n", el_container.sprint()};
                   uvm_default_printer.knobs.prefix = prefix;
                end
-   `endif //  `ifndef UVM_1p1d
 
                if ( uvm_report_nomsgwrap ) begin
                   message_str = message;
@@ -401,10 +349,8 @@ class custom_report_server extends
                // --------------------------------------------------------------------
                // REPORT_OBJECT_NAME + FILENAME + LINE NUMBER
                // Extract just the file name, remove the preceeding path
-   `ifndef UVM_1p1d
                filename = report_message.get_filename();
                line     = report_message.get_line();
-   `endif
                for (int i=filename.len(); i>=0; i--) begin
                   if (filename[i]=="/")
                     break;
@@ -458,16 +404,10 @@ class custom_report_server extends
                   end else begin
                      // By default do not print the traceback info only for
                      // UVM_LOW and UVM_MEDIUM verbosity messages
-   `ifndef UVM_1p1d
                      if ($cast(l_verbosity, report_message.get_verbosity()))
                        verbosity_str = l_verbosity.name();
                      else
                        verbosity_str.itoa(report_message.get_verbosity());
-   `else
-                     uvm_verbosity vb;
-                     vb = uvm_verbosity'(verbosity_level);
-                     verbosity_str = vb.name();
-   `endif
 
                      if ( verbosity_str=="UVM_LOW"
                           || verbosity_str=="UVM_MEDIUM") begin
@@ -495,47 +435,8 @@ class custom_report_server extends
                   compose_report_message = my_composed_message_fmtd;
                end
 
-   `ifndef UVM_1p1d
             end
          endfunction // compose_report_message
-   `else
-         // update counts
-         incr_severity_count(severity);
-         incr_id_count(id);
-
-         if(action & UVM_DISPLAY) begin
-            $display("%s", compose_report_message);
-         end
-
-         // if log is set we need to send to the file but not resend to the
-         // display. So, we need to mask off stdout for an mcd or we need
-         // to ignore the stdout file handle for a file handle.
-         if(action & UVM_LOG)
-           if( (file == 0) || (file != 32'h8000_0001) ) //ignore stdout handle
-             begin
-                UVM_FILE tmp_file = file;
-                if( (file&32'h8000_0000) == 0) //is an mcd so mask off stdout
-                  begin
-                     tmp_file = file & 32'hffff_fffe;
-                  end
-                f_display(tmp_file,my_composed_message);
-             end
-
-         if(action & UVM_EXIT) client.die();
-
-         if(action & UVM_COUNT) begin
-            if(get_max_quit_count() != 0) begin
-               incr_quit_count();
-               if(is_quit_count_reached()) begin
-                  client.die();
-               end
-            end
-         end
-
-         if (action & UVM_STOP) $stop;
-      end
-endfunction // process_report
-   `endif // !`ifndef UVM_1p1d
 
       endclass // custom_report_server
 `endif //  `ifndef custom_report_server__SV
