@@ -262,8 +262,6 @@ class custom_report_server extends
 
             string my_composed_message       = "";
 
-            begin
-
                if (report_object_name == "") begin
                   l_report_handler = report_message.get_report_handler();
                   report_object_name = l_report_handler.get_full_name();
@@ -379,7 +377,6 @@ class custom_report_server extends
                // end FINAL PRINTED MESSAGE
 
                compose_report_message = my_composed_message;
-            end
          endfunction // compose_report_message
 
       endclass // custom_report_server
