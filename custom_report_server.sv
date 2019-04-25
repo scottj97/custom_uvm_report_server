@@ -161,7 +161,7 @@ class custom_report_server extends
       endfunction // new
 
       local function string colorize(string str, ref color_t colors[2]);
-         string format_str = $sformatf(fg_format[c_uvm_info[0]], bg_format[c_uvm_info[1]]);
+         string format_str = $sformatf(fg_format[colors[0]], bg_format[colors[1]]);
          return $sformatf(format_str, str);
       endfunction: colorize
 
@@ -233,20 +233,14 @@ class custom_report_server extends
                   severity_str      = "   UVM_INFO";
                   severity_str_fmtd = {"   ", colorize("UVM_INFO", c_uvm_info)};
                end else if (l_severity==UVM_WARNING) begin
-                  format_str        = $sformatf(fg_format[c_uvm_warning[0]],
-                                                bg_format[c_uvm_warning[1]]);
                   severity_str      = "UVM_WARNING";
-                  severity_str_fmtd = $sformatf(format_str, "UVM_WARNING");
+                  severity_str_fmtd = colorize("UVM_WARNING", c_uvm_warning);
                end else if (l_severity==UVM_ERROR) begin
-                  format_str        = $sformatf(fg_format[c_uvm_error[0]],
-                                                bg_format[c_uvm_error[1]]);
                   severity_str      = "  UVM_ERROR";
-                  severity_str_fmtd = $sformatf({"  ", format_str}, "UVM_ERROR");
+                  severity_str_fmtd = {"  ", colorize("UVM_ERROR", c_uvm_error)};
                end else if (l_severity==UVM_FATAL) begin
-                  format_str        = $sformatf(fg_format[c_uvm_fatal[0]],
-                                                bg_format[c_uvm_fatal[1]]);
                   severity_str      = "  UVM_FATAL";
-                  severity_str_fmtd = $sformatf({"  ", format_str}, "UVM_FATAL");
+                  severity_str_fmtd = {"  ", colorize("UVM_FATAL", c_uvm_fatal)};
                   // The below else condition should never be executed
                end else begin
                   severity_str      = "";
