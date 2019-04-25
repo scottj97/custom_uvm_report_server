@@ -261,7 +261,7 @@ class custom_report_server extends
             string tracebackinfo_str         = "";
 
             string severity_str              = "";
-            string time_str_fmtd             = "";
+            string time_str                  = "";
             string message_str_fmtd          = "";
             string id_str_fmtd               = "";
             string tracebackinfo_str_fmtd    = "";
@@ -300,7 +300,7 @@ class custom_report_server extends
                 // Print the simulation time in ns by default
                 $timeformat(-9, 0, "", 11);  // units, precision, suffix, min field width
                 */
-               time_str_fmtd = {"@", colorize($sformatf("%7t", $time), c_time), "ns"};
+               time_str = {"@", colorize($sformatf("%7t", $time), c_time), "ns"};
                // end TIME
 
                // --------------------------------------------------------------------
@@ -358,11 +358,11 @@ class custom_report_server extends
                end else begin
                   if ( uvm_report_traceback == UVM_REPORT_TRACEBACK_NONE ) begin
                      my_composed_message_fmtd = $sformatf("%5s %s  %s",
-                                                          severity_str, time_str_fmtd,
+                                                          severity_str, time_str,
                                                           message_str_fmtd);
                   end else if ( uvm_report_traceback == UVM_REPORT_TRACEBACK_ALL ) begin
                      my_composed_message_fmtd = $sformatf("%5s %s  %s%s",
-                                                          severity_str, time_str_fmtd,
+                                                          severity_str, time_str,
                                                           message_str_fmtd,
                                                           tracebackinfo_str_fmtd);
                   end else begin
@@ -376,11 +376,11 @@ class custom_report_server extends
                      if ( verbosity_str=="UVM_LOW"
                           || verbosity_str=="UVM_MEDIUM") begin
                         my_composed_message_fmtd = $sformatf("%5s %s  %s",
-                                                             severity_str, time_str_fmtd,
+                                                             severity_str, time_str,
                                                              message_str_fmtd);
                      end else begin
                         my_composed_message_fmtd = $sformatf("%5s %s  %s%s",
-                                                             severity_str, time_str_fmtd,
+                                                             severity_str, time_str,
                                                              message_str_fmtd,
                                                              tracebackinfo_str_fmtd);
                      end // else: !if( verbosity_str=="UVM_MEDIUM" )
