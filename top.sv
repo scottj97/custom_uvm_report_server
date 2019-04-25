@@ -79,6 +79,9 @@ class top extends uvm_component;
             `uvm_info("TEST_INFO", "This is a UVM_LOW info.", UVM_LOW)
             `uvm_info("TEST_INFO", "This is a UVM_MEDIUM info.", UVM_MEDIUM)
             `uvm_info("TEST_INFO", "This is a UVM_HIGH info.", UVM_HIGH)
+            if ($test$plusargs("longtest")) begin
+                repeat(100_000) `uvm_info("longtest", $sformatf("This is one of one hundred thousand word wrapped info messages: %0d", 4), UVM_MEDIUM)
+            end
             `uvm_warning("TEST_WARN", "This is a warning.")
             `uvm_error("TEST_ERR", "This is an error!")
             #1ns;
