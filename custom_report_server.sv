@@ -260,7 +260,7 @@ class custom_report_server extends
             string filename_str              = "";
             string tracebackinfo_str         = "";
 
-            string severity_str_fmtd         = "";
+            string severity_str              = "";
             string time_str_fmtd             = "";
             string message_str_fmtd          = "";
             string id_str_fmtd               = "";
@@ -289,7 +289,7 @@ class custom_report_server extends
                      id = id.substr(0, id.len()-2);
                   end // if (id[id.len()-1]=="*")
                end
-               severity_str_fmtd = severity_strings[l_severity];
+               severity_str = severity_strings[l_severity];
                // end SEVERITY
 
                // --------------------------------------------------------------------
@@ -358,11 +358,11 @@ class custom_report_server extends
                end else begin
                   if ( uvm_report_traceback == UVM_REPORT_TRACEBACK_NONE ) begin
                      my_composed_message_fmtd = $sformatf("%5s %s  %s",
-                                                          severity_str_fmtd, time_str_fmtd,
+                                                          severity_str, time_str_fmtd,
                                                           message_str_fmtd);
                   end else if ( uvm_report_traceback == UVM_REPORT_TRACEBACK_ALL ) begin
                      my_composed_message_fmtd = $sformatf("%5s %s  %s%s",
-                                                          severity_str_fmtd, time_str_fmtd,
+                                                          severity_str, time_str_fmtd,
                                                           message_str_fmtd,
                                                           tracebackinfo_str_fmtd);
                   end else begin
@@ -376,11 +376,11 @@ class custom_report_server extends
                      if ( verbosity_str=="UVM_LOW"
                           || verbosity_str=="UVM_MEDIUM") begin
                         my_composed_message_fmtd = $sformatf("%5s %s  %s",
-                                                             severity_str_fmtd, time_str_fmtd,
+                                                             severity_str, time_str_fmtd,
                                                              message_str_fmtd);
                      end else begin
                         my_composed_message_fmtd = $sformatf("%5s %s  %s%s",
-                                                             severity_str_fmtd, time_str_fmtd,
+                                                             severity_str, time_str_fmtd,
                                                              message_str_fmtd,
                                                              tracebackinfo_str_fmtd);
                      end // else: !if( verbosity_str=="UVM_MEDIUM" )
