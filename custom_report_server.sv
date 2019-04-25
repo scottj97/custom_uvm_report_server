@@ -266,7 +266,7 @@ class custom_report_server extends
             string id_str_fmtd               = "";
             string tracebackinfo_str_fmtd    = "";
 
-            string my_composed_message_fmtd  = "";
+            string my_composed_message       = "";
 
             begin
 
@@ -319,7 +319,7 @@ class custom_report_server extends
                message_str = wordwrap(message, report_object_name, emulate_dollardisplay);
 
                if (emulate_dollardisplay) begin
-                  my_composed_message_fmtd = message_str;
+                  my_composed_message = message_str;
                end else begin
                   // Append the id string to message_str
                   message_str_fmtd  = colorize(message_str, c_message);
@@ -355,11 +355,11 @@ class custom_report_server extends
                   // --------------------------------------------------------------------
                   // FINAL PRINTED MESSAGE
                   if ( uvm_report_traceback == UVM_REPORT_TRACEBACK_NONE ) begin
-                     my_composed_message_fmtd = $sformatf("%5s %s  %s",
+                     my_composed_message = $sformatf("%5s %s  %s",
                                                           severity_str, time_str,
                                                           message_str_fmtd);
                   end else if ( uvm_report_traceback == UVM_REPORT_TRACEBACK_ALL ) begin
-                     my_composed_message_fmtd = $sformatf("%5s %s  %s%s",
+                     my_composed_message = $sformatf("%5s %s  %s%s",
                                                           severity_str, time_str,
                                                           message_str_fmtd,
                                                           tracebackinfo_str_fmtd);
@@ -373,11 +373,11 @@ class custom_report_server extends
 
                      if ( verbosity_str=="UVM_LOW"
                           || verbosity_str=="UVM_MEDIUM") begin
-                        my_composed_message_fmtd = $sformatf("%5s %s  %s",
+                        my_composed_message = $sformatf("%5s %s  %s",
                                                              severity_str, time_str,
                                                              message_str_fmtd);
                      end else begin
-                        my_composed_message_fmtd = $sformatf("%5s %s  %s%s",
+                        my_composed_message = $sformatf("%5s %s  %s%s",
                                                              severity_str, time_str,
                                                              message_str_fmtd,
                                                              tracebackinfo_str_fmtd);
@@ -386,7 +386,7 @@ class custom_report_server extends
                end // else: !if(emulate_dollardisplay)
                // end FINAL PRINTED MESSAGE
 
-               compose_report_message = my_composed_message_fmtd;
+               compose_report_message = my_composed_message;
             end
          endfunction // compose_report_message
 
