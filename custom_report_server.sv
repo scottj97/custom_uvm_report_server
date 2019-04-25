@@ -216,7 +216,7 @@ class custom_report_server extends
 
                id = report_message.get_id();
 
-               if (sev_string=="UVM_INFO") begin
+               if (l_severity==UVM_INFO) begin
                   format_str        = $sformatf(fg_format[c_uvm_info[0]],
                                                 bg_format[c_uvm_info[1]]);
                   severity_str      = "   UVM_INFO";
@@ -227,17 +227,17 @@ class custom_report_server extends
                      // Remove that last '*' character from the ID string
                      id = id.substr(0, id.len()-2);
                   end // if (id[id.len()-1]=="*")
-               end else if (sev_string=="UVM_WARNING") begin
+               end else if (l_severity==UVM_WARNING) begin
                   format_str        = $sformatf(fg_format[c_uvm_warning[0]],
                                                 bg_format[c_uvm_warning[1]]);
                   severity_str      = "UVM_WARNING";
                   severity_str_fmtd = $sformatf(format_str, "UVM_WARNING");
-               end else if (sev_string=="UVM_ERROR") begin
+               end else if (l_severity==UVM_ERROR) begin
                   format_str        = $sformatf(fg_format[c_uvm_error[0]],
                                                 bg_format[c_uvm_error[1]]);
                   severity_str      = "  UVM_ERROR";
                   severity_str_fmtd = $sformatf({"  ", format_str}, "UVM_ERROR");
-               end else if (sev_string=="UVM_FATAL") begin
+               end else if (l_severity==UVM_FATAL) begin
                   format_str        = $sformatf(fg_format[c_uvm_fatal[0]],
                                                 bg_format[c_uvm_fatal[1]]);
                   severity_str      = "  UVM_FATAL";
