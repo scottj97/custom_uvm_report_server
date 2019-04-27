@@ -25,7 +25,6 @@ _NC =   $(NC_BIN) -sv \
 	+xmtimescale+1ns/10ps \
         +define+UVM_NO_DEPRECATED \
         +define+UVM_$(UVM_VERSION) \
-        +UVM_VERBOSITY=$(UVM_VERBOSITY)  \
 	-nowarn DSEMEL \
 	-nowarn DSEM2009 \
 	-nowarn RNDNOXCEL \
