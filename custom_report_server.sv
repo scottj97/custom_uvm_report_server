@@ -114,26 +114,14 @@ class custom_report_server extends uvm_default_report_server;
    string severity_strings[uvm_severity]; // colorized "UVM_INFO", "UVM_WARNING", etc
 
    function new(string name = "custom_report_server");
-      uvm_cmdline_processor clp;
-      string clp_uvm_args[$];
       super.new(name);
-      clp = uvm_cmdline_processor::get_inst();
 
-      if (clp.get_arg_matches("+UVM_REPORT_NOCOLOR", clp_uvm_args)) begin
-         uvm_report_nocolor = 1;
-      end else begin
-         uvm_report_nocolor = 0;
-      end
+      uvm_report_nocolor = $test$plusargs("UVM_REPORT_NOCOLOR");
+      uvm_report_nomsgwrap = $test$plusargs("UVM_REPORT_NOMSGWRAP");
 
-      if (clp.get_arg_matches("+UVM_REPORT_NOMSGWRAP", clp_uvm_args)) begin
-         uvm_report_nomsgwrap = 1;
-      end else begin
-         uvm_report_nomsgwrap = 0;
-      end
-
-      if (clp.get_arg_matches("+UVM_REPORT_TRACEBACK=NONE", clp_uvm_args)) begin
+      if ($test$plusargs("UVM_REPORT_TRACEBACK=NONE")) begin
          uvm_report_traceback = UVM_REPORT_TRACEBACK_NONE;
-      end else if (clp.get_arg_matches("+UVM_REPORT_TRACEBACK=ALL", clp_uvm_args)) begin
+      end else if ($test$plusargs("UVM_REPORT_TRACEBACK=ALL")) begin
          uvm_report_traceback = UVM_REPORT_TRACEBACK_ALL;
       end else begin
          uvm_report_traceback = UVM_REPORT_TRACEBACK_HIGHPLUS;
