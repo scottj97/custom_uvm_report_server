@@ -300,8 +300,8 @@ class custom_report_server extends uvm_default_report_server;
          // --------------------------------------------------------------------
          // FINAL PRINTED MESSAGE
          my_composed_message = $sformatf("%5s %s  %s",
-                                              severity_str, time_str,
-                                              message_str);
+                                         severity_str, time_str,
+                                         message_str);
          if ( uvm_report_traceback == UVM_REPORT_TRACEBACK_ALL ) begin
             add_traceback = 1;
          end else if ( uvm_report_traceback != UVM_REPORT_TRACEBACK_NONE ) begin
@@ -332,7 +332,7 @@ class custom_report_server extends uvm_default_report_server;
             if (filename=="")
                filename_str = "";
             else
-               filename_str     = $sformatf("%s(%0d)", basename(filename), line);
+               filename_str = $sformatf("%s(%0d)", basename(filename), line);
 
             // The traceback info will be indented with respect to the message_str
             if ( report_object_name=="reporter" )
