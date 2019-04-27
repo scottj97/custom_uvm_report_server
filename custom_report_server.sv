@@ -32,8 +32,7 @@
 
 import "DPI-C" function string getenv(input string env_var);
 
-class custom_report_server extends
-   uvm_default_report_server;
+class custom_report_server extends uvm_default_report_server;
 
 
    // identation size = 11(%11s) + 1 space + 1("@") + 7(%7t) + 2("ns") +
@@ -289,7 +288,7 @@ class custom_report_server extends
 
       el_container = report_message.get_element_container();
       if (el_container.size() == 0)
-        message = report_message.get_message();
+         message = report_message.get_message();
       else begin
          string prefix = uvm_default_printer.knobs.prefix;
          uvm_default_printer.knobs.prefix = " +";
@@ -323,9 +322,9 @@ class custom_report_server extends
             // By default do not print the traceback info only for
             // UVM_LOW and UVM_MEDIUM verbosity messages
             if ($cast(l_verbosity, report_message.get_verbosity()))
-              verbosity_str = l_verbosity.name();
+               verbosity_str = l_verbosity.name();
             else
-              verbosity_str.itoa(report_message.get_verbosity());
+               verbosity_str.itoa(report_message.get_verbosity());
 
             if ( verbosity_str!="UVM_LOW"
                  && verbosity_str!="UVM_MEDIUM")
@@ -343,13 +342,13 @@ class custom_report_server extends
             filename = report_message.get_filename();
             line     = report_message.get_line();
             if (filename=="")
-              filename_str = "";
+               filename_str = "";
             else
-              filename_str     = $sformatf("%s(%0d)", basename(filename), line);
+               filename_str     = $sformatf("%s(%0d)", basename(filename), line);
 
             // The traceback info will be indented with respect to the message_str
             if ( report_object_name=="reporter" )
-              tracebackinfo_str = {" ", report_object_name, "\n"};
+               tracebackinfo_str = {" ", report_object_name, "\n"};
             else begin
                tracebackinfo_str = {report_object_name, ", ", filename_str};
                if ( tracebackinfo_str.len() > MAX_MSG_CHARS_PER_LINE ) begin
