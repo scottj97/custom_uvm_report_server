@@ -307,8 +307,7 @@ class custom_report_server extends uvm_default_report_server;
          end else if ( uvm_report_traceback != UVM_REPORT_TRACEBACK_NONE ) begin
             // By default do not print the traceback info only for
             // UVM_LOW and UVM_MEDIUM verbosity messages
-            if (report_message.get_verbosity() != UVM_MEDIUM &&
-                report_message.get_verbosity() != UVM_LOW)
+            if (!(report_message.get_verbosity() inside { UVM_MEDIUM, UVM_LOW }))
                add_traceback = 1;
          end
 
