@@ -30,9 +30,6 @@
 //                  not set, a dark background terminal will be assumed.
 //------------------------------------------------------------------------------
 
-`ifndef custom_report_server__SV
-   `define custom_report_server__SV
-
 import "DPI-C" function string getenv(input string env_var);
 
 class custom_report_server extends
@@ -373,4 +370,3 @@ class custom_report_server extends
    endfunction // compose_report_message
 
 endclass // custom_report_server
-`endif //  `ifndef custom_report_server__SV
