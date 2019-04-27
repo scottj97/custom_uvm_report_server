@@ -168,6 +168,7 @@ class custom_report_server extends
       severity_strings[UVM_ERROR  ] = {"  ", colorize("UVM_ERROR", c_uvm_error)};
       severity_strings[UVM_FATAL  ] = {"  ", colorize("UVM_FATAL", c_uvm_fatal)};
 
+      enable_report_id_count_summary = 0; // no need for that verbose junk
    endfunction // new
 
    local function string colorize(string str, const ref color_t colors[2]);
