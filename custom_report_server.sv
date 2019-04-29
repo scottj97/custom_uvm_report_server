@@ -55,7 +55,6 @@ class custom_report_server extends uvm_default_report_server;
    parameter MAX_MSG_CHARS_PER_LINE          = 120 - INDENT;
    // Do not wrap the message is it takes more than 20 lines to do so
    parameter MAX_MSG_LEN_FOR_WRAP            = 20*MAX_MSG_CHARS_PER_LINE;
-   parameter NUM_CONSEC_DASH_TO_DETECT_TABLE = 15;
 
    string indentation_str           = {INDENT{" "}};
 
@@ -184,7 +183,6 @@ class custom_report_server extends uvm_default_report_server;
    local function string wordwrap(string message, const ref string report_object_name, bit emulate_dollardisplay);
       string message_str       = "";
       bit add_newline          = 0;
-      int dash_cnt             = 0;
 
       if ( uvm_report_nomsgwrap ) return message;
 
@@ -204,15 +202,8 @@ class custom_report_server extends uvm_default_report_server;
            emulate_dollardisplay==1 )
          return message;
       foreach(message[i]) begin
-         if ( message[i]=="-" ) begin
-            dash_cnt++;
-         end else begin
-            dash_cnt = 0;
-         end
-         // If more than NUM_CONSEC_DASH_TO_DETECT_TABLE consecutive
-         // dashes are detected, do not wrap the message as it could
-         // be a pre-formatted string output by the uvm_printer.
-         if ( dash_cnt > NUM_CONSEC_DASH_TO_DETECT_TABLE ) begin
+         if ( message[i]=="\n" ) begin
+            // Assume message is already pre-formatted
             return message;
          end
 
