@@ -187,8 +187,7 @@ class custom_report_server extends uvm_default_report_server;
       // Do not wrap the lines so that they break words (makes searching difficult)
       // Do NOT wrap the message IF,
       //  - message len > MAX_MSG_LEN_FOR_WRAP
-      if ( report_object_name=="reporter" ||
-           message.len()>MAX_MSG_LEN_FOR_WRAP)
+      if ( message.len()>MAX_MSG_LEN_FOR_WRAP )
          return message;
       foreach(message[i]) begin
          if ( message[i]=="\n" ) begin
@@ -310,16 +309,12 @@ class custom_report_server extends uvm_default_report_server;
                filename_str = $sformatf("%s(%0d)", basename(filename), line);
 
             // The traceback info will be indented with respect to the message_str
-            if ( report_object_name=="reporter" )
-               tracebackinfo_str = {" ", report_object_name, "\n"};
-            else begin
-               tracebackinfo_str = {report_object_name, ", ", filename_str};
-               if ( tracebackinfo_str.len() > MAX_MSG_CHARS_PER_LINE ) begin
-                  tracebackinfo_str = {"\n", indentation_str, report_object_name, ",",
-                                       "\n", indentation_str, filename_str};
-               end else begin
-                  tracebackinfo_str = {"\n", indentation_str, tracebackinfo_str};
-               end
+            tracebackinfo_str = {report_object_name, ", ", filename_str};
+            if ( tracebackinfo_str.len() > MAX_MSG_CHARS_PER_LINE ) begin
+               tracebackinfo_str = {"\n", indentation_str, report_object_name, ",",
+                                    "\n", indentation_str, filename_str};
+            end else begin
+               tracebackinfo_str = {"\n", indentation_str, tracebackinfo_str};
             end
             tracebackinfo_str = colorize(tracebackinfo_str, c_tracebackinfo);
             // end REPORT_OBJECT_NAME + FILENAME + LINE NUMBER
