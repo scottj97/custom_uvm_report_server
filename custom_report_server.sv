@@ -29,15 +29,6 @@
 //                          UVM_LOW and UVM_MEDIUM verbosity level if neither of
 //                          above two traceback info command line args are used.
 //                * Auto wrap the messages and traceback infos.
-//                * If the last character of the ID field of an uvm_info is '*',
-//                  that message display will emulate a $display,
-//                   - Severity tag, time stamp, id and traceback info will not
-//                     be printed.
-//                   - Message will not be auto-wrapped.
-//                   - '*' will be removed from the ID string and the msg id
-//                     counter for this modified string will be incremented.
-//                     If the user entered ID as "RXQEC_TABLE*", the id counter
-//                     for "RXQEC_TABLE" will be incremented.
 //                * If the background color of the terminal is white or a light
 //                  color, set the environment variable TERM_BG_LIGHT to 1 before
 //                  running the sims. If that value is 0 or if that variable is
@@ -180,7 +171,7 @@ class custom_report_server extends uvm_default_report_server;
       return filename.substr(i+1, filename.len()-1);
    endfunction: basename
 
-   local function string wordwrap(string message, const ref string report_object_name, bit emulate_dollardisplay);
+   local function string wordwrap(string message, const ref string report_object_name);
       string message_str       = "";
       bit add_newline          = 0;
 
@@ -196,10 +187,8 @@ class custom_report_server extends uvm_default_report_server;
       // Do not wrap the lines so that they break words (makes searching difficult)
       // Do NOT wrap the message IF,
       //  - message len > MAX_MSG_LEN_FOR_WRAP
-      //  - emulate_dollardisplay == 1
       if ( report_object_name=="reporter" ||
-           message.len()>MAX_MSG_LEN_FOR_WRAP ||
-           emulate_dollardisplay==1 )
+           message.len()>MAX_MSG_LEN_FOR_WRAP)
          return message;
       foreach(message[i]) begin
          if ( message[i]=="\n" ) begin
@@ -235,7 +224,6 @@ class custom_report_server extends uvm_default_report_server;
       string id       = "";
 
       // Declare function-internal vars
-      bit    emulate_dollardisplay     = 0;
       string message_str               = "";
       string severity_str              = "";
       string time_str                  = "";
@@ -253,15 +241,6 @@ class custom_report_server extends uvm_default_report_server;
       l_severity = report_message.get_severity();
 
       id = report_message.get_id();
-
-      if (l_severity==UVM_INFO) begin
-         // Emulate $display if the last char of the uvm_info ID field is '*'
-         if (id[id.len()-1]=="*") begin
-            emulate_dollardisplay = 1;
-            // Remove that last '*' character from the ID string
-            id = id.substr(0, id.len()-2);
-         end // if (id[id.len()-1]=="*")
-      end
       severity_str = severity_strings[l_severity];
       // end SEVERITY
 
@@ -289,11 +268,9 @@ class custom_report_server extends uvm_default_report_server;
          uvm_default_printer.knobs.prefix = prefix;
       end
 
-      message_str = wordwrap(message, report_object_name, emulate_dollardisplay);
+      message_str = wordwrap(message, report_object_name);
 
-      if (emulate_dollardisplay) begin
-         my_composed_message = message_str;
-      end else begin
+      begin // HACK remove this unnecessary begin/end pair
          bit add_traceback = 0;
 
          // Append the id string to message_str
