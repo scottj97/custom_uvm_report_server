@@ -311,12 +311,11 @@ class custom_report_server extends uvm_default_report_server;
             // The traceback info will be indented with respect to the message_str
             tracebackinfo_str = {report_object_name, ", ", filename_str};
             if ( tracebackinfo_str.len() > MAX_MSG_CHARS_PER_LINE ) begin
-               tracebackinfo_str = {"\n", indentation_str, report_object_name, ",",
-                                    "\n", indentation_str, filename_str};
+               tracebackinfo_str = {"\n", indentation_str, colorize({report_object_name, ","}, c_tracebackinfo),
+                                    "\n", indentation_str, colorize(filename_str, c_tracebackinfo)};
             end else begin
-               tracebackinfo_str = {"\n", indentation_str, tracebackinfo_str};
+               tracebackinfo_str = {"\n", indentation_str, colorize(tracebackinfo_str, c_tracebackinfo)};
             end
-            tracebackinfo_str = colorize(tracebackinfo_str, c_tracebackinfo);
             // end REPORT_OBJECT_NAME + FILENAME + LINE NUMBER
             my_composed_message = {my_composed_message, tracebackinfo_str};
          end // if (add_traceback)
