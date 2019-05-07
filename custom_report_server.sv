@@ -325,4 +325,27 @@ class custom_report_server extends uvm_default_report_server;
       compose_report_message = my_composed_message;
    endfunction // compose_report_message
 
+   function void report_summarize(UVM_FILE file = 0); //{
+      // I don't want all this verbose junk at the end of my simulation:
+      //   UVM_INFO @      0ns
+      //--- UVM Report catcher Summary ---
+      //
+      //Number of demoted UVM_FATAL reports  :    0
+      //Number of demoted UVM_ERROR reports  :    0
+      //Number of demoted UVM_WARNING reports:    0
+      //Number of caught UVM_FATAL reports   :    0
+      //Number of caught UVM_ERROR reports   :    0
+      //Number of caught UVM_WARNING reports :    0  :UVM/REPORT/CATCHER
+      //   UVM_INFO @      0ns
+      //--- UVM Report Summary ---
+      //
+      //Quit count :     0 of     3
+      //** Report counts by severity
+      //UVM_INFO :    3
+      //UVM_WARNING :    0
+      //UVM_ERROR :    0
+      //UVM_FATAL :    0  :UVM/REPORT/SERVER
+   endfunction: report_summarize //}
+
+
 endclass // custom_report_server
